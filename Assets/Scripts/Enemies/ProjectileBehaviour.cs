@@ -31,7 +31,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth.PhStatic.health -= 1;
+            PlayerManager.instance.playerHealth.TakeDamage(1);
             Destroy(gameObject);
         }
         else if (other.gameObject.layer == 8)
