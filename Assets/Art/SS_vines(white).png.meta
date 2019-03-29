@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: bc7ab6b9452e8ae43bcc9ea3d5a074d5
+guid: 95ab5cc1c575d8a418e9ec85424fea3a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_vines(300x500)_0
-    21300002: SS_vines(300x500)_1
-    21300004: SS_vines(300x500)_2
-    21300006: SS_vines(300x500)_3
-    21300008: SS_vines(300x500)_4
-    21300010: SS_vines(300x500)_5
-    21300012: SS_vines(300x500)_6
-    21300014: SS_vines(300x500)_7
-    21300016: SS_vines(300x500)_8
-    21300018: SS_vines(300x500)_9
+    21300000: SS_vines(white)_0
+    21300002: SS_vines(white)_1
+    21300004: SS_vines(white)_2
+    21300006: SS_vines(white)_3
+    21300008: SS_vines(white)_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -55,7 +50,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_vines(300x500)_0
+      name: SS_vines(white)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,13 +136,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca4847513e4e519488d764523d4f92d3
+      spriteID: 26589700c6cd4d24fa7dfd97999a4e0f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_1
+      name: SS_vines(white)_1
       rect:
         serializedVersion: 2
         x: 300
@@ -161,13 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cfd07c10917d74989a588c6855e15a
+      spriteID: 45f245354093f6248aca8ccb3ecc41a2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_2
+      name: SS_vines(white)_2
       rect:
         serializedVersion: 2
         x: 600
@@ -181,13 +176,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 519e62349f007ea4eaaedee484ea4b81
+      spriteID: 2aff8d77be0581749b23f1cda79b0ce2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_3
+      name: SS_vines(white)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -201,13 +196,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28155d1bb7adb184aade620b92eb3981
+      spriteID: df8c19ac65a10594dbce3e81f65ad1b1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_4
+      name: SS_vines(white)_4
       rect:
         serializedVersion: 2
         x: 300
@@ -221,7 +216,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7907b3c0cdc23c34bb04aa00106609a2
+      spriteID: 9f300c80246adc0439ce7a475eefd541
       vertices: []
       indices: 
       edges: []
@@ -229,7 +224,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bea853c130f38ec48b3d46ba0eb6f041
+    spriteID: fdab7922f97d1f644a3baf3eb849d96d
     vertices: []
     indices: 
     edges: []

@@ -1,17 +1,10 @@
 fileFormatVersion: 2
-guid: bc7ab6b9452e8ae43bcc9ea3d5a074d5
+guid: ce75312a3ce17874f991c949d9a4ea59
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_vines(300x500)_0
-    21300002: SS_vines(300x500)_1
-    21300004: SS_vines(300x500)_2
-    21300006: SS_vines(300x500)_3
-    21300008: SS_vines(300x500)_4
-    21300010: SS_vines(300x500)_5
-    21300012: SS_vines(300x500)_6
-    21300014: SS_vines(300x500)_7
-    21300016: SS_vines(300x500)_8
-    21300018: SS_vines(300x500)_9
+    21300000: SS_poisonPlant(white)_0
+    21300002: SS_poisonPlant(white)_1
+    21300004: SS_poisonPlant(white)_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -41,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -55,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,13 +120,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_vines(300x500)_0
+      name: SS_poisonPlant(white)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 524
-        width: 300
-        height: 500
+        y: 1398
+        width: 760
+        height: 650
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,19 +134,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca4847513e4e519488d764523d4f92d3
+      spriteID: fbaa074547282764ab2bcc0d6ad4162a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_1
+      name: SS_poisonPlant(white)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 524
-        width: 300
-        height: 500
+        x: 760
+        y: 1398
+        width: 760
+        height: 650
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,39 +154,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cfd07c10917d74989a588c6855e15a
+      spriteID: 71b247bec1be2c046b22f8c86bd22ba7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_vines(300x500)_2
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 524
-        width: 300
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 519e62349f007ea4eaaedee484ea4b81
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_vines(300x500)_3
+      name: SS_poisonPlant(white)_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
-        width: 300
-        height: 500
+        y: 748
+        width: 760
+        height: 650
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,27 +174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28155d1bb7adb184aade620b92eb3981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_vines(300x500)_4
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 24
-        width: 300
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7907b3c0cdc23c34bb04aa00106609a2
+      spriteID: 68df1721679981f4a92e67838c09663b
       vertices: []
       indices: 
       edges: []
@@ -229,7 +182,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bea853c130f38ec48b3d46ba0eb6f041
+    spriteID: b17e4c4395bc35c41bbf2619002dffe2
     vertices: []
     indices: 
     edges: []

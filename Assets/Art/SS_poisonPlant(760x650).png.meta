@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -137,7 +137,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55823e749ac81af408d4b3f780225ae1
+      spriteID: a4471e03ca78ad845985985995449d13
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bb8dd008a07c3e4c9b59ce6cd3f7e31
+      spriteID: 9c7de5a49dc7f274794d3b14785e9944
       vertices: []
       indices: 
       edges: []
@@ -177,67 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18864bfcd9c0e3843aadcad46d55f900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_poisonPlant(760x650)_3
-      rect:
-        serializedVersion: 2
-        x: 760
-        y: 748
-        width: 760
-        height: 650
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbe7a6b6b9663bd45a91e8c906a3c4fa
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_poisonPlant(760x650)_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 98
-        width: 760
-        height: 650
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7630dbb243886b5408b20f13372438e8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_poisonPlant(760x650)_5
-      rect:
-        serializedVersion: 2
-        x: 760
-        y: 98
-        width: 760
-        height: 650
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a2a121b0ede9824f8002f6106a9fa57
+      spriteID: 032df36fdc05a8943a729757e433e2ce
       vertices: []
       indices: 
       edges: []

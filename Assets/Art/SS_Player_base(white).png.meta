@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: 75afe198e30d9ce478444016a8196a94
+guid: 8e4669664adf41243ac8443fd0cb5dfc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Tile_vinewall(300x700)_0
-    21300002: Tile_vinewall(300x700)_1
+    21300000: SS_Player_base(white)_0
+    21300002: SS_Player_base(white)_1
+    21300004: SS_Player_base(white)_2
+    21300006: SS_Player_base(white)_3
+    21300008: SS_Player_base(white)_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -33,7 +36,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -119,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tile_vinewall(300x700)_0
+      name: SS_Player_base(white)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 324
+        y: 724
         width: 300
-        height: 700
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,19 +136,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249ab028b563dbb4993df60988b42542
+      spriteID: df99b87f97ef0724fb9725f45c60c177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tile_vinewall(300x700)_1
+      name: SS_Player_base(white)_1
       rect:
         serializedVersion: 2
         x: 300
-        y: 324
+        y: 724
         width: 300
-        height: 700
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,7 +156,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 892268a6a3b786a4db477d117cd1ce08
+      spriteID: 5df290ac50462414f950fed3217d501f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Player_base(white)_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 724
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b239ad94bebceef44b5c649488c56901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Player_base(white)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c636e36592bed42a821d468e679a4d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Player_base(white)_4
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 424
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01b1f2f797b705245a7b273a60f6c7dd
       vertices: []
       indices: 
       edges: []
@@ -161,7 +224,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0789ee2d759209e4598b796c3e0b57a2
+    spriteID: a00e896432df6cb49bf50ef1b950e0a2
     vertices: []
     indices: 
     edges: []

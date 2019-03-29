@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: cb12309fcd858e24fb5c470665a7141a
+guid: 5d767d75753e1354a942bfad8b9facb0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_rocks(300x300)_0
-    21300002: SS_rocks(300x300)_1
-    21300004: SS_rocks(300x300)_2
-    21300006: SS_rocks(300x300)_3
-    21300008: SS_rocks(300x300)_4
-    21300010: SS_rocks(300x300)_5
+    21300000: SS_fireToad(white)_0
+    21300002: SS_fireToad(white)_1
+    21300004: SS_fireToad(white)_2
+    21300006: SS_fireToad(white)_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -37,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -51,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_rocks(300x300)_0
+      name: SS_fireToad(white)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 724
-        width: 300
-        height: 300
+        y: 1458
+        width: 760
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,19 +135,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fa8265dffea80447ab8fd9bb3f9766d
+      spriteID: f80e1a1cfd0a9114ba9891a5e14726a5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_rocks(300x300)_1
+      name: SS_fireToad(white)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 724
-        width: 300
-        height: 300
+        x: 760
+        y: 1458
+        width: 760
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,39 +155,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20b343edf8a1d9c468bbf77bfb503cab
+      spriteID: 9b010b6667299414a8a90d8933bdd540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_rocks(300x300)_2
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 724
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7db2e213008123145afe572ddb41c915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_rocks(300x300)_3
+      name: SS_fireToad(white)_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 424
-        width: 300
-        height: 300
+        y: 868
+        width: 760
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,19 +175,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ccfcf93a9ed919438f1eadd158fe496
+      spriteID: 939de59e6c25a574f9c5bc2b3aa10e82
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_rocks(300x300)_4
+      name: SS_fireToad(white)_3
       rect:
         serializedVersion: 2
-        x: 300
-        y: 424
-        width: 300
-        height: 300
+        x: 760
+        y: 868
+        width: 760
+        height: 590
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,27 +195,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fb4027a50de35d49b563659a5068c01
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_rocks(300x300)_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 424
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d95a641f09326641bc8d4883e95bf92
+      spriteID: 024b03b5331934d4ca0425a8ee69059c
       vertices: []
       indices: 
       edges: []
@@ -245,7 +203,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3c376c397dce64544811b781ec4b9517
+    spriteID: 055163c445529fb4f8b95455fc69cf12
     vertices: []
     indices: 
     edges: []
