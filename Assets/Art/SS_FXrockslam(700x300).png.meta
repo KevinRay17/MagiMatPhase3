@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: f3206685e72ec6749b3abebff357f916
+guid: 19998fd506255ec4ab034534bf96b517
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_fire(300x300)_0
-    21300002: SS_fire(300x300)_1
-    21300004: SS_fire(300x300)_2
-    21300006: SS_fire(300x300)_3
+    21300000: SS_FXrockslam(700x300)_0
+    21300002: SS_FXrockslam(700x300)_1
+    21300004: SS_FXrockslam(700x300)_2
+    21300006: SS_FXrockslam(700x300)_3
+    21300008: SS_FXrockslam(700x300)_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -49,7 +50,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,12 +122,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_fire(300x300)_0
+      name: SS_FXrockslam(700x300)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 212
-        width: 300
+        y: 724
+        width: 700
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -135,18 +136,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8688094966aac90429248f01aa81e4d9
+      spriteID: e78151f234ce458409f96fb8e5a01f60
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_fire(300x300)_1
+      name: SS_FXrockslam(700x300)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 212
-        width: 300
+        x: 700
+        y: 724
+        width: 700
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,7 +156,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599cba4f57e96b240936b5a4596abde1
+      spriteID: e6c8f7009e100704987c5dec560c03ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXrockslam(700x300)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424
+        width: 700
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13199758b9982f4ea99e87871f74288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXrockslam(700x300)_3
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 424
+        width: 700
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fbf86b3931612e49be3d43972b8bdc8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXrockslam(700x300)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 700
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c83e1b705717240971c78d9a70cab5
       vertices: []
       indices: 
       edges: []
@@ -163,7 +224,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6e4546ad411ca974ea320fcc034aa322
+    spriteID: 4c16f48c72d615e4abe62fbef7a9da46
     vertices: []
     indices: 
     edges: []

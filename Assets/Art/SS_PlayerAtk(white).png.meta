@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: f3206685e72ec6749b3abebff357f916
+guid: e4a81ce87af4af542a23fc19a0b8e601
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_fire(300x300)_0
-    21300002: SS_fire(300x300)_1
-    21300004: SS_fire(300x300)_2
-    21300006: SS_fire(300x300)_3
+    21300000: SS_PlayerAtk(white)_0
+    21300002: SS_PlayerAtk(white)_1
+    21300004: SS_PlayerAtk(white)_2
+    21300006: SS_PlayerAtk(white)_3
+    21300008: SS_PlayerAtk(white)_4
+    21300010: SS_PlayerAtk(white)_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -49,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_fire(300x300)_0
+      name: SS_PlayerAtk(white)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 212
-        width: 300
-        height: 300
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8688094966aac90429248f01aa81e4d9
+      spriteID: 59bf63514fcce9e4b86db649059bd067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_fire(300x300)_1
+      name: SS_PlayerAtk(white)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 212
-        width: 300
-        height: 300
+        x: 700
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,7 +157,87 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599cba4f57e96b240936b5a4596abde1
+      spriteID: d1f6724939673ea4aa74807265bb7b25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(white)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1048
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c52590b8bbad446975d705bc94d12f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(white)_3
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1048
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6126a26c033ff9745b9d0f30ba9f2d9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(white)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bd05888b5e96f4a89c8e58f8c0c40e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(white)_5
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3c6fd2ceb055545a88bbefda48c54a
       vertices: []
       indices: 
       edges: []
@@ -163,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6e4546ad411ca974ea320fcc034aa322
+    spriteID: 461050b3681770148921b1c1e1e7ef3f
     vertices: []
     indices: 
     edges: []

@@ -1,17 +1,13 @@
 fileFormatVersion: 2
-guid: 2cf95b71ebe5e3041bce4309ad2ca5c9
+guid: 7863d12b611275b40a109a8eb9c4a652
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_Player_base_0
-    21300002: SS_Player_base_1
-    21300004: SS_Player_base_2
-    21300006: SS_Player_base_3
-    21300008: SS_Player_base_4
-    21300010: SS_Player_base_5
-    21300012: SS_Player_base_6
-    21300014: SS_Player_base_7
-    21300016: SS_Player_base_8
-    21300018: SS_Player_base_9
+    21300000: SS_PlayerAtk(700x500)_0
+    21300002: SS_PlayerAtk(700x500)_1
+    21300004: SS_PlayerAtk(700x500)_2
+    21300006: SS_PlayerAtk(700x500)_3
+    21300008: SS_PlayerAtk(700x500)_4
+    21300010: SS_PlayerAtk(700x500)_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -55,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_Player_base_0
+      name: SS_PlayerAtk(700x500)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 724
-        width: 300
-        height: 300
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02fa887b03c2d2e469085f71de27eac8
+      spriteID: bbba4bb8208dc09438d017dbc5e30b00
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Player_base_1
+      name: SS_PlayerAtk(700x500)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 724
-        width: 300
-        height: 300
+        x: 700
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,39 +157,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b1749d2d129bc94597496325baf81da
+      spriteID: 747cce6f6149b9943bce4958b43e805a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Player_base_2
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 724
-        width: 300
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a87873ff2fd053748a1f69e1ef3409bb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SS_Player_base_3
+      name: SS_PlayerAtk(700x500)_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 424
-        width: 300
-        height: 300
+        y: 1048
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,19 +177,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 132c568906f47b340a8e88bcff4f9183
+      spriteID: e72130d8040c6af408325b6ead9d38fd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Player_base_4
+      name: SS_PlayerAtk(700x500)_3
       rect:
         serializedVersion: 2
-        x: 300
-        y: 424
-        width: 300
-        height: 300
+        x: 700
+        y: 1048
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,7 +197,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56ee44c87d657894d95e3071b296f69a
+      spriteID: 722ff38378fa2174e8ae32fbae479e8b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(700x500)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765b052c932a05a42909e116dfc9e140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_PlayerAtk(700x500)_5
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6774484ac7c7d478eaf8496db3b058
       vertices: []
       indices: 
       edges: []
@@ -229,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 298a6e8b616b7264fb145119cfa26987
+    spriteID: cf3263e0c7bce014cb9b67e446e2ea42
     vertices: []
     indices: 
     edges: []

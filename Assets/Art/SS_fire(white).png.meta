@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: f3206685e72ec6749b3abebff357f916
+guid: 0f39b36d4ce645348b96a1f8b8b044a6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_fire(300x300)_0
-    21300002: SS_fire(300x300)_1
-    21300004: SS_fire(300x300)_2
-    21300006: SS_fire(300x300)_3
+    21300000: SS_fire(white)_0
+    21300002: SS_fire(white)_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -49,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_fire(300x300)_0
+      name: SS_fire(white)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,13 +133,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8688094966aac90429248f01aa81e4d9
+      spriteID: 3a53554124990d04a96bc9b146514874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_fire(300x300)_1
+      name: SS_fire(white)_1
       rect:
         serializedVersion: 2
         x: 300
@@ -155,7 +153,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599cba4f57e96b240936b5a4596abde1
+      spriteID: d660726a6bc82ef41be3acc16e3e8bdc
       vertices: []
       indices: 
       edges: []
@@ -163,7 +161,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6e4546ad411ca974ea320fcc034aa322
+    spriteID: 7b585d519f954d24a9ce507e5aade2f8
     vertices: []
     indices: 
     edges: []

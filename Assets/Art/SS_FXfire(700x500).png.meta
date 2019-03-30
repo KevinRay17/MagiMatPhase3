@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: f3206685e72ec6749b3abebff357f916
+guid: 55497c008b688b74a80adbd7bd737d40
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_fire(300x300)_0
-    21300002: SS_fire(300x300)_1
-    21300004: SS_fire(300x300)_2
-    21300006: SS_fire(300x300)_3
+    21300000: SS_FXfire(700x500)_0
+    21300002: SS_FXfire(700x500)_1
+    21300004: SS_FXfire(700x500)_2
+    21300006: SS_FXfire(700x500)_3
+    21300008: SS_FXfire(700x500)_4
+    21300010: SS_FXfire(700x500)_5
+    21300012: SS_FXfire(700x500)_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -49,7 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_fire(300x300)_0
+      name: SS_FXfire(700x500)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 212
-        width: 300
-        height: 300
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,19 +138,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8688094966aac90429248f01aa81e4d9
+      spriteID: 521dca57e23fbe547b7d7acee90288aa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_fire(300x300)_1
+      name: SS_FXfire(700x500)_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 212
-        width: 300
-        height: 300
+        x: 700
+        y: 1548
+        width: 700
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,7 +158,107 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 599cba4f57e96b240936b5a4596abde1
+      spriteID: 8b00ba919128bb240a17d80c2fdae11a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXfire(700x500)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1048
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf66fad00040ad409ae6baa10edb06a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXfire(700x500)_3
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1048
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e6ccda1115bc04a8b11b5536d2e7d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXfire(700x500)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5cbb25c48b7c1d429842dacf5739469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXfire(700x500)_5
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 548
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe666b15e030e1448f486efa70f4bb3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_FXfire(700x500)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8853407b3df254786f862df5d3845b
       vertices: []
       indices: 
       edges: []
@@ -163,7 +266,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6e4546ad411ca974ea320fcc034aa322
+    spriteID: 7fb41db2b07d42943914dd526b496083
     vertices: []
     indices: 
     edges: []
