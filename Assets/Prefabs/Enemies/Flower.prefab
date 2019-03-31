@@ -125,7 +125,7 @@ MonoBehaviour:
   bouncePadToInstantiate: {fileID: 2793601668342416017, guid: d3463bb7ec435b046b67cd2a113e9e43,
     type: 3}
   offsetFromCenter: {x: 0, y: 1.5, z: 0}
-  bouncePadOffset: {x: 0, y: 0, z: 0}
+  bouncePadOffset: {x: 0, y: 2, z: 0}
   arcHeight: 2.5
   timeBetweenShots: 3
   detectionRadius: 10

@@ -9,6 +9,9 @@ TagManager:
   - Breakable
   - HurtBox
   - Torch
+  - Absorber
+  - Water
+  - VineWall
   layers:
   - Default
   - TransparentFX

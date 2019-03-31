@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoneGolem : Enemy
+public class RockGolem : Enemy
 {
     [HideInInspector] public bool _isWalking;
     [HideInInspector] public bool _isThrowing;

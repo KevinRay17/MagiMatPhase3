@@ -225,7 +225,7 @@ public class MortarStyleEnemy : MonoBehaviour {
    public virtual void Die()
     {
         // Like whereToInstantiate, see line 130
-        whereBouncePadIsInstantiated = transform.position + new Vector3(bouncePadOffset.x, bouncePadOffset.y, bouncePadOffset.z);
+        whereBouncePadIsInstantiated = transform.position - new Vector3(bouncePadOffset.x, bouncePadOffset.y, bouncePadOffset.z);
         
         Instantiate(bouncePadToInstantiate, whereBouncePadIsInstantiated, transform.rotation);
         
