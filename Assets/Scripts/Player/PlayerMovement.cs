@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
 
+    public PlayerSpriteManager animate;
+
     private Vector2 _inputVector;
 
     [HideInInspector] public int faceDirection; //1 = UP, 2 = RIGHT, 3 = DOWN, 4 = LEFT
@@ -43,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
 
+        
+
         canMove = true;
     }
 
@@ -71,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Jump(jumpPower);
            hasJumped = true;
+            animate.AnimatePlayerJump();
         }
 
         //if the player is not currently climbing, circleCast nearby to look for climbables
