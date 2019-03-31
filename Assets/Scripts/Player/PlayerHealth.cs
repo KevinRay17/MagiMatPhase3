@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private Collider2D _collider;
     public bool isPlayerDead = false;
 
-    public float health; //TODO: maybe change to int?
+    public int health; //TODO: maybe change to int?
 
     void Awake()
     {
@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        // Death function moved to script 'Death.cs', make changes in that script
+        /*
         //check if player still has health remaining
         //if not, run death method
         if (health <= 0)
@@ -39,10 +41,11 @@ public class PlayerHealth : MonoBehaviour
         {
             isPlayerDead = false;
         }
+        */
     }
     
     //call this method to deal damage to player
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
     }

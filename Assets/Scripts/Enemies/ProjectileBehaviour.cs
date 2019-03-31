@@ -31,10 +31,10 @@ public class ProjectileBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth.PhStatic.health -= 1;
+            other.gameObject.GetComponent<PlayerHealth>().health -= 1;
             Destroy(gameObject);
         }
-        else if (other.gameObject.layer == 8)
+        else if (other.gameObject.layer == 8 || other.gameObject.CompareTag("Absorber"))
         {
             Destroy(gameObject);
         }

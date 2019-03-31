@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4233667675472675763}
   - component: {fileID: 4233667675472675766}
   - component: {fileID: 4233667675472675761}
+  - component: {fileID: 8541725611273826105}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -99,7 +100,7 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0}
   mouseDirection: {x: 0, y: 0}
   materialAbsorberOut: 0
-  materialAbsorberSpeed: 5
+  materialAbsorberSpeed: 10
   materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
     type: 3}
 --- !u!114 &4233667675472675764
@@ -215,3 +216,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &8541725611273826105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233667675472675762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ab7179d26383043bbd3001fa5ae3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  youDiedText: {fileID: 6781913206968840694, guid: 04efee3fea9b7bb4a874d74096b3dddd,
+    type: 3}
+  timeTilRespawn: 2

@@ -40,6 +40,7 @@ public class PlayerActions : MonoBehaviour
             ResetScene();
         }
         
+        // Fix this later, move these variables OUT of update
         //axis inputs to Vector2
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -138,6 +139,15 @@ public class PlayerActions : MonoBehaviour
         {
             _groundPounding = false;
         }  
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //If you have the fire material and enter water then you lose your material
+        if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
+        {
+            PlayerManager.instance.ChangeMaterial(Material.None);
+        }
     }
     
    
