@@ -33,13 +33,7 @@ public class PlayerActions : MonoBehaviour
     }
 
     void Update()
-    {
-        //reset scene for testing
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            ResetScene();
-        }
-        
+    {   
         //axis inputs to Vector2
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -138,12 +132,5 @@ public class PlayerActions : MonoBehaviour
         {
             _groundPounding = false;
         }  
-    }
-    
-   
-
-    void ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
