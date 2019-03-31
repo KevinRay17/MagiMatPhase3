@@ -14,7 +14,7 @@ public abstract class MaterialClass : MonoBehaviour
 {
     public Material material;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         MaterialsManager.AddMaterialScript(material, this);
     }
