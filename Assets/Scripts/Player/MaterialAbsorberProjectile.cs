@@ -52,6 +52,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
             {
                 if (materialSourceScript.material != Material.None)
                 {
+                    ResourceController.currentMana = 100f;
                     PlayerManager.instance.ChangeMaterial(materialSourceScript.material);
                     SpawnParticles();
                 }

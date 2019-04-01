@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class FireToad : MonoBehaviour
 {
-    
-     
+
+    private Animator _anim;
     protected Rigidbody2D _rigidbody2D;
     public bool _isGrounded;
     public bool _isJumping;
     public float jumpPower;
     public GameObject Fireball;
     LayerMask layerMask = 1 << 8;
+    private LayerMask playerMask = 1 << 11;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -26,6 +28,7 @@ public class FireToad : MonoBehaviour
     }
     void Jump(float power)
     {
+        _anim.SetBool("Jump", true);
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
         
@@ -39,13 +42,18 @@ public class FireToad : MonoBehaviour
     IEnumerator JumpAttack()
     {
         _isJumping = true;
-        float JumpWait = 3;
+        float JumpWait = Random.Range(3f,4f);
         float AttackWait = Random.Range(.3f, .4f);
         yield return new WaitForSeconds(JumpWait);
         Jump(jumpPower);
         _isGrounded = false;
         yield return new WaitForSeconds(AttackWait);
-        GameObject FireballClone = Instantiate(Fireball, transform.position, Quaternion.identity);
+        if (Physics2D.OverlapCircle(
+            transform.position, 12, playerMask))
+        {
+            GameObject FireballClone = Instantiate(Fireball, transform.position, Quaternion.identity);
+        }
+
         _isJumping = false;
     }
 
@@ -54,6 +62,7 @@ public class FireToad : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
+            _anim.SetBool("Jump", false);
             _isGrounded = true;
         }
 

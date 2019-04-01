@@ -43,10 +43,10 @@ public class AudioManager : MonoBehaviour
     
     //function to call from other scripts when a sound needs to be played 
     //plays sound on one of the many audiosources then moves up the list of audiosources
-    void playSound(AudioClip clip)
+    public void playSound(AudioClip clip)
     {
         tracks[currentTrackNumber].PlayOneShot(clip);
-        currentTrackNumber++;
+        currentTrackNumber = (currentTrackNumber + 1) % numberOfAudioTracks;
     }
 
 
