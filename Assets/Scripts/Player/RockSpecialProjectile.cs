@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockSpecialProjectile : Projectile
+public class RockSpecialProjectile : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
     
@@ -14,7 +14,7 @@ public class RockSpecialProjectile : Projectile
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
     
-    public override void Update()
+    public void Update()
     {
         _distanceTravelled += _rigidbody2D.velocity.magnitude * Time.deltaTime;
         if (_distanceTravelled >= maxDistance)
@@ -23,7 +23,7 @@ public class RockSpecialProjectile : Projectile
         }
     }
     
-    public override void ApplyEffect()
+    public void ApplyEffect()
     {
         //do damage
     }

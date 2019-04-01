@@ -20,9 +20,16 @@ public class Projectile : MonoBehaviour
     {
         
     }
+
     
+
     protected virtual void OnTriggerEnter2D(Collider2D whatWeCollidedWith)
     {
+        if (whatWeCollidedWith.gameObject.CompareTag("Player"))
+        {
+            PlayerManager.instance.playerHealth.health -= 1;
+            Destroy(gameObject);
+        }
         // If there's something assigned to tagWeAffect in the inspector.
         // (If we DON'T affect every GameObject)
         if (tagWeAffect != null)
@@ -40,7 +47,7 @@ public class Projectile : MonoBehaviour
             ApplyEffect();
         }
         
-        Die();
+       // Die();
     }
 
     // Does whatever effect the projectile is intended do to: deal damage/apply status/increase a count/etc.

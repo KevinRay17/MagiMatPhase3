@@ -21,7 +21,8 @@ public class Trampoline : MonoBehaviour
         // Check if what just collided with us was the Player, and if it was, continue with the script
         if (thingICollidedWith.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Your Mom");
+            var clip = Resources.Load<AudioClip>("Sounds/BouncePad");
+            AudioManager.instance.playSound(clip);
             // Get and store the Player's rigidbody for later use
             playerRigidbody = thingICollidedWith.gameObject.GetComponent<Rigidbody2D>();
             
