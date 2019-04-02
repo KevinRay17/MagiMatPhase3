@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //handles player movement: running, jumping, climbing
 //uses Physics2D to check for ground and climbables, does not use attached colliders
@@ -34,11 +35,17 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask climbableLayers;
     
     public float gravityScale;
-
+    
+    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
+    [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
+    
+    
     void Awake()
     { 
         //assign components
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
@@ -59,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = GroundedCheck();
         if (isGrounded && !wasGrounded)
         {
+            anim.SetBool("Jumping", false);
             hasJumped = false;
         }
         
@@ -126,8 +134,8 @@ public class PlayerMovement : MonoBehaviour
         //check below the player if there is ground
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.35f, -0.5f, 0),
-            transform.position + new Vector3(0.35f, -0.6f, 0), 
+            transform.position + new Vector3(-0.3f, -1f, 0),
+            transform.position + new Vector3(0.3f, -1.1f, 0), 
             groundLayers);
     }
 
@@ -149,17 +157,27 @@ public class PlayerMovement : MonoBehaviour
     void Run()
     {
         //handles horizontal movement when grounded or in the air
-        
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
+
+        if (velocity.x == 0f)
+        {
+            anim.SetBool("Moving", false);
+        }
+        else
+        {
+            anim.SetBool("Moving", true);
+        }
 
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
+            spriteRenderer.flipX = true;
             faceDirection = 2;
         }
         else if (horizontalInput.x < 0)
         {
+            spriteRenderer.flipX = false;
             faceDirection = 4;
         }
         
@@ -187,6 +205,8 @@ public class PlayerMovement : MonoBehaviour
         
         if (isGrounded && moveDirection == 0)
         {
+            
+            
             //if the player is grounded and is no longer moving the character, apply drag to bring player to a fast stop
             Vector2 velocityX = new Vector2(velocity.x, 0);
             _rigidbody2D.AddForce(velocityX * -groundFriction * Time.fixedDeltaTime);
@@ -227,6 +247,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump(float power)
     {
+        anim.SetBool("Jumping", true);
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
         
@@ -242,5 +263,22 @@ public class PlayerMovement : MonoBehaviour
         isClimbing = false;
         canClimb = false;
         _rigidbody2D.gravityScale = gravityScale;
+    }
+    
+    //ANIMATION STUFF
+    public void TurnRockAniOff()
+    {
+        anim.SetBool("Rockslam", false);
+        anim.SetBool("Rockexplo", false);
+    }
+
+    public void TurnFireAniOff()
+    {
+        anim.SetBool("Firearc", false);
+    }
+
+    public void TurnOffVineAni()
+    {
+        anim.SetBool("Vineatk", false);
     }
 }

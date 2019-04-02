@@ -6,16 +6,20 @@ using UnityEngine;
 //handles player health, death?, collisions?
 
 public class PlayerHealth : MonoBehaviour
-{
-
-    public static PlayerHealth PhStatic;
-    
+{   
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider;
+    
     public bool isPlayerDead = false;
+    private Color startingColor;
 
     public float health; //TODO: maybe change to int?
+
+    public bool invincible;
+    public float invincibilityDuration;
+    public int invFlickersPerSec;
+    private float _invincibilityTimer;
 
     void Awake()
     {
@@ -23,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+
+        startingColor = _spriteRenderer.color;
     }
 
     void Update()
@@ -39,12 +45,55 @@ public class PlayerHealth : MonoBehaviour
         {
             isPlayerDead = false;
         }
+
+        //check if player is still invincible
+        if (_invincibilityTimer > 0)
+        {
+            invincible = true;
+            _invincibilityTimer -= Time.deltaTime;
+        }
+        else
+        {
+            invincible = false;
+        }
+        
+        UpdateColor();
     }
     
     //call this method to deal damage to player
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
+        if (!invincible)
+        {
+            health -= damageAmount;
+            _invincibilityTimer = invincibilityDuration;
+        }
+    }
+
+    void UpdateColor()
+    {
+        //check what color the spriteRenderer should be
+        if (invincible && InvincibleFlicker())
+        {
+            _spriteRenderer.color = Color.clear;
+        }
+        else
+        {
+            _spriteRenderer.color = startingColor;
+        }
+    }
+    
+    bool InvincibleFlicker()
+    {
+        float sinTemp = Mathf.Sign(Mathf.Sin(_invincibilityTimer * invFlickersPerSec * 4));
+        if (sinTemp >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     IEnumerator DeathCoroutine()

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3181183053143267600}
   - component: {fileID: 8636024786448905029}
   - component: {fileID: 2895817315691952362}
+  - component: {fileID: 4884232081910591802}
   m_Layer: 0
   m_Name: FireToadFireball
-  m_TagString: Untagged
+  m_TagString: MaterialSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545003357893963026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: -5.9234595, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.25}
+  m_LocalPosition: {x: 0.2908, y: -4.8379, z: 0}
+  m_LocalScale: {x: 4.200001, y: 2.9999998, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: be48c57c3c71d8d4ba2d4605fd06fc8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e046683cea0888b468e9d4a53e850f5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 1
+  m_Size: {x: 0.65447116, y: 0.9431005}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,14 +113,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 15, y: 15}
+    newSize: {x: 0.65447116, y: 0.9431005}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19, y: 0.13}
   m_EdgeRadius: 0
 --- !u!50 &2895817315691952362
 Rigidbody2D:
@@ -142,3 +143,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4884232081910591802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545003357893963026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec728428cce2cb44801e355b69e777b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 2

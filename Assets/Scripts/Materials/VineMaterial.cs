@@ -14,6 +14,7 @@ public class VineMaterial : MaterialClass
     public GameObject hurtBoxPrefab;
 
     [Header("Special")] 
+    [HideInInspector] public bool canGrapple = true;
     [HideInInspector] public bool onGrapple; //used for exitting the grapple, referenced by VineGrappleCollision script that is put on player
     public float grappleShootSpeed; //speed that grapple line is shot out
     public float grappleSpeed; //speed that player is pulled by the grapple
@@ -22,10 +23,18 @@ public class VineMaterial : MaterialClass
     public LayerMask grappleLayer; //layers that the grapple can hit
     public GameObject grapplePrefab;
     
+    private PlayerMovement playermoveCS;
+
+    private void Start()
+    {
+        playermoveCS = FindObjectOfType<PlayerMovement>();
+    }
+
+    
     public override void Attack(GameObject player)
     {
         Debug.Log("Vine Attack");
-        
+        playermoveCS.anim.SetBool("Vineatk", true);
         //See NoneMaterial Attack() for comments
 
         int attackDirection;
@@ -62,24 +71,28 @@ public class VineMaterial : MaterialClass
 
     public override void Special(GameObject player)
     {
-        Debug.Log("Vine Special");
+        if (canGrapple){
+            canGrapple = false;
+            Debug.Log("Vine Special");
 
-        Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, direction, maxGrappleDistance, grappleLayer);
+            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            RaycastHit2D hit =
+                Physics2D.Raycast(player.transform.position, direction, maxGrappleDistance, grappleLayer);
 
-        Vector2 grapplePosition; //the end of the grapple
-        if (hit.collider != null)
-        {
-            //grapple hit
-            grapplePosition = hit.point;
-            StartCoroutine(ShootGrapple(player, grapplePosition, true));
-        }
-        else
-        {
-            //grapple missed
-            Vector2 playerPos = player.transform.position;
-            grapplePosition = playerPos + (direction * maxGrappleDistance);
-            StartCoroutine(ShootGrapple(player, grapplePosition, false));
+            Vector2 grapplePosition; //the end of the grapple
+            if (hit.collider != null)
+            {
+                //grapple hit
+                grapplePosition = hit.point;
+                StartCoroutine(ShootGrapple(player, grapplePosition, true));
+            }
+            else
+            {
+                //grapple missed
+                Vector2 playerPos = player.transform.position;
+                grapplePosition = playerPos + (direction * maxGrappleDistance);
+                StartCoroutine(ShootGrapple(player, grapplePosition, false));
+            }
         }
     }
 
@@ -135,6 +148,7 @@ public class VineMaterial : MaterialClass
         {
             //if missed, destroy the grapple visual
             Destroy(grapple);
+            canGrapple = true;
         }
     }
     
@@ -182,5 +196,6 @@ public class VineMaterial : MaterialClass
         Destroy(playerVineScript);
         //destroy the grapple visual
         Destroy(grapple);
+        canGrapple = true;
     }
 }

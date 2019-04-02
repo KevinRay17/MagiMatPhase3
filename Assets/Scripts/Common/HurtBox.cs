@@ -29,5 +29,11 @@ public class HurtBox : MonoBehaviour
         {
             Debug.Log("BURN");
         }
+
+        if (PlayerManager.instance.material == Material.Fire && other.gameObject.CompareTag("VineWall"))
+        {
+            Destroy(other.gameObject);
+        }
+        
     }
 }

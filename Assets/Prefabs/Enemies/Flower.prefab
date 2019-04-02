@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 8356425946869717697}
   - component: {fileID: 8356425946869717698}
   - component: {fileID: 8356425946869717702}
-  - component: {fileID: 4692648865916753991}
+  - component: {fileID: 7405301931837772225}
+  - component: {fileID: 7200035875187364649}
   m_Layer: 0
   m_Name: Flower
-  m_TagString: Untagged
+  m_TagString: MaterialSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8356425946869717699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.05, y: -0.43, z: 3.9031749}
-  m_LocalScale: {x: 1, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67f372b5645e9464c956ba80f55a6322, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ab17791a92420b14980655d4d665001f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.10051203, y: 0.15295339}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.8, y: 3.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6030741, y: 2.634416}
   m_EdgeRadius: 0
 --- !u!114 &8356425946869717698
 MonoBehaviour:
@@ -160,7 +161,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!95 &4692648865916753991
+--- !u!95 &7405301931837772225
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Animator:
   m_GameObject: {fileID: 8356425946869717699}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 10b0ad8e8bc46a74c9da584aa851b2f2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 409525487a0fe7e4ba9e19b9b281dbbb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -179,3 +180,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7200035875187364649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356425946869717699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec728428cce2cb44801e355b69e777b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 1

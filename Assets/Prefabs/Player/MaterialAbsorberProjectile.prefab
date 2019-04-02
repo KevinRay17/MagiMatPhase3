@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7588730574867889371}
   m_Layer: 0
   m_Name: MaterialAbsorberProjectile
-  m_TagString: Untagged
+  m_TagString: Absorber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,6 @@ MonoBehaviour:
   particlePrefab: {fileID: 5649834849070784572, guid: 29a0887fc3c31ee449c94172ee81fc7b,
     type: 3}
   particleAmount: 5
-  playerActionScript: {fileID: 0}
 --- !u!212 &7369232999221487594
 SpriteRenderer:
   m_ObjectHideFlags: 0

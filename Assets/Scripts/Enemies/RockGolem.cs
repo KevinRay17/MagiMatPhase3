@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoneGolem : Enemy
+public class RockGolem : Enemy
 {
+    
+   
+    
     [HideInInspector] public bool _isWalking;
     [HideInInspector] public bool _isThrowing;
+    private bool isInArmLength = false;
 
 
     public float walkSpeed; //speed of walking
@@ -23,6 +27,11 @@ public class StoneGolem : Enemy
             StartCoroutine(boulderAttack());
         }
     }
+
+    void Start()
+    {
+        
+    }
     void Walk(float Speed, float timer, float duration)
     {
         //constantly change the x velocity to mimick walking
@@ -38,6 +47,18 @@ public class StoneGolem : Enemy
 
     }
 
+    IEnumerator boulderArmSwing()
+    {
+        float ArmSwingWait = Random.Range(.2f, .3f);   // set attack wait duration
+        
+        //DO ANIMATION HERE
+        yield return  new WaitForSeconds(ArmSwingWait);
+        if (isInArmLength = true)
+        {
+            //deal damage
+        }
+        yield break;
+    }
     //Wait a few seconds, jumps, attacks during the jump at different heights
     //Debating making the random setters into variables, is that neccessary?
     IEnumerator boulderAttack()
@@ -54,6 +75,28 @@ public class StoneGolem : Enemy
         GameObject BoulderClone = Instantiate(Boulder, transform.position, Quaternion.identity);
         _isThrowing = false;
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(boulderArmSwing());
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other){
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isInArmLength = true;
+        }
+        else
+        {
+            isInArmLength = false;
+        }
+
+    }
+    
 
 
 }

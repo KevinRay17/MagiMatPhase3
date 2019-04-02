@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: 4233667675472675763}
   - component: {fileID: 4233667675472675766}
   - component: {fileID: 4233667675472675761}
-  - component: {fileID: 478848603530675513}
+  - component: {fileID: 8541725611273826105}
+  - component: {fileID: 1975484079}
+  - component: {fileID: 1975484080}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -33,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 4233667675472675762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.5, y: 0.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,6 +72,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   gravityScale: 0
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!114 &4233667675472675770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +88,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerDead: 0
   health: 5
+  invincible: 0
+  invincibilityDuration: 1
+  invFlickersPerSec: 4
 --- !u!114 &4233667675472675765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +107,7 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0}
   mouseDirection: {x: 0, y: 0}
   materialAbsorberOut: 0
-  materialAbsorberSpeed: 5
+  materialAbsorberSpeed: 20
   materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
     type: 3}
 --- !u!114 &4233667675472675764
@@ -158,12 +165,12 @@ SpriteRenderer:
   m_SortingLayerID: -305290311
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67f372b5645e9464c956ba80f55a6322, type: 3}
-  m_Color: {r: 0, g: 0.048674583, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e40fea29173e0814ca84ddd55a94b86f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 0.7, y: 1}
+  m_Size: {x: 2.6, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -182,18 +189,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.19730937}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.7, y: 1}
+    oldSize: {x: 7, y: 5}
+    newSize: {x: 2.6, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 1}
+  m_Size: {x: 0.72, y: 1.1546187}
   m_EdgeRadius: 0
 --- !u!50 &4233667675472675761
 Rigidbody2D:
@@ -216,7 +223,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!95 &478848603530675513
+--- !u!114 &8541725611273826105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233667675472675762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ab7179d26383043bbd3001fa5ae3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  youDiedText: {fileID: 0}
+  timeTilRespawn: 2
+--- !u!95 &1975484079
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -226,7 +247,7 @@ Animator:
   m_GameObject: {fileID: 4233667675472675762}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 79a4798d3ae47224a9e15a9520af9c26, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a8a915c7888dd4428321395e25ce07a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -235,3 +256,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1975484080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233667675472675762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b5097f1eb12984cb20e8f32ecc02a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  passiveManaDrain: 0.008333334
+  smallAction: 0
+  mediumAction: 0
+  largeAction: 0
