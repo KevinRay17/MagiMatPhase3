@@ -158,8 +158,10 @@ public class VineMaterial : MaterialClass
         
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
         
-        //remove existing velocity so there isn't a strange jump/drop at the end of the dash
-        playerRB.velocity = Vector2.zero;
+        //grapple uses MovePosition instead of velocity, but set velocity to the velocity while on grapple
+        //this way momentum carries over when the grapple ends
+        Vector2 directionToPlayer = (grapplePosition - (Vector2)player.transform.position).normalized;
+        playerRB.velocity = directionToPlayer * grappleSpeed;
 
         //temporarily remove gravity, so there isn't jitter when flying in the air
         playerRB.gravityScale = 0;

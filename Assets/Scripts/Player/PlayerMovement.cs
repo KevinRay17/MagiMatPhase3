@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 StoppedClimbing();
             }
             Jump(jumpPower);
-           hasJumped = true;
+            hasJumped = true;
         }
 
         //if the player is not currently climbing, circleCast nearby to look for climbables
