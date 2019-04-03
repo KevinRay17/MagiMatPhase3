@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     
     public float gravityScale;
     
-    [FormerlySerializedAs("_anim")] [HideInInspector] private Animator anim;
+    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
     [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
 
     public void Animate(string toSet)
