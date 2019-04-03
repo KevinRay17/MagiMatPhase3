@@ -4684,7 +4684,7 @@ MonoBehaviour:
   attackOffset: {x: 2, y: 0}
   attackHitMultipleTargets: 0
   attackSize: {x: 1, y: 1}
-  hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
+  hurtBoxPrefab: {fileID: 6265150512787786891, guid: aa4284f8ea164e54ea9abe3c3a8a8697,
     type: 3}
   specialRadius: 1
   numberOfProjectiles: 8
@@ -4710,6 +4710,8 @@ MonoBehaviour:
   attackHitMultipleTargets: 0
   attackSize: {x: 1, y: 1.5}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
+    type: 3}
+  animationPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
     type: 3}
   specialDashDistance: 5
   specialDashTime: 0.1
@@ -19459,6 +19461,7 @@ GameObject:
   - component: {fileID: 2067578120}
   - component: {fileID: 2067578119}
   - component: {fileID: 2067578118}
+  - component: {fileID: 2067578121}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -19514,6 +19517,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067578121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067578117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1200ca7f346fa14e8ba406cc7f7f49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2068429970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
@@ -20142,11 +20157,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8541725611273826105, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: youDiedText
-      value: 
-      objectReference: {fileID: 1640536470}
     - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: materialAbsorberSpeed
@@ -20162,6 +20172,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.1724685
       objectReference: {fileID: 0}
+    - target: {fileID: 8541725611273826105, guid: b4a6f71d7f6b5b24480c57144058126d,
+        type: 3}
+      propertyPath: youDiedText
+      value: 
+      objectReference: {fileID: 1640536470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6f71d7f6b5b24480c57144058126d, type: 3}
 --- !u!1001 &4574878048082455810
