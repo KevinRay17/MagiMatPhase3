@@ -22,9 +22,39 @@ public class RockMaterial : MaterialClass
     public override void Attack(GameObject player)
     {
         Debug.Log("Rock Attack");
-        int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
-        if (PlayerManager.instance.playerMovement.isGrounded)
+        //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
+        Vector3 v3 = Input.mousePosition;
+        int attackDirection = (int) Mathf.Sign(Camera.main.ScreenToWorldPoint(v3).x - player.transform.position.x);
         {
+            Vector2 attackDirectionV2 = Vector2.zero;
+            if (attackDirection < 0)
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                attackDirectionV2 = Vector2.left;
+            }
+            else
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                attackDirectionV2 = Vector2.right;
+            }
+
+            Vector3 directionalOffset = Vector2.zero;
+            //directionalOffset.x = attackOffset.x;
+            //directionalOffset.y = attackOffset.y;
+
+            //HIT BOX STUFF
+            GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position,
+                Quaternion.identity);
+            RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
+
+            hbScript._spriteRenderer.size = attackSize;
+            hbScript._boxCollider.size = attackSize;
+            hbScript.damage = attackDamage;
+            hbScript.hitMultipleTargets = attackHitMultipleTargets;
+
+            hbScript.speed = attackMoveSpeed;
+            hbScript.direction = attackDirectionV2;
+            /*
             if (attackDirection == 2 || attackDirection == 4)
             {
                 Vector2 attackDirectionV2 = GlobalFunctions.FaceDirectionToVector2(attackDirection);
@@ -47,6 +77,7 @@ public class RockMaterial : MaterialClass
                 hbScript.direction = attackDirectionV2;
                 
             }
+            */
         }
     }
 

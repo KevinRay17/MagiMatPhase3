@@ -4680,10 +4680,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: 3
   attackDamage: 1
-  attackMoveSpeed: 15
+  attackMoveSpeed: 20
   attackOffset: {x: 1, y: 0}
   attackHitMultipleTargets: 1
-  attackSize: {x: 1, y: 2}
+  attackSize: {x: 1.7, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
     type: 3}
   specialRadius: 1
@@ -4708,7 +4708,7 @@ MonoBehaviour:
   attackDamage: 1
   attackOffset: 1
   attackHitMultipleTargets: 0
-  attackSize: {x: 2.5, y: 2.5}
+  attackSize: {x: 3, y: 2.5}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
   specialDashDistance: 5
@@ -5380,7 +5380,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4040675
+  orthographic size: 4.21875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

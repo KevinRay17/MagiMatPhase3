@@ -37,6 +37,11 @@ public class FireMaterial : MaterialClass
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
+
+            if (direction.x < 0)
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+            else
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
             
             //MAKING THIS ONE BIG HITBOX (around player)
             /*
