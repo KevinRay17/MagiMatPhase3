@@ -13,25 +13,17 @@ public class FireMaterial : MaterialClass
     public bool attackHitMultipleTargets;
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
-    public GameObject animationPrefab;
+    
     
     [Header("Special")]
     public float specialDashDistance;
     public float specialDashTime; //how long the dash takes
-
-    private PlayerMovement playermoveCS;
-
-    private void Start()
-    {
-        playermoveCS = FindObjectOfType<PlayerMovement>();
-    }
+    
 
     public override void Attack(GameObject player)
     {
         Debug.Log("Fire Attack");
 
-        playermoveCS.anim.SetBool("Firearc", true);
-        Instantiate(animationPrefab, player.transform.position, Quaternion.identity);
         //See NoneMaterial Attack() for comments
         
         int attackDirection;
@@ -45,22 +37,30 @@ public class FireMaterial : MaterialClass
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
+            
+            //MAKING THIS ONE BIG HITBOX (around player)
+            /*
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
             attackDirection += 1;
             attackDirection = attackDirection == 5 ? 1 : attackDirection;
+            */
         }
-
+        /*
         if (attackDirection == 1 || attackDirection == 3)
         {
             hitBoxSize = new Vector2(hitBoxSize.y, hitBoxSize.x);
         }
+        */
 
-        GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform);
+        Vector2 spawnpos = player.transform.position;
+        spawnpos.y = player.transform.position.y + 0.5f;
+        GameObject hurtBox = Instantiate(hurtBoxPrefab, spawnpos, Quaternion.identity);
+        hurtBox.transform.parent = player.transform;
         HurtBox hbScript = hurtBox.GetComponent<HurtBox>();
 
         hbScript._spriteRenderer.size = hitBoxSize;
         hbScript._boxCollider.size = hitBoxSize;
-        hurtBox.transform.localPosition = GlobalFunctions.FaceDirectionToVector2(attackDirection) * attackOffset;
+        //hurtBox.transform.localPosition = GlobalFunctions.FaceDirectionToVector2(attackDirection) * attackOffset;
 
         hbScript.damage = attackDamage;
         hbScript.hitMultipleTargets = attackHitMultipleTargets;
@@ -69,25 +69,22 @@ public class FireMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Fire Special");
+        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", true);
 
         Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
-        /*
-        Vector2 dir = (Vector2) Input.mousePosition - (Vector2) PlayerManager.instance.gameObject.transform.position;
-        dir.Normalize();
-        Debug.Log(dir);
-                      
-        if (dir.x < 0.5f)
-            playermoveCS.spriteRenderer.flipX = false;
-        else if (dir.x > 0.5f)
-            playermoveCS.spriteRenderer.flipX = true;
-            */
+        //Debug.Log(direction);
+        //flip player sprite to reflect direction
+        //Positive direction = facing right; negative direction = facing left
+        if (direction.x < 0)
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+        else
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
 
         StartCoroutine(FireSpecial(player, direction));
     }
 
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
-        playermoveCS.anim.SetBool("Dashing", true);
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
         //make the player ignore enemy collisions
         Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
@@ -118,6 +115,6 @@ public class FireMaterial : MaterialClass
         Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
 
-        playermoveCS.anim.SetBool("Dashing", false);
+        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
     }
 }
