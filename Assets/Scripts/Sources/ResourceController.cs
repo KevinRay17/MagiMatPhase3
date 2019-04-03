@@ -15,7 +15,7 @@ public class ResourceController : MonoBehaviour
     public float maxMana = 100f;
 
     //the amount that is drained every frame
-    public float passiveManaDrain = 1f/15f;
+    private float passiveManaDrain = 1f/15f;
 
     /*
     //the mana cost of a small action
@@ -47,8 +47,8 @@ public class ResourceController : MonoBehaviour
     public const float specialCooldown = 2f;
     
     //setting constant ints to track index of cooldown timers
-    public const int attackIndex = 0;
-    public const int specialIndex = 1;
+    public  int attackIndex = 0;
+    public  int specialIndex = 1;
 
     //2d array, first number is for collumns, second number is for rows (which should be equal to the number of cooldowns)
     private float [,] cooldowns = new float[2,2];
@@ -82,7 +82,7 @@ public class ResourceController : MonoBehaviour
         setSpecialStatus();
         */
         
-        while (currentMana > 0)
+        if (currentMana > 0)
         {
             currentMana -= passiveManaDrain; //constantly drain mana every frame >:(
         }
@@ -92,9 +92,9 @@ public class ResourceController : MonoBehaviour
             PlayerManager.instance.material = Material.None;
         }
 
-        for (int i = 0; i < numOfCooldowns; i++)
+        for (var i = 0; i < numOfCooldowns; i++)
         {
-            cooldowns[0, i] = cooldowns[0, i] - Time.deltaTime;
+            cooldowns[0, i] += Time.deltaTime;
         }
     }
 
@@ -150,21 +150,19 @@ public class ResourceController : MonoBehaviour
         specialCD -= Time.deltaTime;
     }
 */
-    public bool isAvaiable(int indexToCheck)
+    public bool isAvailable(int indexToCheck)
     {
-        if (cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck])
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();
     }
 
     public void resetCooldown(int indexToReset)
     {
         cooldowns[0, indexToReset] = 0;
+    }
+
+    public bool hasMana()
+    {
+        return currentMana > 0;
     }
     
 }

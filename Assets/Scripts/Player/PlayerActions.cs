@@ -24,6 +24,8 @@ public class PlayerActions : MonoBehaviour
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
 
+    private ResourceController RC;
+
     //private AudioClip someAudio;
 
     void Awake()
@@ -33,6 +35,7 @@ public class PlayerActions : MonoBehaviour
         //_spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        RC = gameObject.GetComponent<ResourceController>();
     }
 
     void Update()
@@ -52,16 +55,14 @@ public class PlayerActions : MonoBehaviour
             ThrowMaterialAbsorber(mouseDirection);
         }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (ResourceController.currentMana > 10)
+        if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
             Attack();
+            RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (ResourceController.currentMana > 25)
+        if (Input.GetKeyDown(KeyCode.Q) && RC.isAvailable(RC.specialIndex)) {
             Special();
+            RC.resetCooldown(RC.specialIndex);
         }
         
         DebugChangeMaterial();
@@ -85,7 +86,6 @@ public class PlayerActions : MonoBehaviour
     
     void Attack()
     {
-        ResourceController.currentMana -= 10f;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
         //Ground pound with Rock Abilities
         if (PlayerManager.instance.material == Material.Rock)
@@ -109,7 +109,6 @@ public class PlayerActions : MonoBehaviour
     
     void Special()
     {
-        ResourceController.currentMana -= 25f;
         PlayerManager.instance.materialScript.Special(this.gameObject);
     }
     
