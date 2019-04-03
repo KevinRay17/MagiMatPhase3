@@ -24,10 +24,7 @@ public class PlayerActions : MonoBehaviour
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
 
-    //ANIMATION STUFF
-    [Header("Animation prefabs")]
-    public GameObject fireAniPrefab;
-    public GameObject rockslamAniPrefab;
+    private ResourceController RC;
 
     //private AudioClip someAudio;
 
@@ -38,6 +35,7 @@ public class PlayerActions : MonoBehaviour
         //_spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        RC = gameObject.GetComponent<ResourceController>();
     }
 
     void Update()
@@ -57,16 +55,14 @@ public class PlayerActions : MonoBehaviour
             ThrowMaterialAbsorber(mouseDirection);
         }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (ResourceController.currentMana > 10)
+        if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
             Attack();
+            RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (ResourceController.currentMana > 25)
+        if (Input.GetKeyDown(KeyCode.Q) && RC.isAvailable(RC.specialIndex)) {
             Special();
+            RC.resetCooldown(RC.specialIndex);
         }
         
         DebugChangeMaterial();
@@ -90,26 +86,10 @@ public class PlayerActions : MonoBehaviour
     
     void Attack()
     {
-        ResourceController.currentMana -= 10f;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
         //Ground pound with Rock Abilities
         if (PlayerManager.instance.material == Material.Rock)
         {
-            //only create the rocks if you're on the ground
-            if (PlayerManager.instance.playerMovement.isGrounded)
-            {
-                PlayerManager.instance.playerMovement.anim.SetBool("Rockslam", true);
-                GameObject rockslamObj = Instantiate(rockslamAniPrefab, transform.position, Quaternion.identity);
-                rockslamObj.transform.parent = gameObject.transform;
-                SpriteRenderer rockslamSR = rockslamObj.GetComponent<SpriteRenderer>();
-                //flip with the player
-                if (PlayerManager.instance.playerMovement.spriteRenderer.flipX)
-                    rockslamSR.flipX = true;
-                else
-                    rockslamSR.flipX = false;
-            }
-
-
             var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
             AudioManager.instance.playSound(clip);
             _groundPounding = true;
@@ -117,25 +97,11 @@ public class PlayerActions : MonoBehaviour
         }
         else if (PlayerManager.instance.material == Material.Vine)
         {
-            PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
-
             var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
             AudioManager.instance.playSound(SFX);
         }
         if  (PlayerManager.instance.material == Material.Fire)
         {
-            //set bool to play animation
-            PlayerManager.instance.playerMovement.anim.SetBool("Firearc", true);
-            GameObject fireObj = Instantiate(fireAniPrefab, transform.position, Quaternion.identity);
-            //make the effect object a child of the player so that it follows the player if they move
-            fireObj.transform.parent = gameObject.transform;
-            //flip with the player
-            SpriteRenderer fireSR = fireObj.GetComponent<SpriteRenderer>();
-            if (PlayerManager.instance.playerMovement.spriteRenderer.flipX)
-                fireSR.flipX = true;
-            else
-                fireSR.flipX = false;
-
             var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
             AudioManager.instance.playSound(SFX);
         }
@@ -143,23 +109,9 @@ public class PlayerActions : MonoBehaviour
     
     void Special()
     {
-        ResourceController.currentMana -= 25f;
         PlayerManager.instance.materialScript.Special(this.gameObject);
-
-        if (PlayerManager.instance.material == Material.Fire)
-        {
-            //_playermoveCS.anim.SetBool("Dashing", true);
-        } else if (PlayerManager.instance.material == Material.Rock)
-        {
-            PlayerManager.instance.playerMovement.anim.SetBool("Rockexplo", true);
-        }
-        else if (PlayerManager.instance.material == Material.Vine)
-        {
-            //don't have ani for vine special .-.
-        }
     }
     
-    //CHANGE MATERIAL BY PRESSING NUMBER KEYS------------------------------------------------------------------------
     void DebugChangeMaterial()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -186,7 +138,6 @@ public class PlayerActions : MonoBehaviour
             return;
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------
 
     private void OnCollisionEnter2D(Collision2D other)
     {
