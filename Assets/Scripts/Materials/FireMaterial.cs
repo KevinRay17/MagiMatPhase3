@@ -22,7 +22,9 @@ public class FireMaterial : MaterialClass
 
     public override void Attack(GameObject player)
     {
-        Debug.Log("Fire Attack");
+        
+        playermoveCS.Animate("Firearc");
+        Instantiate(animationPrefab, player.transform.position, Quaternion.identity);
 
         //See NoneMaterial Attack() for comments
         
@@ -90,6 +92,8 @@ public class FireMaterial : MaterialClass
 
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
+    
+        playermoveCS.Animate("Dashing");
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
         //make the player ignore enemy collisions
         Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
@@ -119,7 +123,7 @@ public class FireMaterial : MaterialClass
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
         Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
-
-        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
+        
+        playermoveCS.Animate("Dashing");
     }
 }

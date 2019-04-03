@@ -22,9 +22,11 @@ public class RockMaterial : MaterialClass
     public override void Attack(GameObject player)
     {
         Debug.Log("Rock Attack");
+
         //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
         Vector3 v3 = Input.mousePosition;
         int attackDirection = (int) Mathf.Sign(Camera.main.ScreenToWorldPoint(v3).x - player.transform.position.x);
+
         {
             Vector2 attackDirectionV2 = Vector2.zero;
             if (attackDirection < 0)
@@ -83,7 +85,9 @@ public class RockMaterial : MaterialClass
 
     public override void Special(GameObject player)
     {
-        Debug.Log("Rock Special");
+        
+        playermoveCS.Animate("Rockexplo");
+        
         float radiansBetweenOrbiters = (360 * Mathf.Deg2Rad) / numberOfProjectiles;
 
         for (int i = 0; i < numberOfProjectiles; i++)

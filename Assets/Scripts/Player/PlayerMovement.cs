@@ -36,21 +36,33 @@ public class PlayerMovement : MonoBehaviour
     
     public float gravityScale;
     
-    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
+    [FormerlySerializedAs("_anim")] [HideInInspector] private Animator anim;
     [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
-    
+
+    public void Animate(string toSet)
+    {
+        Debug.Log(this);
+
+        if (anim == null) anim = gameObject.GetComponent<Animator>();
+        
+        if (anim != null) anim.SetBool(toSet, true);
+    }
     
     void Awake()
     { 
         //assign components
         _rigidbody2D = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        Debug.Log("Anim: " + anim);
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
 
         canMove = true;
+
+        anim.SetBool("Rockexplo", true);
     }
 
     void Update()
@@ -178,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput.x > 0)
         {
             spriteRenderer.flipX = true;
-            faceDirection = 2;
+            faceDirection = 2;    
         }
         else if (horizontalInput.x < 0)
         {
