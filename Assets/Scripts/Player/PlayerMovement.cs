@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxMoveSpeed; //max horizontal velocity, does not cap velocity, instead determines when more force can be added
     public float climbSpeed;
     public float jumpPower;
-    public float jumpDownwardForce = 1000f;
+    public float jumpDownwardForce = 500f;
 
     public Collider2D nearbyClimbable;
     
