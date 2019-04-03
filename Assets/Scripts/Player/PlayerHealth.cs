@@ -38,7 +38,6 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             PlayerManager.instance.Death();
-            StartCoroutine(DeathCoroutine());
             isPlayerDead = true;
         }
         else
@@ -94,11 +93,5 @@ public class PlayerHealth : MonoBehaviour
         {
             return false;
         }
-    }
-
-    IEnumerator DeathCoroutine()
-    {
-        //TODO: Death animation/Menu/Overlay?
-        yield break;
     }
 }
