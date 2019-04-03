@@ -36,34 +36,29 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask climbableLayers;
     
     public float gravityScale;
-    
-    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
-    [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
 
-    public void Animate(string toSet)
+    protected Animator _anim;
+    [HideInInspector] public Animator anim
     {
-        Debug.Log(this);
-
-        if (anim == null) anim = gameObject.GetComponent<Animator>();
-        
-        if (anim != null) anim.SetBool(toSet, true);
+        get { return _anim; }
+    }
+    protected SpriteRenderer _spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer
+    {
+        get { return _spriteRenderer; }
     }
     
     void Awake()
     { 
         //assign components
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        Debug.Log("Anim: " + anim);
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
 
         canMove = true;
-
-        anim.SetBool("Rockexplo", true);
     }
 
     void Update()
@@ -72,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         _inputVector = new Vector2(horizontal, vertical);
+
+        //if A or D are being pressed, set animation to walking
+        if (horizontal > 0)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
 
         //grounded check and check if the player was recently grounded
         //if player was recently grounded, set _hasJumped to false
@@ -190,15 +191,6 @@ public class PlayerMovement : MonoBehaviour
         //handles horizontal movement when grounded or in the air
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
-
-        if (velocity.x == 0f)
-        {
-            anim.SetBool("Moving", false);
-        }
-        else
-        {
-            anim.SetBool("Moving", true);
-        }
 
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
