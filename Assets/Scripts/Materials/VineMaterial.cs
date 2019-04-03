@@ -33,8 +33,7 @@ public class VineMaterial : MaterialClass
     
     public override void Attack(GameObject player)
     {
-        Debug.Log("Vine Attack");
-        playermoveCS.anim.SetBool("Vineatk", true);
+        playermoveCS.Animate("Vineatk");
         //See NoneMaterial Attack() for comments
 
         int attackDirection;
