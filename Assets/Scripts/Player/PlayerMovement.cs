@@ -78,10 +78,15 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = GroundedCheck();
         if (isGrounded && !wasGrounded)
         {
-            anim.SetBool("Jumping", false);
             hasJumped = false;
         }
-        
+
+        //for jump animation to play i guess
+        if (isGrounded)
+            anim.SetBool("Jumping", false);
+        else
+            anim.SetBool("Jumping", true);
+
         //player can jump if grounded or climbing and has not jumped recently
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || isClimbing) && !hasJumped && canMove)
         {
@@ -146,8 +151,8 @@ public class PlayerMovement : MonoBehaviour
         //check below the player if there is ground
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.3f, -1f, 0),
-            transform.position + new Vector3(0.3f, -1.1f, 0), 
+            transform.position + new Vector3(-0.3f, -0.94f, 0),
+            transform.position + new Vector3(0.3f, -1.04f, 0), 
             groundLayers);
     }
 
@@ -240,8 +245,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Climb()
     {
+        anim.SetBool("Moving", false);
+        anim.SetBool("Climbing", true);
+
         //handles vertical movement when climbing
-        
+
         Vector3 verticalInput = new Vector2(0, _inputVector.y);
         
         //set face direction if verticalInput != 0;
@@ -259,7 +267,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump(float power)
     {
-        anim.SetBool("Jumping", true);
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
         
@@ -272,6 +279,7 @@ public class PlayerMovement : MonoBehaviour
 
     void StoppedClimbing()
     {
+        anim.SetBool("Climbing", false);
         isClimbing = false;
         canClimb = false;
         _rigidbody2D.gravityScale = gravityScale;

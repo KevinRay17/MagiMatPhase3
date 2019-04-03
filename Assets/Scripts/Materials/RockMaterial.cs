@@ -17,24 +17,46 @@ public class RockMaterial : MaterialClass
     public int numberOfProjectiles;
     public float projectileSpeed;
     public GameObject projectilePrefab;
-    
-    private PlayerMovement playermoveCS;
 
-    private void Start()
-    {
-        playermoveCS = FindObjectOfType<PlayerMovement>();
-    }
 
     public override void Attack(GameObject player)
     {
         Debug.Log("Rock Attack");
-        int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
-        
-        
-        
-        playermoveCS.Animate("Rockslam");
-        if (PlayerManager.instance.playerMovement.isGrounded)
+
+        //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
+        Vector3 v3 = Input.mousePosition;
+        int attackDirection = (int) Mathf.Sign(Camera.main.ScreenToWorldPoint(v3).x - player.transform.position.x);
+
         {
+            Vector2 attackDirectionV2 = Vector2.zero;
+            if (attackDirection < 0)
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                attackDirectionV2 = Vector2.left;
+            }
+            else
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                attackDirectionV2 = Vector2.right;
+            }
+
+            Vector3 directionalOffset = Vector2.zero;
+            //directionalOffset.x = attackOffset.x;
+            //directionalOffset.y = attackOffset.y;
+
+            //HIT BOX STUFF
+            GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position,
+                Quaternion.identity);
+            RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
+
+            hbScript._spriteRenderer.size = attackSize;
+            hbScript._boxCollider.size = attackSize;
+            hbScript.damage = attackDamage;
+            hbScript.hitMultipleTargets = attackHitMultipleTargets;
+
+            hbScript.speed = attackMoveSpeed;
+            hbScript.direction = attackDirectionV2;
+            /*
             if (attackDirection == 2 || attackDirection == 4)
             {
                 Vector2 attackDirectionV2 = GlobalFunctions.FaceDirectionToVector2(attackDirection);
@@ -42,7 +64,8 @@ public class RockMaterial : MaterialClass
                 Vector3 directionalOffset = Vector2.zero;
                 directionalOffset.x = attackOffset.x * attackDirectionV2.x;
                 directionalOffset.y = attackOffset.y;
-
+                
+                //HIT BOX STUFF
                 GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position + directionalOffset,
                     Quaternion.identity);
                 RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
@@ -54,14 +77,17 @@ public class RockMaterial : MaterialClass
 
                 hbScript.speed = attackMoveSpeed;
                 hbScript.direction = attackDirectionV2;
+                
             }
+            */
         }
     }
 
     public override void Special(GameObject player)
     {
-        Debug.Log("Rock Special");
+        
         playermoveCS.Animate("Rockexplo");
+        
         float radiansBetweenOrbiters = (360 * Mathf.Deg2Rad) / numberOfProjectiles;
 
         for (int i = 0; i < numberOfProjectiles; i++)

@@ -49,8 +49,8 @@ MonoBehaviour:
   _boxCollider: {fileID: 0}
   damage: 1
   hitMultipleTargets: 0
-  lifetime: 0.7
-  speed: 0
+  lifetime: 0.3
+  speed: 15
   direction: {x: 0, y: 0}
   raycastDistance: 0.5
   groundLayers:

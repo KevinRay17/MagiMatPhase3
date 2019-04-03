@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+    /* Commented out this code, old death script that was replaced/moved to the Death.cs script
         //check if player still has health remaining
         //if not, run death method
         if (health <= 0)
@@ -44,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
         {
             isPlayerDead = false;
         }
+     */
 
         //check if player is still invincible
         if (_invincibilityTimer > 0)
