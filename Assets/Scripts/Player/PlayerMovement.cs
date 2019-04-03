@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxMoveSpeed; //max horizontal velocity, does not cap velocity, instead determines when more force can be added
     public float climbSpeed;
     public float jumpPower;
+    public float jumpDownwardForce = 1000f;
 
     public Collider2D nearbyClimbable;
     
@@ -125,6 +126,19 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 Run();
+            }
+        }
+
+        if (hasJumped)
+        {
+            float vertVelocity = _rigidbody2D.velocity.y;
+            if (vertVelocity > 0 && !Input.GetKey(KeyCode.Space))
+            {
+                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
+            }
+            else if (vertVelocity < 0)
+            {
+                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * Time.deltaTime);
             }
         }
     }
@@ -257,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
-
+    
     void StoppedClimbing()
     {
         isClimbing = false;
