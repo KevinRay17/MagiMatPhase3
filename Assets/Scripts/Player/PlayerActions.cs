@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerActions : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
+    //private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider;
     
@@ -24,10 +24,13 @@ public class PlayerActions : MonoBehaviour
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
 
+    //private AudioClip someAudio;
+
     void Awake()
     {
         //assign components
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        //_spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
     }
@@ -51,11 +54,13 @@ public class PlayerActions : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
+            if (ResourceController.currentMana > 10)
             Attack();
         }
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (ResourceController.currentMana > 25)
             Special();
         }
         
@@ -80,17 +85,31 @@ public class PlayerActions : MonoBehaviour
     
     void Attack()
     {
+        ResourceController.currentMana -= 10f;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
         //Ground pound with Rock Abilities
         if (PlayerManager.instance.material == Material.Rock)
         {
+            var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
+            AudioManager.instance.playSound(clip);
             _groundPounding = true;
             this._rigidbody2D.AddForce(new Vector2(0,_downwardStompSpeed));
+        }
+        else if (PlayerManager.instance.material == Material.Vine)
+        {
+            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
+            AudioManager.instance.playSound(SFX);
+        }
+        if  (PlayerManager.instance.material == Material.Fire)
+        {
+            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
+            AudioManager.instance.playSound(SFX);
         }
     }
     
     void Special()
     {
+        ResourceController.currentMana -= 25f;
         PlayerManager.instance.materialScript.Special(this.gameObject);
     }
     
@@ -132,5 +151,11 @@ public class PlayerActions : MonoBehaviour
         {
             _groundPounding = false;
         }  
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
+            ResourceController.currentMana = 0;
     }
 }

@@ -71,6 +71,8 @@ public class MortarStyleEnemy : MonoBehaviour {
     
     private Vector3 ShootDir;
 
+    private Animator _anim;
+
     // Our current health
     private int health;
     
@@ -82,6 +84,7 @@ public class MortarStyleEnemy : MonoBehaviour {
           thePlayer = GameObject.FindGameObjectWithTag("Player");
     
           thisSpriteRenderer = GetComponent<SpriteRenderer>();
+          _anim = GetComponent<Animator>();
 
           cooldown = timeBetweenShots;
 
@@ -224,6 +227,7 @@ public class MortarStyleEnemy : MonoBehaviour {
 
    public virtual void Die()
     {
+        //_anim.SetBool("Dead", true);
         // Like whereToInstantiate, see line 130
         whereBouncePadIsInstantiated = transform.position - new Vector3(bouncePadOffset.x, bouncePadOffset.y, bouncePadOffset.z);
         

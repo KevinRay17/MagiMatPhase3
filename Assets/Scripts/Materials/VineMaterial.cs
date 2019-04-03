@@ -23,10 +23,18 @@ public class VineMaterial : MaterialClass
     public LayerMask grappleLayer; //layers that the grapple can hit
     public GameObject grapplePrefab;
     
+    private PlayerMovement playermoveCS;
+
+    private void Start()
+    {
+        playermoveCS = FindObjectOfType<PlayerMovement>();
+    }
+
+    
     public override void Attack(GameObject player)
     {
         Debug.Log("Vine Attack");
-        
+        playermoveCS.anim.SetBool("Vineatk", true);
         //See NoneMaterial Attack() for comments
 
         int attackDirection;

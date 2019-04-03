@@ -34,7 +34,7 @@ public class ProjectileBehaviour : MonoBehaviour
             PlayerManager.instance.playerHealth.TakeDamage(1);
             Destroy(gameObject);
         }
-        else if (other.gameObject.layer == 8)
+        else if (other.gameObject.layer == 8 || other.gameObject.CompareTag("Absorber"))
         {
             Destroy(gameObject);
         }

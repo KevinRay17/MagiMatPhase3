@@ -17,11 +17,19 @@ public class RockMaterial : MaterialClass
     public int numberOfProjectiles;
     public float projectileSpeed;
     public GameObject projectilePrefab;
+    
+    private PlayerMovement playermoveCS;
+
+    private void Start()
+    {
+        playermoveCS = FindObjectOfType<PlayerMovement>();
+    }
 
     public override void Attack(GameObject player)
     {
         Debug.Log("Rock Attack");
         int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
+        playermoveCS.anim.SetBool("Rockslam", true);
         if (PlayerManager.instance.playerMovement.isGrounded)
         {
             if (attackDirection == 2 || attackDirection == 4)
@@ -50,6 +58,7 @@ public class RockMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Rock Special");
+        playermoveCS.anim.SetBool("Rockexplo", true);
         float radiansBetweenOrbiters = (360 * Mathf.Deg2Rad) / numberOfProjectiles;
 
         for (int i = 0; i < numberOfProjectiles; i++)
