@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 32294ebbc15c8fa42a1bac1e5295b563
+guid: 5196413da641e434a8f2e81b51a5fe36
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_PlayerAtkVine(700x500)_0
-    21300002: SS_PlayerAtkVine(700x500)_1
+    21300000: SS_mouse(500x500)_0
+    21300002: SS_mouse(500x500)_1
+    21300004: SS_mouse(500x500)_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -119,41 +120,61 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_PlayerAtkVine(700x500)_0
+      name: SS_mouse(500x500)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 524
-        width: 700
+        width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.7039713, y: 0.4851272}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1acce63e380551f4f9b4d2ca203861f2
+      spriteID: ebcf9f018133ad245bd60c849d0d8e36
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_PlayerAtkVine(700x500)_1
+      name: SS_mouse(500x500)_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 24
-        width: 700
+        x: 500
+        y: 524
+        width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.74009126, y: 0.46727967}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df06b9dbc515c61448a7fcbe637a1cbe
+      spriteID: de38b92177361aa4fa614af5c1030ee7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_mouse(500x500)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6181d62046827c44787a9ecf7b370030
       vertices: []
       indices: 
       edges: []
@@ -161,7 +182,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 54b00a44679388a4599022c705380e46
+    spriteID: 5e516699007eee341b786999d984202e
     vertices: []
     indices: 
     edges: []
