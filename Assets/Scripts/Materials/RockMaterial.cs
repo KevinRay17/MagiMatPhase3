@@ -73,7 +73,7 @@ public class RockMaterial : MaterialClass
                 hbScript.hitMultipleTargets = attackHitMultipleTargets;
 
                 hbScript.speed = 0f;
-                hbScript.lifetime = 999f; //in case it's a really long fall
+                //hbScript.lifetime = 999f; //in case it's a really long fall
 
                 //animation stuff
                 PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);
