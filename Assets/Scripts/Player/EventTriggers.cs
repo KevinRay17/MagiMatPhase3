@@ -36,6 +36,14 @@ public class EventTriggers : MonoBehaviour
         {
             _targetScale = 6.4f;
         }
+
+
+        if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
+        {
+            ResourceController.currentMana = 0;
+            PlayerManager.instance.material = Material.None;
+        }
+
     } 
     
 }

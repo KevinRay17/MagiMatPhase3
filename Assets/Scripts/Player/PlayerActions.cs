@@ -203,9 +203,5 @@ public class PlayerActions : MonoBehaviour
         }  
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
-            ResourceController.currentMana = 0;
-    }
+    
 }
