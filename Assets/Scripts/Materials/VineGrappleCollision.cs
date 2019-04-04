@@ -11,7 +11,7 @@ public class VineGrappleCollision : MonoBehaviour
             DetachVineGrapple();
         }
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetachVineGrapple();
@@ -19,7 +19,7 @@ public class VineGrappleCollision : MonoBehaviour
 
     void DetachVineGrapple()
     {
-        VineMaterial vineScript = (VineMaterial)MaterialsManager.GetMaterialScript(Material.Vine);
+        VineMaterial vineScript = (VineMaterial) MaterialsManager.GetMaterialScript(Material.Vine);
         vineScript.onGrapple = false;
     }
 }

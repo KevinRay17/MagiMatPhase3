@@ -11,6 +11,8 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     public GameObject particlePrefab;
     public int particleAmount;
+
+    public static bool FireUnlocked = false;
     
     void Awake()
     {
@@ -50,13 +52,26 @@ public class MaterialAbsorberProjectile : MonoBehaviour
             MaterialSource materialSourceScript = other.GetComponent<MaterialSource>();
             if (materialSourceScript != null)
             {
-                if (materialSourceScript.material != Material.None)
+                if (materialSourceScript.material != Material.None && FireUnlocked)
+                {
+                    ResourceController.currentMana = 100f;
+                    PlayerManager.instance.ChangeMaterial(materialSourceScript.material);
+                    SpawnParticles();
+                }
+                else if (materialSourceScript.material == Material.Vine || materialSourceScript.material == Material.Rock)
                 {
                     ResourceController.currentMana = 100f;
                     PlayerManager.instance.ChangeMaterial(materialSourceScript.material);
                     SpawnParticles();
                 }
             }
+        }  else if (other.CompareTag("MaterialUnlock"))
+        {
+            MaterialSource materialSourceScript = other.GetComponent<MaterialSource>();
+            ResourceController.currentMana = 100f;
+            PlayerManager.instance.ChangeMaterial(materialSourceScript.material);
+            SpawnParticles();
+            FireUnlocked = true;
         }
 
         DestroySelf();
