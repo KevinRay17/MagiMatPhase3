@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 //handles player movement: running, jumping, climbing
 //uses Physics2D to check for ground and climbables, does not use attached colliders
@@ -9,6 +8,8 @@ using UnityEngine.Serialization;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
+
+    public PlayerSpriteManager animate;
 
     private Vector2 _inputVector;
 
@@ -28,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public float maxMoveSpeed; //max horizontal velocity, does not cap velocity, instead determines when more force can be added
     public float climbSpeed;
     public float jumpPower;
-    public float jumpDownwardForce = 500f;
 
     public Collider2D nearbyClimbable;
     
@@ -36,34 +36,18 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask climbableLayers;
     
     public float gravityScale;
-    
-    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
-    [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
 
-    public void Animate(string toSet)
-    {
-        Debug.Log(this);
-
-        if (anim == null) anim = gameObject.GetComponent<Animator>();
-        
-        if (anim != null) anim.SetBool(toSet, true);
-    }
-    
     void Awake()
     { 
         //assign components
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        Debug.Log("Anim: " + anim);
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
 
-        canMove = true;
+        
 
-        anim.SetBool("Rockexplo", true);
+        canMove = true;
     }
 
     void Update()
@@ -81,13 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             hasJumped = false;
         }
-
-        //for jump animation to play i guess
-        if (isGrounded)
-            anim.SetBool("Jumping", false);
-        else
-            anim.SetBool("Jumping", true);
-
+        
         //player can jump if grounded or climbing and has not jumped recently
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || isClimbing) && !hasJumped && canMove)
         {
@@ -96,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
                 StoppedClimbing();
             }
             Jump(jumpPower);
-            hasJumped = true;
+           hasJumped = true;
+            animate.AnimatePlayerJump();
         }
 
         //if the player is not currently climbing, circleCast nearby to look for climbables
@@ -145,19 +124,6 @@ public class PlayerMovement : MonoBehaviour
                 Run();
             }
         }
-
-        if (hasJumped)
-        {
-            float vertVelocity = _rigidbody2D.velocity.y;
-            if (vertVelocity > 0 && !Input.GetKey(KeyCode.Space))
-            {
-                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
-            }
-            else if (vertVelocity < 0)
-            {
-                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * Time.deltaTime);
-            }
-        }
     }
 
     bool GroundedCheck()
@@ -165,8 +131,8 @@ public class PlayerMovement : MonoBehaviour
         //check below the player if there is ground
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.3f, -0.94f, 0),
-            transform.position + new Vector3(0.3f, -1.04f, 0), 
+            transform.position + new Vector3(-0.35f, -0.5f, 0),
+            transform.position + new Vector3(0.35f, -0.6f, 0), 
             groundLayers);
     }
 
@@ -188,27 +154,17 @@ public class PlayerMovement : MonoBehaviour
     void Run()
     {
         //handles horizontal movement when grounded or in the air
+        
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
-
-        if (velocity.x == 0f)
-        {
-            anim.SetBool("Moving", false);
-        }
-        else
-        {
-            anim.SetBool("Moving", true);
-        }
 
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
-            spriteRenderer.flipX = true;
-            faceDirection = 2;    
+            faceDirection = 2;
         }
         else if (horizontalInput.x < 0)
         {
-            spriteRenderer.flipX = false;
             faceDirection = 4;
         }
         
@@ -236,8 +192,6 @@ public class PlayerMovement : MonoBehaviour
         
         if (isGrounded && moveDirection == 0)
         {
-            
-            
             //if the player is grounded and is no longer moving the character, apply drag to bring player to a fast stop
             Vector2 velocityX = new Vector2(velocity.x, 0);
             _rigidbody2D.AddForce(velocityX * -groundFriction * Time.fixedDeltaTime);
@@ -259,11 +213,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Climb()
     {
-        anim.SetBool("Moving", false);
-        anim.SetBool("Climbing", true);
-
         //handles vertical movement when climbing
-
+        
         Vector3 verticalInput = new Vector2(0, _inputVector.y);
         
         //set face direction if verticalInput != 0;
@@ -290,29 +241,11 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
-    
+
     void StoppedClimbing()
     {
-        anim.SetBool("Climbing", false);
         isClimbing = false;
         canClimb = false;
         _rigidbody2D.gravityScale = gravityScale;
-    }
-    
-    //ANIMATION STUFF
-    public void TurnRockAniOff()
-    {
-        anim.SetBool("Rockslam", false);
-        anim.SetBool("Rockexplo", false);
-    }
-
-    public void TurnFireAniOff()
-    {
-        anim.SetBool("Firearc", false);
-    }
-
-    public void TurnOffVineAni()
-    {
-        anim.SetBool("Vineatk", false);
     }
 }
