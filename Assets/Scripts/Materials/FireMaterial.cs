@@ -14,16 +14,14 @@ public class FireMaterial : MaterialClass
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
     
-    
     [Header("Special")]
     public float specialDashDistance;
     public float specialDashTime; //how long the dash takes
-    
 
     public override void Attack(GameObject player)
     {
         Debug.Log("Fire Attack");
-
+        
         //See NoneMaterial Attack() for comments
         
         int attackDirection;
@@ -36,13 +34,14 @@ public class FireMaterial : MaterialClass
         else
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
-            float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
-
             if (direction.x < 0)
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
             else
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
-            
+
+
+            float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
+
             //MAKING THIS ONE BIG HITBOX (around player)
             /*
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
@@ -74,16 +73,15 @@ public class FireMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Fire Special");
-        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", true);
 
         Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
-        //Debug.Log(direction);
         //flip player sprite to reflect direction
         //Positive direction = facing right; negative direction = facing left
         if (direction.x < 0)
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
         else
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+
 
         StartCoroutine(FireSpecial(player, direction));
     }

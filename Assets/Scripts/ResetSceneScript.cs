@@ -16,6 +16,6 @@ public class ResetSceneScript : MonoBehaviour
     
     void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(0);
     }
 }

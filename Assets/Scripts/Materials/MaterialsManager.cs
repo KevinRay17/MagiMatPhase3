@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class MaterialsManager : MonoBehaviour
 {
-    public static MaterialsManager instance;
     public static Dictionary<Material, MaterialClass> MaterialsDict = new Dictionary<Material, MaterialClass>();
-
-    void Awake()
-    {
-        instance = this;
-    }
     
     public static void AddMaterialScript(Material material, MaterialClass script)
     {
@@ -24,5 +18,10 @@ public class MaterialsManager : MonoBehaviour
     {
         MaterialsDict.TryGetValue(material, out MaterialClass newMaterialScript);
         return newMaterialScript;
+    }
+
+    private void OnDestroy()
+    {
+        MaterialsDict = new Dictionary<Material, MaterialClass>();
     }
 }

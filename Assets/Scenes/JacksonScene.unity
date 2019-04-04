@@ -19461,6 +19461,7 @@ GameObject:
   - component: {fileID: 2067578120}
   - component: {fileID: 2067578119}
   - component: {fileID: 2067578118}
+  - component: {fileID: 2067578121}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -19516,6 +19517,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067578121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067578117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1200ca7f346fa14e8ba406cc7f7f49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2068429970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
@@ -20143,11 +20156,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675767, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: jumpDownwardForce
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}

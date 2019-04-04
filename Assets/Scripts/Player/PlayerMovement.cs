@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxMoveSpeed; //max horizontal velocity, does not cap velocity, instead determines when more force can be added
     public float climbSpeed;
     public float jumpPower;
+    public float jumpDownwardForce = 500f;
 
     public Collider2D nearbyClimbable;
     
@@ -35,17 +36,24 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask climbableLayers;
     
     public float gravityScale;
-    
-    [FormerlySerializedAs("_anim")] [HideInInspector] public Animator anim;
-    [FormerlySerializedAs("_spriteRenderer")] [HideInInspector] public SpriteRenderer spriteRenderer;
-    
+
+    protected Animator _anim;
+    [HideInInspector] public Animator anim
+    {
+        get { return _anim; }
+    }
+    protected SpriteRenderer _spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer
+    {
+        get { return _spriteRenderer; }
+    }
     
     void Awake()
     { 
         //assign components
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         //store original gravity scale in case it is changed later
         gravityScale = _rigidbody2D.gravityScale;
@@ -59,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         _inputVector = new Vector2(horizontal, vertical);
+
+        //if A or D are being pressed, set animation to walking
+        if (horizontal > 0)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
 
         //grounded check and check if the player was recently grounded
         //if player was recently grounded, set _hasJumped to false
@@ -83,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
                 StoppedClimbing();
             }
             Jump(jumpPower);
-           hasJumped = true;
+            hasJumped = true;
         }
 
         //if the player is not currently climbing, circleCast nearby to look for climbables
@@ -132,6 +146,19 @@ public class PlayerMovement : MonoBehaviour
                 Run();
             }
         }
+
+        if (hasJumped)
+        {
+            float vertVelocity = _rigidbody2D.velocity.y;
+            if (vertVelocity > 0 && !Input.GetKey(KeyCode.Space))
+            {
+                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
+            }
+            else if (vertVelocity < 0)
+            {
+                _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * Time.deltaTime);
+            }
+        }
     }
 
     bool GroundedCheck()
@@ -165,20 +192,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
 
-        if (velocity.x == 0f)
-        {
-            anim.SetBool("Moving", false);
-        }
-        else
-        {
-            anim.SetBool("Moving", true);
-        }
-
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
             spriteRenderer.flipX = true;
-            faceDirection = 2;
+            faceDirection = 2;    
         }
         else if (horizontalInput.x < 0)
         {
@@ -264,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
-
+    
     void StoppedClimbing()
     {
         anim.SetBool("Climbing", false);
