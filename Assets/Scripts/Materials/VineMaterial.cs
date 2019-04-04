@@ -44,9 +44,15 @@ public class VineMaterial : MaterialClass
             //flip player sprite to reflect direction
             //Positive direction = facing right; negative direction = facing left
             if (direction.x < 0)
+            {
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                PlayerManager.instance.playerMovement.faceDirection = 4;
+            }
             else
+            {
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                PlayerManager.instance.playerMovement.faceDirection = 2;
+            }
 
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
