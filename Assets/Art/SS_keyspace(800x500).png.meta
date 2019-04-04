@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 32294ebbc15c8fa42a1bac1e5295b563
+guid: ce23ac0060431e045b935c1423bb9eb3
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SS_PlayerAtkVine(700x500)_0
-    21300002: SS_PlayerAtkVine(700x500)_1
+    21300000: SS_keyspace(800x500)_0
+    21300002: SS_keyspace(800x500)_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -119,41 +119,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_PlayerAtkVine(700x500)_0
+      name: SS_keyspace(800x500)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 524
-        width: 700
+        width: 800
         height: 500
-      alignment: 9
-      pivot: {x: 0.7039713, y: 0.4851272}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1acce63e380551f4f9b4d2ca203861f2
+      spriteID: 6073c768f009c0041a1cb8d744710fdb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_PlayerAtkVine(700x500)_1
+      name: SS_keyspace(800x500)_1
       rect:
         serializedVersion: 2
         x: 0
         y: 24
-        width: 700
+        width: 800
         height: 500
-      alignment: 9
-      pivot: {x: 0.74009126, y: 0.46727967}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df06b9dbc515c61448a7fcbe637a1cbe
+      spriteID: 511165a74dba99843b614b80d47705b9
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 54b00a44679388a4599022c705380e46
+    spriteID: b85185259bcbfe94faa5f8d753a24dc6
     vertices: []
     indices: 
     edges: []
