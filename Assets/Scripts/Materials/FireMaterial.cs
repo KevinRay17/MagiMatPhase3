@@ -34,13 +34,25 @@ public class FireMaterial : MaterialClass
         else
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
-            if (direction.x < 0)
-                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
-            else
-                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
 
+            //flip player sprite with mouse position
+            if (direction.x < 0)
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                //this is so that the animation doesn't play in the direction of the mouse when the character is moving
+                if (!PlayerManager.instance.playerMovement.anim.GetBool("Moving"))
+                    PlayerManager.instance.playerMovement.faceDirection = 4;
+            }
+            else
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                if (!PlayerManager.instance.playerMovement.anim.GetBool("Moving"))
+                    PlayerManager.instance.playerMovement.faceDirection = 2;
+            }
 
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
+            //Debug.Log(directionAngle + " " + direction.x);
+            
 
             //MAKING THIS ONE BIG HITBOX (around player)
             /*

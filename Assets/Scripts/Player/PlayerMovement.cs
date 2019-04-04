@@ -69,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
         _inputVector = new Vector2(horizontal, vertical);
 
         //if A or D are being pressed, set animation to walking
-        if (horizontal > 0)
+        //Debug.Log(horizontal);
+        if (horizontal != 0)
             anim.SetBool("Moving", true);
         else
             anim.SetBool("Moving", false);
@@ -195,13 +196,19 @@ public class PlayerMovement : MonoBehaviour
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
-            spriteRenderer.flipX = true;
-            faceDirection = 2;    
+            if (!anim.GetBool("Vineatk"))
+            {
+                spriteRenderer.flipX = true;
+                faceDirection = 2;
+            }
         }
         else if (horizontalInput.x < 0)
         {
-            spriteRenderer.flipX = false;
-            faceDirection = 4;
+            if (!anim.GetBool("Vineatk"))
+            {
+                spriteRenderer.flipX = false;
+                faceDirection = 4;
+            }
         }
         
         //get player's current velocity direction and input directions
