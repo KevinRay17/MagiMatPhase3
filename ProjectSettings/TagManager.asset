@@ -12,6 +12,9 @@ TagManager:
   - Absorber
   - Water
   - VineWall
+  - camTrigger
+  - camResetScale
+  - MaterialUnlock
   layers:
   - Default
   - TransparentFX
