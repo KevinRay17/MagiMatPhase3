@@ -92,6 +92,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 13)
+        {
+            TakeDamage(1);
+        }
+    }
+
     bool InvincibleFlicker()
     {
         float sinTemp = Mathf.Sign(Mathf.Sin(_invincibilityTimer * invFlickersPerSec * 4));
