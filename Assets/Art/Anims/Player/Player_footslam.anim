@@ -21,9 +21,9 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300024, guid: 6629e1f487738b84ca492828ecb68deb, type: 3}
-    - time: 0.05
+    - time: 0.06666667
       value: {fileID: 21300026, guid: 6629e1f487738b84ca492828ecb68deb, type: 3}
-    - time: 0.1
+    - time: 0.13333334
       value: {fileID: 21300028, guid: 6629e1f487738b84ca492828ecb68deb, type: 3}
     - time: 0.45
       value: {fileID: 21300028, guid: 6629e1f487738b84ca492828ecb68deb, type: 3}

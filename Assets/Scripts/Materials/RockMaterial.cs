@@ -43,18 +43,28 @@ public class RockMaterial : MaterialClass
             //directionalOffset.x = attackOffset.x;
             //directionalOffset.y = attackOffset.y;
 
-            //HIT BOX STUFF
-            GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position,
-                Quaternion.identity);
-            RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
+            if (PlayerManager.instance.playerMovement.isGrounded)
+            {
+                //HIT BOX STUFF
+                GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position,
+                    Quaternion.identity);
+                RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
 
-            hbScript._spriteRenderer.size = attackSize;
-            hbScript._boxCollider.size = attackSize;
-            hbScript.damage = attackDamage;
-            hbScript.hitMultipleTargets = attackHitMultipleTargets;
+                hbScript._spriteRenderer.size = attackSize;
+                hbScript._boxCollider.size = attackSize;
+                hbScript.damage = attackDamage;
+                hbScript.hitMultipleTargets = attackHitMultipleTargets;
 
-            hbScript.speed = attackMoveSpeed;
-            hbScript.direction = attackDirectionV2;
+                hbScript.speed = attackMoveSpeed;
+                hbScript.direction = attackDirectionV2;
+            } else
+            {
+                //this is the crash
+                //instantiate a hit box below player
+
+                //animation stuff
+                PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);
+            }
         }
             /*
             if (PlayerManager.instance.playerMovement.isGrounded)
