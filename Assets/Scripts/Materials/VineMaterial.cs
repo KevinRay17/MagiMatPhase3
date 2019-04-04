@@ -13,27 +13,21 @@ public class VineMaterial : MaterialClass
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
 
-    [Header("Special")] 
+    //special stuff
     [HideInInspector] public bool canGrapple = true;
     [HideInInspector] public bool onGrapple; //used for exitting the grapple, referenced by VineGrappleCollision script that is put on player
+    [Header("Special")]
     public float grappleShootSpeed; //speed that grapple line is shot out
     public float grappleSpeed; //speed that player is pulled by the grapple
     public float maxGrappleDistance;
     public float maxGrappleTime; //max time that the player can be on the grapple until it automatically breaks
     public LayerMask grappleLayer; //layers that the grapple can hit
     public GameObject grapplePrefab;
-    
-    private PlayerMovement playermoveCS;
-
-    private void Start()
-    {
-        playermoveCS = FindObjectOfType<PlayerMovement>();
-    }
 
     
     public override void Attack(GameObject player)
     {
-        playermoveCS.Animate("Vineatk");
+        Debug.Log("Vine Attack");
         //See NoneMaterial Attack() for comments
 
         int attackDirection;
@@ -46,6 +40,20 @@ public class VineMaterial : MaterialClass
         else
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+
+            //flip player sprite to reflect direction
+            //Positive direction = facing right; negative direction = facing left
+            if (direction.x < 0)
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                PlayerManager.instance.playerMovement.faceDirection = 4;
+            }
+            else
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                PlayerManager.instance.playerMovement.faceDirection = 2;
+            }
+
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
             attackDirection += 1;
@@ -161,7 +169,6 @@ public class VineMaterial : MaterialClass
         //this way momentum carries over when the grapple ends
         Vector2 directionToPlayer = (grapplePosition - (Vector2)player.transform.position).normalized;
         playerRB.velocity = directionToPlayer * grappleSpeed;
-
         //temporarily remove gravity, so there isn't jitter when flying in the air
         playerRB.gravityScale = 0;
 

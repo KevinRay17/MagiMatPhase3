@@ -24,7 +24,8 @@ public class PlayerActions : MonoBehaviour
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
 
-    //ANIMATION STUFF
+    private ResourceController RC;
+    
     [Header("Animation prefabs")]
     public GameObject fireAniPrefab;
     public GameObject rockslamAniPrefab;
@@ -38,6 +39,7 @@ public class PlayerActions : MonoBehaviour
         //_spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        RC = gameObject.GetComponent<ResourceController>();
     }
 
     void Update()
@@ -57,16 +59,14 @@ public class PlayerActions : MonoBehaviour
             ThrowMaterialAbsorber(mouseDirection);
         }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (ResourceController.currentMana > 10)
+        if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
             Attack();
+            RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (ResourceController.currentMana > 25)
+        if (Input.GetKeyDown(KeyCode.Q) && RC.isAvailable(RC.specialIndex)) {
             Special();
+            RC.resetCooldown(RC.specialIndex);
         }
         
         DebugChangeMaterial();
@@ -90,11 +90,11 @@ public class PlayerActions : MonoBehaviour
     
     void Attack()
     {
-        ResourceController.currentMana -= 10f;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
         //Ground pound with Rock Abilities
         if (PlayerManager.instance.material == Material.Rock)
         {
+            //animation stuff
             //only create the rocks if you're on the ground
             if (PlayerManager.instance.playerMovement.isGrounded)
             {
@@ -124,17 +124,20 @@ public class PlayerActions : MonoBehaviour
         }
         if  (PlayerManager.instance.material == Material.Fire)
         {
-            //set bool to play animation
+            //fire prefab animation
             PlayerManager.instance.playerMovement.anim.SetBool("Firearc", true);
             GameObject fireObj = Instantiate(fireAniPrefab, transform.position, Quaternion.identity);
             //make the effect object a child of the player so that it follows the player if they move
             fireObj.transform.parent = gameObject.transform;
             //flip with the player
             SpriteRenderer fireSR = fireObj.GetComponent<SpriteRenderer>();
-            if (PlayerManager.instance.playerMovement.spriteRenderer.flipX)
+            //please kill me
+            //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            if (PlayerManager.instance.playerMovement.faceDirection == 2)
                 fireSR.flipX = true;
-            else
+            else if (PlayerManager.instance.playerMovement.faceDirection == 4)
                 fireSR.flipX = false;
+
 
             var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
             AudioManager.instance.playSound(SFX);
@@ -143,13 +146,14 @@ public class PlayerActions : MonoBehaviour
     
     void Special()
     {
-        ResourceController.currentMana -= 25f;
         PlayerManager.instance.materialScript.Special(this.gameObject);
 
+        //animation stuff
         if (PlayerManager.instance.material == Material.Fire)
         {
-            //_playermoveCS.anim.SetBool("Dashing", true);
-        } else if (PlayerManager.instance.material == Material.Rock)
+            PlayerManager.instance.playerMovement.anim.SetBool("Dashing", true);
+        }
+        else if (PlayerManager.instance.material == Material.Rock)
         {
             PlayerManager.instance.playerMovement.anim.SetBool("Rockexplo", true);
         }
@@ -159,7 +163,6 @@ public class PlayerActions : MonoBehaviour
         }
     }
     
-    //CHANGE MATERIAL BY PRESSING NUMBER KEYS------------------------------------------------------------------------
     void DebugChangeMaterial()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -186,7 +189,6 @@ public class PlayerActions : MonoBehaviour
             return;
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -201,9 +203,5 @@ public class PlayerActions : MonoBehaviour
         }  
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
-            ResourceController.currentMana = 0;
-    }
+    
 }
