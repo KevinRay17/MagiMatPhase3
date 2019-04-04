@@ -59,8 +59,21 @@ public class RockMaterial : MaterialClass
                 hbScript.direction = attackDirectionV2;
             } else
             {
-                //this is the crash
+                //this is the downwards crash
                 //instantiate a hit box below player
+                Vector2 spawnpos = player.transform.position;
+                spawnpos.y -= 1f;
+                GameObject hurtBox = Instantiate(hurtBoxPrefab, spawnpos, Quaternion.identity);
+                hurtBox.transform.parent = player.transform;
+                RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
+
+                hbScript._spriteRenderer.size = new Vector2(2f, 1f);
+                hbScript._boxCollider.size = new Vector2(2f, 1f);
+                hbScript.damage = attackDamage;
+                hbScript.hitMultipleTargets = attackHitMultipleTargets;
+
+                hbScript.speed = 0f;
+                hbScript.lifetime = 999f; //in case it's a really long fall
 
                 //animation stuff
                 PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);

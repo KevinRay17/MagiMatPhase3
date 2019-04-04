@@ -4683,7 +4683,7 @@ MonoBehaviour:
   attackMoveSpeed: 20
   attackOffset: {x: 1, y: 0}
   attackHitMultipleTargets: 1
-  attackSize: {x: 1.7, y: 2}
+  attackSize: {x: 1.8, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
     type: 3}
   specialRadius: 1
