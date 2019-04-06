@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Bouncer : MonoBehaviour
 {
+    // Starting position
     private Vector3 startPos;
 
     public float mod;
 
     public float spdMod;
+    
     // Use this for initialization
     void Start ()
     {
