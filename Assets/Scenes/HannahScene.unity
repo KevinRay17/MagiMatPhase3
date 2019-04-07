@@ -4683,7 +4683,7 @@ MonoBehaviour:
   attackMoveSpeed: 20
   attackOffset: {x: 1, y: 0}
   attackHitMultipleTargets: 1
-  attackSize: {x: 1.7, y: 2}
+  attackSize: {x: 1.8, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
     type: 3}
   specialRadius: 1
@@ -4728,9 +4728,9 @@ MonoBehaviour:
   material: 1
   attackUseFaceDirection: 0
   attackDamage: 1
-  attackOffset: 1
+  attackOffset: 7
   attackHitMultipleTargets: 0
-  attackSize: {x: 2.1, y: 1}
+  attackSize: {x: 10, y: 6}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
   canGrapple: 1
@@ -20075,12 +20075,12 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.3
+      value: 330.1
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 66.5
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
@@ -20127,53 +20127,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8541725611273826105, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: youDiedText
       value: 
       objectReference: {fileID: 1640536470}
-    - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: materialAbsorberSpeed
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: fireAniPrefab
-      value: 
-      objectReference: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
-        type: 3}
-    - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: rockslamAniPrefab
-      value: 
-      objectReference: {fileID: 6265150512787786891, guid: aa4284f8ea164e54ea9abe3c3a8a8697,
-        type: 3}
-    - target: {fileID: 4233667675472675766, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.20623428
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675766, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.1724685
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6f71d7f6b5b24480c57144058126d, type: 3}
 --- !u!1001 &4574878048082455810

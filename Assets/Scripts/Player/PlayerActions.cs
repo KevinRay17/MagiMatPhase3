@@ -117,7 +117,17 @@ public class PlayerActions : MonoBehaviour
         }
         else if (PlayerManager.instance.material == Material.Vine)
         {
-            PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
+            //PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
+
+            //vertical attack
+            Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            if (PlayerManager.instance.playerMovement.faceDirection == 1)
+                PlayerManager.instance.playerMovement.anim.SetBool("VineUp", true);
+            else if (PlayerManager.instance.playerMovement.faceDirection == 2 || PlayerManager.instance.playerMovement.faceDirection == 4)
+                PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
+            else if (PlayerManager.instance.playerMovement.faceDirection == 3)
+                PlayerManager.instance.playerMovement.anim.SetBool("VineDown", true);
+
 
             var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
             AudioManager.instance.playSound(SFX);

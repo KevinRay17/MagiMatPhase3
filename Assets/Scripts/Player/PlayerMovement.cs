@@ -86,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
 
         //for jump animation to play i guess
         if (isGrounded)
+        {
             anim.SetBool("Jumping", false);
+            anim.SetBool("Rockcrash", false);
+        }
         else
             anim.SetBool("Jumping", true);
 
@@ -210,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
                 faceDirection = 4;
             }
         }
+
         
         //get player's current velocity direction and input directions
         int currentDirection = 0;
@@ -313,5 +317,7 @@ public class PlayerMovement : MonoBehaviour
     public void TurnOffVineAni()
     {
         anim.SetBool("Vineatk", false);
+        anim.SetBool("VineUp", false);
+        anim.SetBool("VineDown", false);
     }
 }
