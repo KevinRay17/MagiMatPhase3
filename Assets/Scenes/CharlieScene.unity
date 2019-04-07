@@ -4711,8 +4711,6 @@ MonoBehaviour:
   attackSize: {x: 1, y: 1.5}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
-  animationPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
-    type: 3}
   specialDashDistance: 5
   specialDashTime: 0.1
 --- !u!114 &471815380
@@ -9218,16 +9216,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 249244823}
     m_Modifications:
-    - target: {fileID: 6781913206968840694, guid: 04efee3fea9b7bb4a874d74096b3dddd,
-        type: 3}
-      propertyPath: m_Name
-      value: YouDied
-      objectReference: {fileID: 0}
-    - target: {fileID: 6781913206968840694, guid: 04efee3fea9b7bb4a874d74096b3dddd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2659022527408215232, guid: 04efee3fea9b7bb4a874d74096b3dddd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9352,6 +9340,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781913206968840694, guid: 04efee3fea9b7bb4a874d74096b3dddd,
+        type: 3}
+      propertyPath: m_Name
+      value: YouDied
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781913206968840694, guid: 04efee3fea9b7bb4a874d74096b3dddd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04efee3fea9b7bb4a874d74096b3dddd, type: 3}
@@ -20077,12 +20075,12 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.3
+      value: 257.6
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 61.5
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
@@ -20163,6 +20161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 1.1724685
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233667675472675764, guid: b4a6f71d7f6b5b24480c57144058126d,
+        type: 3}
+      propertyPath: material
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6f71d7f6b5b24480c57144058126d, type: 3}
