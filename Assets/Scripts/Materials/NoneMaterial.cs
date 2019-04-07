@@ -30,6 +30,20 @@ public class NoneMaterial : MaterialClass
             //convert mouse direction to an int for face direction
             //get mouse direction, convert it to an angle in degrees, then divide it by 90 and round to int
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            //flip player sprite with mouse position
+            if (direction.x < 0)
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+                PlayerManager.instance.playerMovement.faceDirection = 4;
+            }
+            else
+            {
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+                PlayerManager.instance.playerMovement.faceDirection = 2;
+            }
+
+
+
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
             attackDirection += 1;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerActions : MonoBehaviour
 {
+    public static PlayerActions instance;
     //private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider;
+    
+    public bool didAttack = false;
+    private float didAttackResetCounter = 10;
     
     public Vector2 inputVector;
     public Vector2 mousePos;
@@ -43,7 +48,12 @@ public class PlayerActions : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
+        didAttackResetCounter -= 1;
+        if (didAttackResetCounter < 0)
+        {
+            didAttack = false;
+        }
         //axis inputs to Vector2
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -88,11 +98,18 @@ public class PlayerActions : MonoBehaviour
         projRB.velocity = direction * materialAbsorberSpeed;
     }
     
-    void Attack()
+    public void Attack()
     {
+        didAttack = true;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
+
+        if (PlayerManager.instance.material == Material.None)
+        {
+            //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
+        }
         //Ground pound with Rock Abilities
-        if (PlayerManager.instance.material == Material.Rock)
+        else if (PlayerManager.instance.material == Material.Rock)
         {
             //animation stuff
             //only create the rocks if you're on the ground
@@ -120,7 +137,7 @@ public class PlayerActions : MonoBehaviour
             //PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
 
             //vertical attack
-            Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
             if (PlayerManager.instance.playerMovement.faceDirection == 1)
                 PlayerManager.instance.playerMovement.anim.SetBool("VineUp", true);
             else if (PlayerManager.instance.playerMovement.faceDirection == 2 || PlayerManager.instance.playerMovement.faceDirection == 4)
