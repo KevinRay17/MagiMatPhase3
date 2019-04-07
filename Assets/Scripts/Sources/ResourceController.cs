@@ -10,7 +10,9 @@ public class ResourceController : MonoBehaviour
 
     //float responsible for the amount of mana current had
     static public float currentMana;
+    private float oneTimeUse;
 
+    private PlayerActions PA;
     //the highest amount of mana possible to have
     public float maxMana = 100f;
 
@@ -81,6 +83,7 @@ public class ResourceController : MonoBehaviour
         setAttackStatus();
         setSpecialStatus();
         */
+        Debug.Log(oneTimeUse);
         
         if (currentMana > 0)
         {
@@ -89,7 +92,16 @@ public class ResourceController : MonoBehaviour
         
         if (currentMana < 0)
         {
-            PlayerManager.instance.material = Material.None;
+            oneTimeUse = 1;
+            //if (Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Q))\
+            if (PA.didAttack = true) 
+            {
+                oneTimeUse = 0;
+            }
+            if (oneTimeUse == 0)
+                {
+                PlayerManager.instance.material = Material.None;
+            }
         }
 
         for (var i = 0; i < numOfCooldowns; i++)
@@ -162,7 +174,7 @@ public class ResourceController : MonoBehaviour
 
     public bool hasMana()
     {
-        return currentMana > 0;
+        return currentMana >= 0;
     }
     
 }
