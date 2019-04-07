@@ -91,8 +91,14 @@ public class PlayerActions : MonoBehaviour
     void Attack()
     {
         PlayerManager.instance.materialScript.Attack(this.gameObject);
+
+        if (PlayerManager.instance.material == Material.None)
+        {
+            //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
+        }
         //Ground pound with Rock Abilities
-        if (PlayerManager.instance.material == Material.Rock)
+        else if (PlayerManager.instance.material == Material.Rock)
         {
             //animation stuff
             //only create the rocks if you're on the ground
@@ -120,7 +126,7 @@ public class PlayerActions : MonoBehaviour
             //PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
 
             //vertical attack
-            Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
             if (PlayerManager.instance.playerMovement.faceDirection == 1)
                 PlayerManager.instance.playerMovement.anim.SetBool("VineUp", true);
             else if (PlayerManager.instance.playerMovement.faceDirection == 2 || PlayerManager.instance.playerMovement.faceDirection == 4)
