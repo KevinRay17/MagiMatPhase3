@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1975484079}
   - component: {fileID: 1975484080}
   - component: {fileID: 1581266440}
+  - component: {fileID: 4452209810000737717}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -61,10 +62,10 @@ MonoBehaviour:
   canMove: 0
   acceleration: 2000
   groundFriction: 500
-  maxMoveSpeed: 7
+  maxMoveSpeed: 8
   climbSpeed: 5
   jumpPower: 20
-  jumpDownwardForce: 500
+  jumpDownwardForce: 300
   nearbyClimbable: {fileID: 0}
   groundLayers:
     serializedVersion: 2
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d80e758a0a1f3644900c62dba08ea17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  didAttack: 0
   inputVector: {x: 0, y: 0}
   mousePos: {x: 0, y: 0}
   mouseDirection: {x: 0, y: 0}
@@ -274,3 +276,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4452209810000737717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233667675472675762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef76b547dbed2f4a948be00e09b9479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
