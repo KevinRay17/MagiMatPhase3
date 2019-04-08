@@ -11,6 +11,7 @@ public class FireToad : MonoBehaviour
     private bool _isGrounded;
     private bool _isJumping;
     private bool _isRunning = false;
+    private bool attackWaiting;
     public float jumpPower;
     public GameObject Fireball;
     public float retreatSpeed;
@@ -33,7 +34,7 @@ public class FireToad : MonoBehaviour
               //  PlayerManager.instance.gameObject.transform.position, -retreatSpeed * Time.deltaTime);
             StartCoroutine(JumpAway());
         }
-        else if (_isGrounded && !_isJumping && !_isRunning)
+        else if (_isGrounded && !_isJumping && !_isRunning && !attackWaiting)
         {
             StartCoroutine(JumpAttack());
         }
@@ -53,7 +54,7 @@ public class FireToad : MonoBehaviour
     IEnumerator JumpAway()
     {
         _isRunning = true;
-        float JumpWait = Random.Range(.15f,.25f);
+        float JumpWait = Random.Range(.1f,.2f);
         int gen = Random.Range(0, 2);
         yield return new WaitForSeconds(JumpWait);
         if (gen == 1)
@@ -66,7 +67,7 @@ public class FireToad : MonoBehaviour
             _rigidbody2D.AddForce(Vector2.left * jumpPower/4, ForceMode2D.Impulse);
             Debug.Log("sajfcn");
         }
-        _rigidbody2D.AddForce(Vector2.up * jumpPower/2, ForceMode2D.Impulse);
+        _rigidbody2D.AddForce(Vector2.up * jumpPower/3, ForceMode2D.Impulse);
         _anim.SetBool("Jump", true);
         yield return 0;
         
@@ -78,9 +79,7 @@ public class FireToad : MonoBehaviour
     IEnumerator JumpAttack()
     {
         _isJumping = true;
-        float JumpWait = Random.Range(1f,2f);
         float AttackWait = Random.Range(.3f, .4f);
-        yield return new WaitForSeconds(JumpWait);
         Jump(jumpPower);
         _isGrounded = false;
         yield return new WaitForSeconds(AttackWait);
@@ -89,8 +88,6 @@ public class FireToad : MonoBehaviour
         {
             GameObject FireballClone = Instantiate(Fireball, transform.position, Quaternion.identity);
         }
-        yield return new WaitForSeconds(3);
-        _isJumping = false;
     }
 
     //Set grounded when on the ground
@@ -101,10 +98,24 @@ public class FireToad : MonoBehaviour
             _anim.SetBool("Jump", false);
             _isGrounded = true;
             _isRunning = false;
-            _isJumping = false;
-            
+            if (_isJumping)
+            {
+                StartCoroutine(Wait());
+            }
         }
 
+    }
+
+    IEnumerator Wait()
+    {
+        attackWaiting = true;
+        yield return 0;
+        _isJumping = false;
+        float WaitFor = Random.Range(2f, 3f);
+        yield return new WaitForSeconds(WaitFor);
+        _isJumping = false;
+        attackWaiting = false;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
