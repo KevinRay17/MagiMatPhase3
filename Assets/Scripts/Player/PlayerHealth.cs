@@ -20,6 +20,9 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityDuration;
     public int invFlickersPerSec;
     private float _invincibilityTimer;
+    
+    public float hitPauseTimeScale = 0.0f;
+    public float hitPauseDuration = 0.5f;
 
     void Awake()
     {
@@ -68,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= damageAmount;
             _invincibilityTimer = invincibilityDuration;
+            StartCoroutine(HitPause());
         }
     }
 
@@ -113,5 +117,18 @@ public class PlayerHealth : MonoBehaviour
         {
             return false;
         }
+    }
+
+    IEnumerator HitPause()
+    {
+        //Set timeScale to the pause timescale that we want
+        //Also set fixedDeltaTime (for FixedUpdate and Physics) to the matching value (usually 0.02f)
+        Time.timeScale = hitPauseTimeScale;
+        Time.fixedDeltaTime = hitPauseTimeScale * 0.02f;
+        //Wait for the pause duration -- using WaitForSecondsRealtime so it isn't affected by the timeScale which may be 0
+        yield return new WaitForSecondsRealtime(hitPauseDuration);
+        //Reset timeScale and fixedDeltaTime to default values
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f;
     }
 }
