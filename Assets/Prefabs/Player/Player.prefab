@@ -90,6 +90,7 @@ MonoBehaviour:
   invincible: 0
   invincibilityDuration: 1
   invFlickersPerSec: 4
+  dmgOverlayImage: {fileID: 0}
 --- !u!114 &4233667675472675765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 //handles player health, death?, collisions?
 
@@ -21,6 +22,10 @@ public class PlayerHealth : MonoBehaviour
     public int invFlickersPerSec;
     private float _invincibilityTimer;
 
+    //damage overlay
+    public Image dmgOverlayImage;
+    private Color dmgOverlayColor;
+
     void Awake()
     {
         //assign components
@@ -29,6 +34,10 @@ public class PlayerHealth : MonoBehaviour
         _collider = GetComponent<Collider2D>();
 
         startingColor = _spriteRenderer.color;
+
+        //set dmg overlay image to transparent at load in
+        dmgOverlayColor = dmgOverlayImage.color;
+        dmgOverlayColor.a = 0f;
     }
 
     void Update()
@@ -59,13 +68,29 @@ public class PlayerHealth : MonoBehaviour
         }
         
         UpdateColor();
+
+        //make image appear while alpha value is not transparent
+        //increase transparency over time (set actual color to be the same as temporary color)
+        //deactivate image when transparent
+        if (dmgOverlayColor.a > 0f)
+        {
+            dmgOverlayImage.enabled = true;
+            dmgOverlayColor.a -= Time.deltaTime * 2f; //setting temporary color
+            dmgOverlayImage.color = dmgOverlayColor; //setting actual color to temporary color
+        }
+        else
+            dmgOverlayImage.enabled = false; //here because i can't get it to start out transparent :/
+        dmgOverlayColor.a = Mathf.Clamp(dmgOverlayColor.a, -0.1f, 1f); //clamping so that the value never goes to infinity and crashes everything if you're doing a no dmg run
     }
-    
+
     //call this method to deal damage to player
     public void TakeDamage(float damageAmount)
     {
         if (!invincible)
         {
+            //make dmg overlay image pop up when damaged (alpha value from 0-1)
+            dmgOverlayColor.a = 1f;
+
             health -= damageAmount;
             _invincibilityTimer = invincibilityDuration;
         }
