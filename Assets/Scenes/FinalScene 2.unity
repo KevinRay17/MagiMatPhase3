@@ -5352,6 +5352,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1865942283175699856, guid: b2dfdd280276425459b4d17ac4248c3e,
+        type: 3}
+      propertyPath: grappleShootSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865942283175699856, guid: b2dfdd280276425459b4d17ac4248c3e,
+        type: 3}
+      propertyPath: grappleSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2dfdd280276425459b4d17ac4248c3e, type: 3}
 --- !u!1001 &430209948
@@ -16995,7 +17005,7 @@ GameObject:
   - component: {fileID: 1206730393}
   m_Layer: 0
   m_Name: Torch (10)
-  m_TagString: MaterialSource
+  m_TagString: MaterialUnlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17264,12 +17274,12 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.2
+      value: 177.2
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: -60.2
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
