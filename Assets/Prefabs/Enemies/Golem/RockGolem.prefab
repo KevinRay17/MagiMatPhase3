@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2546216106203051335}
   - component: {fileID: 2546216106203051193}
   - component: {fileID: 2546216106203051192}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RockGolem
   m_TagString: MaterialSource
   m_Icon: {fileID: 0}
@@ -152,10 +152,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_Mass: 2
+  m_LinearDrag: 3
+  m_AngularDrag: 3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

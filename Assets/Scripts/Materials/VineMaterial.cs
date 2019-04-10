@@ -208,7 +208,7 @@ public class VineMaterial : MaterialClass
         
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
-        Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
+       // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
         
         //remove the added component from the player
@@ -216,5 +216,8 @@ public class VineMaterial : MaterialClass
         //destroy the grapple visual
         Destroy(grapple);
         canGrapple = true;
+        
+        // Lets the player jump after grappling to something
+        PlayerManager.instance.playerMovement.hasJumped = true;
     }
 }
