@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Rename this script to something else clearer, preferrably: 'MakeImageBounce' or 'UIBobEffect'
 public class Bouncer : MonoBehaviour
 {
-    private Vector3 startPos;
+    // Starting position of the gameObject we're attached to
+    private Vector3 startPosition;
 
-    public float mod;
+    public float modifier;
 
-    public float spdMod;
+    public float speedModifier;
+    
     // Use this for initialization
     void Start ()
     {
-        startPos = transform.position;
+        startPosition = transform.position;
     }
 	
     // Update is called once per frame
     void Update ()
     {
-        transform.position = startPos + Vector3.up * Mathf.Sin(Time.time *spdMod)*mod;
+        transform.position = startPosition + Vector3.up * Mathf.Sin(Time.time * speedModifier) * modifier;
     }
 }

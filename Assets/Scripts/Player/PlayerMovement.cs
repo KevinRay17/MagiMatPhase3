@@ -63,6 +63,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {   
+        //animation! checking for current material and changing sprite
+        if (PlayerManager.instance.material == Material.None)
+        {
+            anim.SetBool("Fire", false);
+            anim.SetBool("Vine", false);
+            anim.SetBool("Rock", false);
+        } else if (PlayerManager.instance.material == Material.Vine)
+        {
+            anim.SetBool("Vine", true);
+            anim.SetBool("Fire", false);
+            anim.SetBool("Rock", false);
+        } else if (PlayerManager.instance.material == Material.Fire)
+        {
+            anim.SetBool("Fire", true);
+            anim.SetBool("Rock", false);
+            anim.SetBool("Vine", false);
+        } else if (PlayerManager.instance.material == Material.Rock)
+        {
+            anim.SetBool("Rock", true);
+            anim.SetBool("Fire", false);
+            anim.SetBool("Vine", false);
+        }
+
+
         //axis inputs to Vector2
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -86,7 +110,10 @@ public class PlayerMovement : MonoBehaviour
 
         //for jump animation to play i guess
         if (isGrounded)
+        {
             anim.SetBool("Jumping", false);
+            anim.SetBool("Rockcrash", false);
+        }
         else
             anim.SetBool("Jumping", true);
 
@@ -196,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
-            if (!anim.GetBool("Vineatk"))
+            if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
             {
                 spriteRenderer.flipX = true;
                 faceDirection = 2;
@@ -204,12 +231,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (horizontalInput.x < 0)
         {
-            if (!anim.GetBool("Vineatk"))
+            if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
             {
                 spriteRenderer.flipX = false;
                 faceDirection = 4;
             }
         }
+
         
         //get player's current velocity direction and input directions
         int currentDirection = 0;
@@ -313,5 +341,12 @@ public class PlayerMovement : MonoBehaviour
     public void TurnOffVineAni()
     {
         anim.SetBool("Vineatk", false);
+        anim.SetBool("VineUp", false);
+        anim.SetBool("VineDown", false);
+    }
+
+    public void TurnAtkAniOff()
+    {
+        anim.SetBool("BasicAtk", false);
     }
 }

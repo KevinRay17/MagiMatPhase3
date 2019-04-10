@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 
 public class EventTriggers : MonoBehaviour
@@ -27,8 +26,10 @@ public class EventTriggers : MonoBehaviour
        
     }
 
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //When moving through a camera trigger change cmaera size
         if (other.gameObject.CompareTag("camTrigger"))
         {
             _targetScale = 15f;
@@ -37,7 +38,7 @@ public class EventTriggers : MonoBehaviour
             _targetScale = 6.4f;
         }
 
-
+        //When moving through water and you are fire, put yourself out
         if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
         {
             ResourceController.currentMana = 0;

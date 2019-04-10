@@ -40,21 +40,32 @@ public class VineMaterial : MaterialClass
         else
         {
             Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
 
-            //flip player sprite to reflect direction
-            //Positive direction = facing right; negative direction = facing left
-            if (direction.x < 0)
+            //for animation but overall flip code I guess
+            if (directionAngle <= 45f || directionAngle >= 315f)
+                PlayerManager.instance.playerMovement.faceDirection = 1;
+            else if (directionAngle > 45 && directionAngle <= 135)
             {
-                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
-                PlayerManager.instance.playerMovement.faceDirection = 4;
+                PlayerManager.instance.playerMovement.faceDirection = 2;
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
             }
+            else if (directionAngle > 135 && directionAngle < 225)
+                PlayerManager.instance.playerMovement.faceDirection = 3;
             else
             {
-                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
-                PlayerManager.instance.playerMovement.faceDirection = 2;
+                PlayerManager.instance.playerMovement.faceDirection = 4;
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
             }
+            //please just end me
+            //flips sprite even if aiming up or down
+            if (directionAngle >= 180)
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+            else
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
 
-            float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
+
+
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
             attackDirection += 1;
             attackDirection = attackDirection == 5 ? 1 : attackDirection;
@@ -197,7 +208,7 @@ public class VineMaterial : MaterialClass
         
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
-        Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
+       // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
         
         //remove the added component from the player
@@ -205,5 +216,8 @@ public class VineMaterial : MaterialClass
         //destroy the grapple visual
         Destroy(grapple);
         canGrapple = true;
+        
+        // Lets the player jump after grappling to something
+        PlayerManager.instance.playerMovement.hasJumped = true;
     }
 }

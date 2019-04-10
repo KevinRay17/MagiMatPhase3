@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEditor;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class NewRockGolem : MonoBehaviour
 {
@@ -12,6 +16,7 @@ public class NewRockGolem : MonoBehaviour
     private bool dir = false;
     private bool isWaiting = false;
     private bool isThrowing = false;
+    private bool isCharging = false;
     public float patrolDistance;
     private LayerMask playerMask = 1 << 11;
 
@@ -29,18 +34,40 @@ public class NewRockGolem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check if Player is in Range and attack
         if (Physics2D.OverlapCircle(
-            transform.position, 10, playerMask) && !isThrowing)
+            transform.position, 5, playerMask) && !isThrowing && !isCharging)
+        {
+            StartCoroutine(Charge());
+        }
+        else if (Physics2D.OverlapCircle(
+            transform.position, 10, playerMask) && !isThrowing && !isCharging)
         {
             StartCoroutine(ThrowRock());
         }
-
+        //Move unless attacking or at end of patrol
         if (!isWaiting)
         transform.position = Vector2.MoveTowards(transform.position, TargetPos.position, MoveSpeed * Time.deltaTime);
+        
         if (Vector2.Distance(transform.position, TargetPos.position) < .2f && !isWaiting)
         {
             StartCoroutine(Wait());
         }
+    }
+
+    IEnumerator Charge()
+    {
+        isWaiting = true;
+        isCharging = true;
+        Vector2 oldPlayerPos = PlayerManager.instance.gameObject.transform.position;
+        float ChargePower = 800;
+        yield return new WaitForSeconds(1);
+        gameObject.layer = 14;
+        gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(new Vector2(oldPlayerPos.x - transform.position.x, 0)) * ChargePower);
+        yield return new WaitForSeconds(.5f);
+        isWaiting = false;
+        isCharging = false;
+        gameObject.layer = 13;
     }
 
     IEnumerator ThrowRock()
