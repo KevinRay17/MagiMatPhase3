@@ -4711,8 +4711,6 @@ MonoBehaviour:
   attackSize: {x: 1, y: 1.5}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
-  animationPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
-    type: 3}
   specialDashDistance: 5
   specialDashTime: 0.1
 --- !u!114 &471815380
@@ -20090,12 +20088,12 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.3
+      value: 26.35
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: -1.79
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
@@ -20145,17 +20143,17 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 0.21094666
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 0.20200352
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675765, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
