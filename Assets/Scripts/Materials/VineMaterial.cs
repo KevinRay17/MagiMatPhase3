@@ -16,6 +16,7 @@ public class VineMaterial : MaterialClass
     //special stuff
     [HideInInspector] public bool canGrapple = true;
     [HideInInspector] public bool onGrapple; //used for exitting the grapple, referenced by VineGrappleCollision script that is put on player
+    [HideInInspector] public bool onWall;
     [Header("Special")]
     public float grappleShootSpeed; //speed that grapple line is shot out
     public float grappleSpeed; //speed that player is pulled by the grapple
@@ -187,6 +188,7 @@ public class VineMaterial : MaterialClass
         PlayerManager.instance.playerMovement.canMove = false;
         
         onGrapple = true;
+        onWall = false;
         float timer = 0;
         
         //add component to player to check for collisions for exitting the grapple
@@ -194,21 +196,31 @@ public class VineMaterial : MaterialClass
 
         while (onGrapple)
         {
-            //move player towards the grapple point
-            playerRB.MovePosition(Vector2.MoveTowards(player.transform.position, grapplePosition, grappleSpeed * Time.deltaTime));
-
-            //if timer reaches the maxGrappleTime, stop grappling just to avoid getting stuck
-            timer += Time.deltaTime;
-            if (timer > maxGrappleTime)
+            if (!onWall)
             {
-                onGrapple = false;
-            }        
+                //move player towards the grapple point
+                playerRB.MovePosition(Vector2.MoveTowards(player.transform.position, grapplePosition,
+                    grappleSpeed * Time.deltaTime));
+
+
+                //if timer reaches the maxGrappleTime, stop grappling just to avoid getting stuck
+                timer += Time.deltaTime;
+                if (timer > maxGrappleTime)
+                {
+                    onGrapple = false;
+                }
+            }
+            else
+            {
+                playerRB.velocity = Vector2.zero;
+            }
+
             yield return new WaitForEndOfFrame();
         }
         
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
-       // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
+        // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
         
         //remove the added component from the player
