@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //if player is climbing, check if they are still on the climbable
-            if (!ClimbableNearby())
+            if (canMove && !ClimbableNearby())
             {
                 StoppedClimbing();
             }
