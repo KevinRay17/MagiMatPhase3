@@ -17,6 +17,7 @@ public class FireToad : MonoBehaviour
     public float retreatSpeed;
     LayerMask layerMask = 1 << 8;
     private LayerMask playerMask = 1 << 11;
+    public GameObject Blood;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -123,6 +124,7 @@ public class FireToad : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HurtBox"))
         {
+            GameObject BloodClone = Instantiate(Blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

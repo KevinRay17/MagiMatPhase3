@@ -12,10 +12,17 @@ public class Death : MonoBehaviour
 
     public float timeTilRespawn;
 
+    // This script assumes that we're attached to the Player, if that is incorrect, I'll edit the code later on.
+    // Where we'll respawn after dying
+    private Vector3 respawnPosition;
+
     // youDiedText is set to false as soon as the scene is reloaded so there's no issues on reloading the screen
     void Awake()
     {
         youDiedText.SetActive(false);
+        
+        // Set our respawn to where we're placed in the level, indicating this is the starting area
+        respawnPosition = transform.position;
     }
     
     // Done in LateUpdate alongside physics calculations, to match the timing in other scripts
@@ -49,7 +56,25 @@ public class Death : MonoBehaviour
         // in that case, un-comment timeTilTextDestroy and use it instead of timeTilRespawn in the destroy statement above
         yield return new WaitForSeconds(timeTilRespawn);
         
+        /*
         // Reloads the level once we're done waiting, re-spawning the player back at the start
         Application.LoadLevel(Application.loadedLevel);
+        */
+        // We're no longer doing this, so instead the player is going to be respawned at checkpoints
+        Respawn();
+    }
+    
+    private void Respawn()
+    {
+        // Set the 'You Died' text to false, meaning it no longer shows
+        youDiedText.SetActive(false);
+        
+        // Respawn at our last checkpoint position, stored in respawnPosition
+        //Player.transform.position = respawnPosition;
+        
+        // TODO: Reset our health, mana, material, etc.
+        
+        // Everything is reset, so now we can move again!
+        PlayerManager.instance.playerMovement.canMove = true;
     }
 }

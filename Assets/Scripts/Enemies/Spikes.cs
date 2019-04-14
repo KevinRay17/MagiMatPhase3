@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+    public PlayerMovement Player;
+
+    public GameObject playerObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,8 @@ public class Spikes : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerManager.instance.playerHealth.health = 0;
+            PlayerManager.instance.playerHealth.TakeDamage(1);
+            other.gameObject.transform.position = Player.teleLastPos;
         }
         else
         {

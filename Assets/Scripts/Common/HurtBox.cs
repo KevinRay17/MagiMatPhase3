@@ -11,6 +11,7 @@ public class HurtBox : MonoBehaviour
     public bool hitMultipleTargets;
     
     public float lifetime;
+    public ParticleSystem bloodParticleSystem;
     
     protected virtual void Awake()
     {
@@ -25,6 +26,12 @@ public class HurtBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == 13 || other.gameObject.layer == 14)
+        {
+            bloodParticleSystem.transform.position = other.gameObject.transform.position;
+            bloodParticleSystem.Emit(20);
+        }
+        
         if (PlayerManager.instance.material == Material.Fire && other.gameObject.CompareTag("Torch"))
         {
             Debug.Log("BURN");
