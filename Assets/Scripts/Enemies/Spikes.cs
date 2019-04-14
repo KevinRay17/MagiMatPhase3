@@ -23,7 +23,7 @@ public class Spikes : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerManager.instance.playerHealth.health -= 1;
+            PlayerManager.instance.playerHealth.TakeDamage(1);
             other.gameObject.transform.position = Player.teleLastPos;
         }
         else

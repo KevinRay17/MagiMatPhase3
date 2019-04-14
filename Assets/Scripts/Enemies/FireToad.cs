@@ -17,6 +17,7 @@ public class FireToad : MonoBehaviour
     public float retreatSpeed;
     LayerMask layerMask = 1 << 8;
     private LayerMask playerMask = 1 << 11;
+    public GameObject Blood;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -54,20 +55,21 @@ public class FireToad : MonoBehaviour
     IEnumerator JumpAway()
     {
         _isRunning = true;
-        float JumpWait = Random.Range(.1f,.2f);
+        float JumpWait = Random.Range(.05f,.1f);
+        Vector2 oldPlayerPos = PlayerManager.instance.gameObject.transform.position;
         int gen = Random.Range(0, 2);
         yield return new WaitForSeconds(JumpWait);
+        gameObject.GetComponent<Rigidbody2D>()
+            .AddForce(Vector3.Normalize(new Vector2(transform.position.x - oldPlayerPos.x, 0)) *jumpPower *12.5f);
         if (gen == 1)
         {
-            _rigidbody2D.AddForce(Vector2.right * jumpPower/4, ForceMode2D.Impulse);
-            Debug.Log("ad");
+          //  _rigidbody2D.AddForce(Vector2.right * jumpPower/3, ForceMode2D.Impulse);
         }
         else
         {
-            _rigidbody2D.AddForce(Vector2.left * jumpPower/4, ForceMode2D.Impulse);
-            Debug.Log("sajfcn");
+            //_rigidbody2D.AddForce(Vector2.left * jumpPower/3, ForceMode2D.Impulse);
         }
-        _rigidbody2D.AddForce(Vector2.up * jumpPower/3, ForceMode2D.Impulse);
+        _rigidbody2D.AddForce(Vector2.up * jumpPower/4, ForceMode2D.Impulse);
         _anim.SetBool("Jump", true);
         yield return 0;
         
@@ -122,6 +124,7 @@ public class FireToad : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HurtBox"))
         {
+            GameObject BloodClone = Instantiate(Blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

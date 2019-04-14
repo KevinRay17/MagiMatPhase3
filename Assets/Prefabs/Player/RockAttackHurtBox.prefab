@@ -50,6 +50,8 @@ MonoBehaviour:
   damage: 1
   hitMultipleTargets: 0
   lifetime: 0.3
+  bloodParticleSystem: {fileID: 5447898100468378559, guid: a4796aa485a31ce4eb5a70db5a76bd51,
+    type: 3}
   speed: 15
   direction: {x: 0, y: 0}
   raycastDistance: 0.5
