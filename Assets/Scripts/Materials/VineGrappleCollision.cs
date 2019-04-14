@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class VineGrappleCollision : MonoBehaviour
 {
+    private VineMaterial _vineScript = (VineMaterial) MaterialsManager.GetMaterialScript(Material.Vine);
     void Update()
-    {
+    {   
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DetachVineGrapple();
@@ -14,12 +15,13 @@ public class VineGrappleCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        DetachVineGrapple();
+        PlayerManager.instance.playerMovement.isClimbing = true;
+        _vineScript.onWall = true;
+
     }
 
     void DetachVineGrapple()
     {
-        VineMaterial vineScript = (VineMaterial) MaterialsManager.GetMaterialScript(Material.Vine);
-        vineScript.onGrapple = false;
+        _vineScript.onGrapple = false;
     }
 }
