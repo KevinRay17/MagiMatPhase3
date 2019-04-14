@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 4233667675472675762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.5, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 2}
+  m_LocalScale: {x: 0.22010653, y: 0.22010653, z: 1.4673768}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,6 +91,10 @@ MonoBehaviour:
   invincible: 0
   invincibilityDuration: 1
   invFlickersPerSec: 4
+  hitPauseTimeScale: 0
+  hitPauseDuration: 0.5
+  bloodParticleSystem: {fileID: 5447898100468378559, guid: a4796aa485a31ce4eb5a70db5a76bd51,
+    type: 3}
 --- !u!114 &4233667675472675765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad789e853fa351c429169fc93c6243f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireCrystal: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: {fileID: 0}
   playerActions: {fileID: 0}
