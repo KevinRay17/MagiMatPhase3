@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
 
 //handles player actions: absorbing materials, abilities, attacking
 
@@ -21,6 +24,7 @@ public class PlayerActions : MonoBehaviour
     public Vector2 inputVector;
     public Vector2 mousePos;
     public Vector2 mouseDirection;
+    public Vector2 joystickDirection;
 
     public bool materialAbsorberOut;
     public float materialAbsorberSpeed;
@@ -49,32 +53,36 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
+        joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
+        //Debug.Log(joystickDirection);
         didAttackResetCounter -= 1;
         if (didAttackResetCounter < 0)
         {
             didAttack = false;
         }
         //axis inputs to Vector2
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
+        float vertical = Input.GetAxisRaw("LeftJSVertical");
         inputVector = new Vector2(horizontal, vertical);
         
         //get mousePos and mouseDirection
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 playerPos = transform.position;
-        mouseDirection = (mousePos - playerPos).normalized;
+        //mouseDirection = (mousePos - playerPos).normalized;
+        mouseDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
 
-        if (Input.GetMouseButtonDown(1) && !materialAbsorberOut)
+        if (Input.GetButtonDown("LeftBumper") && !materialAbsorberOut)
         {
             ThrowMaterialAbsorber(mouseDirection);
         }
         
-        if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
+        if (Input.GetButtonDown("Xbutton") && RC.isAvailable(RC.attackIndex)) {
+            
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetKeyDown(KeyCode.Q) && RC.isAvailable(RC.specialIndex)) {
+        if (Input.GetButtonDown("RightBumper") && RC.isAvailable(RC.specialIndex)) {
             Special();
             RC.resetCooldown(RC.specialIndex);
         }

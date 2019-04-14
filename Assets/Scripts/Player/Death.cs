@@ -70,7 +70,7 @@ public class Death : MonoBehaviour
         youDiedText.SetActive(false);
         
         // Respawn at our last checkpoint position, stored in respawnPosition
-        Player.transform.position = respawnPosition;
+        //Player.transform.position = respawnPosition;
         
         // TODO: Reset our health, mana, material, etc.
         
