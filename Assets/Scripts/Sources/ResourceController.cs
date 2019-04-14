@@ -58,6 +58,8 @@ public class ResourceController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         currentMana = 0; //setting currentMana to zero at the beginning
        
         /*
@@ -87,7 +89,7 @@ public class ResourceController : MonoBehaviour
         
         if (currentMana > 0)
         {
-            currentMana -= passiveManaDrain; //constantly drain mana every frame >:(
+            currentMana -= passiveManaDrain*10; //constantly drain mana every frame >:(
         }
 
         if (currentMana < 0)
@@ -100,10 +102,11 @@ public class ResourceController : MonoBehaviour
                 oneTimeUse = 0;
             }
             if (oneTimeUse == 0)
-             {
+
+            {
                 PlayerManager.instance.material = Material.None;
             }
-        */
+            */
             PlayerManager.instance.material = Material.None;
         }
 
