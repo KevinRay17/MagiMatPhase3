@@ -217,6 +217,11 @@ public class VineMaterial : MaterialClass
 
             yield return new WaitForEndOfFrame();
         }
+
+        if (onWall && Input.GetKey(KeyCode.Space))
+        {
+             PlayerManager.instance.playerMovement.Jump(PlayerManager.instance.playerMovement.jumpPower);
+        }
         
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;

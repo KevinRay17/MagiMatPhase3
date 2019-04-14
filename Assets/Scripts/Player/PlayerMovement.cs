@@ -306,7 +306,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody2D.MovePosition(transform.position + (verticalInput * climbSpeed * Time.fixedDeltaTime));
     }
 
-    void Jump(float power)
+    public void Jump(float power)
     {
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
