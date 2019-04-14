@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FinalScene 1.unity
-    guid: 70ec7f0a3de6f0b4f886f10f056980ac
+    path: Assets/Scenes/LevelDesignJackson.unity
+    guid: 6fefa1db8c6b9432e894b5b8756c4047
   m_configObjects: {}
