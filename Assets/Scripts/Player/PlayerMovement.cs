@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 _inputVector;
 
+    public Vector3 teleLastPos;
+
     [HideInInspector] public int faceDirection; //1 = UP, 2 = RIGHT, 3 = DOWN, 4 = LEFT
     
     //states
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         gravityScale = _rigidbody2D.gravityScale;
 
         canMove = true;
+        teleLastPos = transform.position;
     }
 
     void Update()
@@ -115,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Jumping", false);
             anim.SetBool("Rockcrash", false);
+            teleLastPos = this.transform.position;
         }
         else
             anim.SetBool("Jumping", true);

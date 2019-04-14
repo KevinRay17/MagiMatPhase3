@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
     {
         if (whatWeCollidedWith.gameObject.CompareTag("Player"))
         {
-            PlayerManager.instance.playerHealth.health -= 1;
+            PlayerManager.instance.playerHealth.TakeDamage(1);
             Destroy(gameObject);
         }
         // If there's something assigned to tagWeAffect in the inspector.

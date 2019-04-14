@@ -59,9 +59,18 @@ public class NewRockGolem : MonoBehaviour
     {
         isWaiting = true;
         isCharging = true;
+        
+        float t = 0f;
+        while (t < 1f)
+        {        
+            transform.position = new Vector3(transform.position.x + Random.Range(-.05f,.05f), 
+                transform.position.y, transform.position.z);
+            t += Time.deltaTime;
+            yield return 0;
+        }
+        
         Vector2 oldPlayerPos = PlayerManager.instance.gameObject.transform.position;
         float ChargePower = 800;
-        yield return new WaitForSeconds(1);
         gameObject.layer = 14;
         gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(new Vector2(oldPlayerPos.x - transform.position.x, 0)) * ChargePower);
         yield return new WaitForSeconds(.5f);
