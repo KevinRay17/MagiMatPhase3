@@ -24,7 +24,10 @@ public class PlayerActions : MonoBehaviour
     public Vector2 inputVector;
     public Vector2 mousePos;
     public Vector2 mouseDirection;
+    
+    //Direction of right joystick
     public Vector2 joystickDirection;
+    public Vector2 lastDirection;
 
     public bool materialAbsorberOut;
     public float materialAbsorberSpeed;
@@ -53,7 +56,13 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
+        
+            
         joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
+        if (joystickDirection.x == 1 || joystickDirection.x == -1 || joystickDirection.y == 1 || joystickDirection.y == -1)
+        {
+            lastDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
+        }
         //Debug.Log(joystickDirection);
         didAttackResetCounter -= 1;
         if (didAttackResetCounter < 0)

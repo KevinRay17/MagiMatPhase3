@@ -17,7 +17,7 @@ public class ResourceController : MonoBehaviour
     public float maxMana = 100f;
 
     //the amount that is drained every frame
-    private float passiveManaDrain = 1f/15f;
+    public float passiveManaDrain = 1f/15f;
 
     /*
     //the mana cost of a small action

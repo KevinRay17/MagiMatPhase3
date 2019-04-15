@@ -86,7 +86,7 @@ public class FireMaterial : MaterialClass
     {
         Debug.Log("Fire Special");
 
-        Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+        Vector2 direction = PlayerManager.instance.playerActions.lastDirection;
         //flip player sprite to reflect direction
         //Positive direction = facing right; negative direction = facing left
         if (direction.x < 0)
