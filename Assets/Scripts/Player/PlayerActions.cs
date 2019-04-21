@@ -22,8 +22,11 @@ public class PlayerActions : MonoBehaviour
     public Vector2 mousePos;
     public Vector2 mouseDirection;
 
-    public bool materialAbsorberOut;
-    public float materialAbsorberSpeed;
+    private MaterialAbsorberProjectile _currentMaterialAbsorber;
+    public bool materialAbsorberOut; //is the absorber currently out, player shouldn't be able to throw another one until it returns
+    public float materialAbsorberSpeed; //how fast the absorber travels out
+    public float materialAbsorberReturnSpeed; //how fast the absorber returns to you
+    public float materialAbsorberMaxDistance; //the max distance the absorber can travel before automatically returning
     public GameObject materialAbsorberPrefab;
 
     private float _downwardStompSpeed = -1000f;
@@ -64,9 +67,16 @@ public class PlayerActions : MonoBehaviour
         Vector2 playerPos = transform.position;
         mouseDirection = (mousePos - playerPos).normalized;
 
-        if (Input.GetMouseButtonDown(1) && !materialAbsorberOut)
+        if (Input.GetMouseButtonDown(1))
         {
-            ThrowMaterialAbsorber(mouseDirection);
+            if (materialAbsorberOut)
+            {
+                _currentMaterialAbsorber.StartReturning();
+            }
+            else
+            {
+                ThrowMaterialAbsorber(mouseDirection);
+            }
         }
         
         if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
@@ -84,18 +94,19 @@ public class PlayerActions : MonoBehaviour
 
     void ThrowMaterialAbsorber(Vector2 direction)
     {
+        //disable collisions between projectile and player until returning
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), true);
+        
+        //instantiate absorber prefab, set its velocity and facing relative to aim direction
         materialAbsorberOut = true;
         
-        //for aiming via inputAxis
-        /*if (direction == Vector2.zero)
-        {
-            direction = GlobalFunctions.FaceDirectionToVector2(PlayerManager.instance.playerMovement.faceDirection);
-        }*/
-        
         GameObject projectile = Instantiate(materialAbsorberPrefab, transform.position, Quaternion.identity);
-        
         Rigidbody2D projRB = projectile.GetComponent<Rigidbody2D>();
         projRB.velocity = direction * materialAbsorberSpeed;
+        projectile.transform.right = projRB.velocity;
+        _currentMaterialAbsorber = projectile.GetComponent<MaterialAbsorberProjectile>();
+        _currentMaterialAbsorber.maxDistance = materialAbsorberMaxDistance;
+        _currentMaterialAbsorber.returnSpeed = materialAbsorberReturnSpeed;
     }
     
     public void Attack()
