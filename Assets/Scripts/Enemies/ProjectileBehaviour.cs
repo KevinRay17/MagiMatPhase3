@@ -13,7 +13,13 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         _Player = GameObject.Find("Player").transform;
         _TargetPos = _Player.position;
-       
+        
+        Vector3 relativePos = _TargetPos - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        transform.rotation = new Quaternion(0,0,rotation.z, rotation.w);
+        
+
+
     }
 
     // Update is called once per frame 
