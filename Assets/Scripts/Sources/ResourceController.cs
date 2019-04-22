@@ -85,7 +85,7 @@ public class ResourceController : MonoBehaviour
         setAttackStatus();
         setSpecialStatus();
         */
-        Debug.Log(oneTimeUse);
+        //Debug.Log(oneTimeUse);
         
         if (currentMana > 0)
         {
