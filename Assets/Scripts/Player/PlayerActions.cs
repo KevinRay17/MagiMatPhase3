@@ -1,13 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Numerics;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Quaternion = UnityEngine.Quaternion;
-using Vector2 = UnityEngine.Vector2;
+
 
 //handles player actions: absorbing materials, abilities, attacking
 
@@ -29,8 +24,11 @@ public class PlayerActions : MonoBehaviour
     public Vector2 joystickDirection;
     public Vector2 lastDirection;
 
-    public bool materialAbsorberOut;
-    public float materialAbsorberSpeed;
+    private MaterialAbsorberProjectile _currentMaterialAbsorber;
+    public bool materialAbsorberOut; //is the absorber currently out, player shouldn't be able to throw another one until it returns
+    public float materialAbsorberSpeed; //how fast the absorber travels out
+    public float materialAbsorberReturnSpeed; //how fast the absorber returns to you
+    public float materialAbsorberMaxDistance; //the max distance the absorber can travel before automatically returning
     public GameObject materialAbsorberPrefab;
 
     private float _downwardStompSpeed = -1000f;
@@ -80,9 +78,16 @@ public class PlayerActions : MonoBehaviour
         //mouseDirection = (mousePos - playerPos).normalized;
         mouseDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
 
-        if (Input.GetButtonDown("LeftBumper") && !materialAbsorberOut)
+        if (Input.GetButtonDown("LeftBumper"))
         {
-            ThrowMaterialAbsorber(mouseDirection);
+            if (materialAbsorberOut)
+            {
+                _currentMaterialAbsorber.StartReturning();
+            }
+            else
+            {
+                ThrowMaterialAbsorber(mouseDirection);
+            }
         }
         
         if (Input.GetButtonDown("Xbutton") && RC.isAvailable(RC.attackIndex)) {
@@ -101,18 +106,20 @@ public class PlayerActions : MonoBehaviour
 
     void ThrowMaterialAbsorber(Vector2 direction)
     {
-        materialAbsorberOut = true;
+        //disable collisions between projectile and player until returning
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), true);
         
-        //for aiming via inputAxis
-        /*if (direction == Vector2.zero)
-        {
-            direction = GlobalFunctions.FaceDirectionToVector2(PlayerManager.instance.playerMovement.faceDirection);
-        }*/
+        //instantiate absorber prefab, set its velocity and facing relative to aim direction
+        materialAbsorberOut = true;
         
         GameObject projectile = Instantiate(materialAbsorberPrefab, transform.position, Quaternion.identity);
         
         Rigidbody2D projRB = projectile.GetComponent<Rigidbody2D>();
         projRB.velocity = direction * materialAbsorberSpeed;
+        projectile.transform.right = projRB.velocity;
+        _currentMaterialAbsorber = projectile.GetComponent<MaterialAbsorberProjectile>();
+        _currentMaterialAbsorber.maxDistance = materialAbsorberMaxDistance;
+        _currentMaterialAbsorber.returnSpeed = materialAbsorberReturnSpeed;
     }
     
     public void Attack()

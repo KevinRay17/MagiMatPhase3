@@ -40,6 +40,19 @@ public class ButtonScript : MonoBehaviour
                     Destroy(wallToDestroy);
                 }
             }
+
+            if (materialNeeded == 3)
+            {
+                if (PlayerManager.instance.material == Material.Rock)
+                {
+                    if (PlayerManager.instance.playerMovement.anim.name == "Rockcrash")
+                    {
+                        Destroy(wallToDestroy);
+                    }
+                    
+                }
+                
+            }
         }
     }
 }

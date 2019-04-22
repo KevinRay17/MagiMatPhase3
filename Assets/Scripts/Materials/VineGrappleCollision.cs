@@ -17,7 +17,6 @@ public class VineGrappleCollision : MonoBehaviour
     {
         PlayerManager.instance.playerMovement.isClimbing = true;
         _vineScript.onWall = true;
-
     }
 
     void DetachVineGrapple()

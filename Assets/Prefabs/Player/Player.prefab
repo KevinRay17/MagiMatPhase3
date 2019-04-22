@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f95a1fbef851047be944580b67726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleLastPos: {x: 0, y: 0, z: 0}
   faceDirection: 0
   hasJumped: 0
   isGrounded: 0
@@ -91,6 +92,8 @@ MonoBehaviour:
   invincible: 0
   invincibilityDuration: 1
   invFlickersPerSec: 4
+  hitPauseTimeScale: 0
+  hitPauseDuration: 0.5
   dmgOverlayImage: {fileID: 0}
 --- !u!114 &4233667675472675765
 MonoBehaviour:
@@ -110,6 +113,8 @@ MonoBehaviour:
   mouseDirection: {x: 0, y: 0}
   materialAbsorberOut: 0
   materialAbsorberSpeed: 35
+  materialAbsorberReturnSpeed: 35
+  materialAbsorberMaxDistance: 10
   materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
     type: 3}
   fireAniPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
@@ -128,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad789e853fa351c429169fc93c6243f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireCrystal: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: {fileID: 0}
   playerActions: {fileID: 0}
