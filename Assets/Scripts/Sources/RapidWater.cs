@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class RapidWater : MonoBehaviour
 {
+    public bool rapidleft;
+
+    public bool rapidRight;
+
+    public bool rapidUp;
+
+    public bool rapidDown;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +26,13 @@ public class RapidWater : MonoBehaviour
     public void OnTriggerStay2D(Collider2D player)
     {
         Debug.Log("Your Drowning");
-        player.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 100);
+        if (rapidleft)
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 100);
+        else if (rapidRight)
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 100);
+        else if (rapidUp)
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100);
+        else if (rapidDown)
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100);
     }
 }

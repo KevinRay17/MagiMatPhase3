@@ -36,7 +36,7 @@ public class PlayerActions : MonoBehaviour
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
 
-    private ResourceController RC;
+    [HideInInspector] public ResourceController RC;
     
     [Header("Animation prefabs")]
     public GameObject fireAniPrefab;
@@ -240,6 +240,7 @@ public class PlayerActions : MonoBehaviour
         if (_groundPounding && other.gameObject.CompareTag("Breakable"))
         {
             Destroy(other.gameObject);
+            _groundPounding = false;
         }
         else if (_groundPounding)
         {
