@@ -18,6 +18,12 @@ public class FireMaterial : MaterialClass
     public float specialDashDistance;
     public float specialDashTime; //how long the dash takes
 
+    private Rigidbody2D playerRB;
+    private void Awake()
+    {
+         playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
+    }
+
     public override void Attack(GameObject player)
     {
         Debug.Log("Fire Attack");
@@ -92,7 +98,7 @@ public class FireMaterial : MaterialClass
     {
        
         //Freeze movement until dash
-        Rigidbody2D playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
+        
         playerRB.velocity = new Vector2(0,0);
         playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(.5f);
@@ -109,7 +115,7 @@ public class FireMaterial : MaterialClass
     }
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
-        Rigidbody2D playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
+      
         //make the player ignore enemy collisions
        // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
         

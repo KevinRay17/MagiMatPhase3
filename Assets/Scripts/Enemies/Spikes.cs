@@ -24,7 +24,7 @@ public class Spikes : MonoBehaviour
             other.gameObject.transform.position = PlayerManager.instance.playerMovement.teleLastPos;
             PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
         }
-        else
+        else if (!other.gameObject.CompareTag("Absorber"))
         {
             Destroy(other.gameObject);
             
