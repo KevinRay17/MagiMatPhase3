@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 //handles player actions: absorbing materials, abilities, attacking
 
@@ -21,9 +19,16 @@ public class PlayerActions : MonoBehaviour
     public Vector2 inputVector;
     public Vector2 mousePos;
     public Vector2 mouseDirection;
+    
+    //Direction of right joystick
+    public Vector2 joystickDirection;
+    public Vector2 lastDirection;
 
-    public bool materialAbsorberOut;
-    public float materialAbsorberSpeed;
+    private MaterialAbsorberProjectile _currentMaterialAbsorber;
+    public bool materialAbsorberOut; //is the absorber currently out, player shouldn't be able to throw another one until it returns
+    public float materialAbsorberSpeed; //how fast the absorber travels out
+    public float materialAbsorberReturnSpeed; //how fast the absorber returns to you
+    public float materialAbsorberMaxDistance; //the max distance the absorber can travel before automatically returning
     public GameObject materialAbsorberPrefab;
 
     private float _downwardStompSpeed = -1000f;
@@ -49,32 +54,49 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
+        
+            
+        joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
+        if (joystickDirection.x == 1 || joystickDirection.x == -1 || joystickDirection.y == 1 || joystickDirection.y == -1)
+        {
+            lastDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
+        }
+        //Debug.Log(joystickDirection);
         didAttackResetCounter -= 1;
         if (didAttackResetCounter < 0)
         {
             didAttack = false;
         }
         //axis inputs to Vector2
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
+        float vertical = Input.GetAxisRaw("LeftJSVertical");
         inputVector = new Vector2(horizontal, vertical);
         
         //get mousePos and mouseDirection
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 playerPos = transform.position;
-        mouseDirection = (mousePos - playerPos).normalized;
+        //mouseDirection = (mousePos - playerPos).normalized;
+        mouseDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
 
-        if (Input.GetMouseButtonDown(1) && !materialAbsorberOut)
+        if (Input.GetButtonDown("LeftBumper"))
         {
-            ThrowMaterialAbsorber(mouseDirection);
+            if (materialAbsorberOut)
+            {
+                _currentMaterialAbsorber.StartReturning();
+            }
+            else
+            {
+                ThrowMaterialAbsorber(mouseDirection);
+            }
         }
         
-        if (Input.GetMouseButtonDown(0) && RC.isAvailable(RC.attackIndex)) {
+        if (Input.GetButtonDown("Xbutton") && RC.isAvailable(RC.attackIndex)) {
+            
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetKeyDown(KeyCode.Q) && RC.isAvailable(RC.specialIndex)) {
+        if (Input.GetButtonDown("RightBumper") && RC.isAvailable(RC.specialIndex)) {
             Special();
             RC.resetCooldown(RC.specialIndex);
         }
@@ -84,18 +106,20 @@ public class PlayerActions : MonoBehaviour
 
     void ThrowMaterialAbsorber(Vector2 direction)
     {
-        materialAbsorberOut = true;
+        //disable collisions between projectile and player until returning
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), true);
         
-        //for aiming via inputAxis
-        /*if (direction == Vector2.zero)
-        {
-            direction = GlobalFunctions.FaceDirectionToVector2(PlayerManager.instance.playerMovement.faceDirection);
-        }*/
+        //instantiate absorber prefab, set its velocity and facing relative to aim direction
+        materialAbsorberOut = true;
         
         GameObject projectile = Instantiate(materialAbsorberPrefab, transform.position, Quaternion.identity);
         
         Rigidbody2D projRB = projectile.GetComponent<Rigidbody2D>();
         projRB.velocity = direction * materialAbsorberSpeed;
+        projectile.transform.right = projRB.velocity;
+        _currentMaterialAbsorber = projectile.GetComponent<MaterialAbsorberProjectile>();
+        _currentMaterialAbsorber.maxDistance = materialAbsorberMaxDistance;
+        _currentMaterialAbsorber.returnSpeed = materialAbsorberReturnSpeed;
     }
     
     public void Attack()

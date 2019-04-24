@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
 
 //handles player movement: running, jumping, climbing
 //uses Physics2D to check for ground and climbables, does not use attached colliders
@@ -91,8 +93,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         //axis inputs to Vector2
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
+        float vertical = Input.GetAxisRaw("LeftJSVertical");
         _inputVector = new Vector2(horizontal, vertical);
 
         //if A or D are being pressed, set animation to walking
@@ -122,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Jumping", true);
 
         //player can jump if grounded or climbing and has not jumped recently
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || isClimbing) && !hasJumped && canMove)
+        if (Input.GetButtonDown("Abutton") && (isGrounded || isClimbing) && !hasJumped && canMove)
         {
             if (isClimbing)
             {
@@ -144,8 +146,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (nearbyClimbable)
             {
-                if (Input.GetKey(KeyCode.W) && canClimb)
+                if ((Input.GetAxisRaw("LeftJSVertical") < -0.5) && canClimb)
                 {
+                    Debug.Log("the x Axis is : " + Input.GetAxisRaw("LeftJSVertical"));
                     //changes for changing movement mode to climbing
                     isClimbing = true;
                     hasJumped = false;
@@ -182,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         if (hasJumped)
         {
             float vertVelocity = _rigidbody2D.velocity.y;
-            if (vertVelocity > 0 && !Input.GetKey(KeyCode.Space))
+            if (vertVelocity > 0 && !Input.GetButton("Abutton"))
             {
                 _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
             }
@@ -307,10 +310,10 @@ public class PlayerMovement : MonoBehaviour
             faceDirection = 3;
         }
         
-        _rigidbody2D.MovePosition(transform.position + (verticalInput * climbSpeed * Time.fixedDeltaTime));
+        _rigidbody2D.MovePosition(transform.position + (-verticalInput * climbSpeed * Time.fixedDeltaTime));
     }
 
-    void Jump(float power)
+    public void Jump(float power)
     {
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity

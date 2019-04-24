@@ -76,5 +76,7 @@ public class Death : MonoBehaviour
         
         // Everything is reset, so now we can move again!
         PlayerManager.instance.playerMovement.canMove = true;
+        
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
