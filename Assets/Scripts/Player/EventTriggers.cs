@@ -6,7 +6,7 @@ public class EventTriggers : MonoBehaviour
 {
     public Camera camera;
 
-    private float _targetScale = 6.4f;
+    private float _targetScale = 8f;
 
 
     // Start is called before the first frame update
