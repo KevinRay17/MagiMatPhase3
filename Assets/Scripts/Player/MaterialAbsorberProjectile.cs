@@ -10,10 +10,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     [HideInInspector]public float maxDistance = 1000; //max distance before projectile automatically returning, change in PlayerActions script (materialAbsorberMaxDistance)
     private float _distanceTravelled;
 
-    [HideInInspector] public bool attached; //whether or not the absorber has hit a target
+    [HideInInspector] public bool attached = false; //whether or not the absorber has hit a target
     [HideInInspector] public Material attachedMaterial = Material.None; //if attached or returning, the material that the absorber is now holding
 
-    [HideInInspector] public bool returning;
+    [HideInInspector] public bool returning = false;
     [HideInInspector] public float returnSpeed; //speed that absorber returns to player, change in PlayerActions script
 
     public GameObject particlePrefab;
@@ -81,12 +81,11 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 if (materialSourceScript != null)
                 {
-                    if (materialSourceScript.material != Material.None && FireUnlocked)
+                    if (materialSourceScript.material == Material.Fire && !FireUnlocked)
                     {
-                        Attach(materialSourceScript.material);
+                        Attach(Material.None);
                     }
-                    else if (materialSourceScript.material == Material.Vine ||
-                             materialSourceScript.material == Material.Rock)
+                    else
                     {
                         Attach(materialSourceScript.material);
                     }

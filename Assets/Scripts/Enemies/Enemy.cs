@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
 
     public Material material;
+    public int health;
 
     [Header("Detection")] 
     public bool isAggroed;
@@ -75,5 +76,10 @@ public abstract class Enemy : MonoBehaviour
     protected abstract void Behaviour();
     
     protected abstract void Attack();
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 
 }
