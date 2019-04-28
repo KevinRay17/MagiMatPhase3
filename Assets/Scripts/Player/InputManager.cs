@@ -114,7 +114,7 @@ public class InputManager : MonoBehaviour
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 playerPos = transform.position;
+            Vector2 playerPos = PlayerManager.instance.player.transform.position;
             return (mousePos - playerPos).normalized;
         }
         else
