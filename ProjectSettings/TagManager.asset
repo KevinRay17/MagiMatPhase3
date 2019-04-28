@@ -30,8 +30,8 @@ TagManager:
   - Player
   - Objects
   - Enemies
-  - 
-  - 
+  - EnemiesCollide
+  - Absorber
   - 
   - 
   - 

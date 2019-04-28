@@ -25,7 +25,8 @@ public class RockMaterial : MaterialClass
         //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
 
         Vector3 v3 = Input.mousePosition;
-        int attackDirection = (int)Mathf.Sign(Camera.main.ScreenToWorldPoint(v3).x - player.transform.position.x);
+        //int attackDirection = (int)Mathf.Sign(Camera.main.ScreenToWorldPoint(v3).x - player.transform.position.x);
+        float attackDirection = Input.GetAxisRaw("LeftJSHorizontal");
         {
             Vector2 attackDirectionV2 = Vector2.zero;
             if (attackDirection < 0)

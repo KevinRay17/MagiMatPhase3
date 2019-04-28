@@ -115,7 +115,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 13)
+        if (collision.gameObject.layer == 14)
         {
             TakeDamage(1);
         }

@@ -28,7 +28,7 @@ public class GolemProjectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerManager.instance.playerHealth.health -= 1;
+            PlayerManager.instance.playerHealth.TakeDamage(1);
             Destroy(gameObject);
         }
     }

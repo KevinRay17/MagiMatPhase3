@@ -77,6 +77,7 @@ MonoBehaviour:
   jumpPower: 10
   Fireball: {fileID: 545003357893963026, guid: 052decb487395474daea251b7e980813, type: 3}
   retreatSpeed: 10
+  Blood: {fileID: 2014688549793284707, guid: a4796aa485a31ce4eb5a70db5a76bd51, type: 3}
 --- !u!50 &9212876197783737872
 Rigidbody2D:
   serializedVersion: 4
@@ -90,8 +91,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0

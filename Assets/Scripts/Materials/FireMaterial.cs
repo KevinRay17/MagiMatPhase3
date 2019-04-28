@@ -86,7 +86,7 @@ public class FireMaterial : MaterialClass
     {
         Debug.Log("Fire Special");
 
-        Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+        Vector2 direction = PlayerManager.instance.playerActions.lastDirection;
         //flip player sprite to reflect direction
         //Positive direction = facing right; negative direction = facing left
         if (direction.x < 0)
@@ -102,7 +102,7 @@ public class FireMaterial : MaterialClass
     {
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
         //make the player ignore enemy collisions
-        Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
+       // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
         
         //remove existing velocity so there isn't a strange jump/drop at the end of the dash
         playerRB.velocity = Vector2.zero;
@@ -127,7 +127,7 @@ public class FireMaterial : MaterialClass
 
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
-        Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
+        //Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
 
         PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);

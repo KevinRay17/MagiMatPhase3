@@ -15,7 +15,7 @@ public class CollisionDetection : MonoBehaviour
         //{
          //   PlayerManager.instance.playerHealth.TakeDamage(2);
         //}
-         if (other.CompareTag("Enemy"))
+         if (other.CompareTag("EnemiesCollide"))
         {
             PlayerManager.instance.playerHealth.TakeDamage(1);
         }
@@ -24,7 +24,7 @@ public class CollisionDetection : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("EnemiesCollide"))
         {
             PlayerManager.instance.playerHealth.TakeDamage(1);
         } 

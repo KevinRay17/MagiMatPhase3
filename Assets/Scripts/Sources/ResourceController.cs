@@ -17,7 +17,7 @@ public class ResourceController : MonoBehaviour
     public float maxMana = 100f;
 
     //the amount that is drained every frame
-    private float passiveManaDrain = 1f/15f;
+    public float passiveManaDrain = 1f/15f;
 
     /*
     //the mana cost of a small action
@@ -46,7 +46,7 @@ public class ResourceController : MonoBehaviour
     
     //setting constant floats for the length of cooldown timers
     public const float attackCooldown = 0.5f;
-    public const float specialCooldown = 2f;
+    public const float specialCooldown = 1f;
     
     //setting constant ints to track index of cooldown timers
     public  int attackIndex = 0;
@@ -85,13 +85,13 @@ public class ResourceController : MonoBehaviour
         setAttackStatus();
         setSpecialStatus();
         */
-        Debug.Log(oneTimeUse);
+      //  Debug.Log(oneTimeUse);
         
         if (currentMana > 0)
         {
             currentMana -= passiveManaDrain*10; //constantly drain mana every frame >:(
         }
-        
+
         if (currentMana < 0)
         {
             /*
@@ -102,12 +102,14 @@ public class ResourceController : MonoBehaviour
                 oneTimeUse = 0;
             }
             if (oneTimeUse == 0)
+
             {
                 PlayerManager.instance.material = Material.None;
             }
             */
             PlayerManager.instance.material = Material.None;
         }
+
 
         for (var i = 0; i < numOfCooldowns; i++)
         {
