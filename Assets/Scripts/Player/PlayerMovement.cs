@@ -11,8 +11,13 @@ using Debug = UnityEngine.Debug;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
-
+    
     private Vector2 _inputVector;
+    [HideInInspector]
+    public Vector2 inputVector
+    {
+        get { return _inputVector;  }
+    }
 
     public Vector3 teleLastPos;
 
@@ -66,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         teleLastPos = transform.position;
     }
 
+    
     [HideInInspector]
     public float horizontal;
     protected float _horizontal
@@ -78,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return vertical; }
     }
+    
 
     void Update()
     {
