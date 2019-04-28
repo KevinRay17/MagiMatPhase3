@@ -227,6 +227,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
 
+        
+
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
@@ -321,6 +323,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = _rigidbody2D.velocity;
         velocity.y = 0;
         _rigidbody2D.velocity = velocity;
+        
+                
+        //Audio Clip Stuff Below
+        var clip = Resources.Load<AudioClip>("Sounds/JumpLaunch");
+        AudioManager.instance.playSound(clip);
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }

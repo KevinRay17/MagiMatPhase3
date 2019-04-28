@@ -87,6 +87,9 @@ public class PlayerActions : MonoBehaviour
             else
             {
                 ThrowMaterialAbsorber(mouseDirection);
+                //Sound for Knife Landing
+                var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
+                AudioManager.instance.playSound(knifeThrow);
             }
         }
         
@@ -131,6 +134,9 @@ public class PlayerActions : MonoBehaviour
         {
             //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
             PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
+            
+            var BasicAttack = Resources.Load<AudioClip>("Sounds/BasicAttack");
+            AudioManager.instance.playSound(BasicAttack);
         }
         //Ground pound with Rock Abilities
         else if (PlayerManager.instance.material == Material.Rock)
@@ -190,8 +196,8 @@ public class PlayerActions : MonoBehaviour
                 fireSR.flipX = false;
 
 
-            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
-            AudioManager.instance.playSound(SFX);
+            var fireAttack = Resources.Load<AudioClip>("Sounds/FireAttack");
+            AudioManager.instance.playSound(fireAttack);
         }
     }
     
