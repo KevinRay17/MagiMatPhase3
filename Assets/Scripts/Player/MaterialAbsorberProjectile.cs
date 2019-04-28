@@ -50,7 +50,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-<<<<<<< HEAD
+
         Attach();
         OnTriggerStay2D(other.collider);
     }
@@ -58,10 +58,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //going outwards
-=======
+
         
         //thrown out
->>>>>>> origin/CH_Branch2
+
         if (!attached && !returning)
         {
             if (other.CompareTag("Enemy"))
