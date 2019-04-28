@@ -145,6 +145,7 @@ public class PlayerActions : MonoBehaviour
             //only create the rocks if you're on the ground
             if (PlayerManager.instance.playerMovement.isGrounded)
             {
+                
                 PlayerManager.instance.playerMovement.anim.SetBool("Rockslam", true);
                 GameObject rockslamObj = Instantiate(rockslamAniPrefab, transform.position, Quaternion.identity);
                 rockslamObj.transform.parent = gameObject.transform;
@@ -157,8 +158,8 @@ public class PlayerActions : MonoBehaviour
             }
 
 
-            var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
-            AudioManager.instance.playSound(clip);
+            var BasicAttack = Resources.Load<AudioClip>("Sounds/BasicAttack");
+            AudioManager.instance.playSound(BasicAttack);
             _groundPounding = true;
             this._rigidbody2D.AddForce(new Vector2(0,_downwardStompSpeed));
         }
@@ -176,8 +177,8 @@ public class PlayerActions : MonoBehaviour
                 PlayerManager.instance.playerMovement.anim.SetBool("VineDown", true);
 
 
-            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
-            AudioManager.instance.playSound(SFX);
+            var BasicAttack = Resources.Load<AudioClip>("Sounds/BasicAttack");
+            AudioManager.instance.playSound(BasicAttack);
         }
         if  (PlayerManager.instance.material == Material.Fire)
         {
