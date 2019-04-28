@@ -8,7 +8,6 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    public GameObject FireCrystal;
     
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerHealth playerHealth;
@@ -39,11 +38,6 @@ public class PlayerManager : MonoBehaviour
     {
         material = newMaterial;
         materialScript = MaterialsManager.GetMaterialScript(newMaterial);
-        if ((material == Material.Fire))
-        {
-         
-            FireCrystal.SetActive(true);
-        }
 
         Debug.Log("New Material: " + material);
     }

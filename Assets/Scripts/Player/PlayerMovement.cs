@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
 
-    private Vector2 _inputVector;
+    [FormerlySerializedAs("_inputVector")] public Vector2 inputVector;
 
     public Vector3 teleLastPos;
 
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         //axis inputs to Vector2
         float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
         float vertical = Input.GetAxisRaw("LeftJSVertical");
-        _inputVector = new Vector2(horizontal, vertical);
+        inputVector = new Vector2(horizontal, vertical);
 
         //if A or D are being pressed, set animation to walking
         //Debug.Log(horizontal);
@@ -122,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             anim.SetBool("Jumping", true);
+        
 
         //player can jump if grounded or climbing and has not jumped recently
         if (Input.GetButtonDown("Abutton") && (isGrounded || isClimbing) && !hasJumped && canMove)
@@ -225,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //handles horizontal movement when grounded or in the air
         Vector2 velocity = _rigidbody2D.velocity;
-        Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
+        Vector2 horizontalInput = new Vector2(inputVector.x, 0);
 
         
 
@@ -261,11 +262,11 @@ public class PlayerMovement : MonoBehaviour
             currentDirection = 1;
         }
 
-        if (_inputVector.x < 0)
+        if (inputVector.x < 0)
         {
             moveDirection = -1;
         }
-        else if (_inputVector.x > 0)
+        else if (inputVector.x > 0)
         {
             moveDirection = 1;
         }
@@ -300,7 +301,7 @@ public class PlayerMovement : MonoBehaviour
 
         //handles vertical movement when climbing
 
-        Vector3 verticalInput = new Vector2(0, _inputVector.y);
+        Vector3 verticalInput = new Vector2(0, inputVector.y);
         
         //set face direction if verticalInput != 0;
         if (verticalInput.y > 0)
