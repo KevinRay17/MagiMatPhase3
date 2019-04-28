@@ -22,6 +22,8 @@ public class AnimationEvents : MonoBehaviour
     public AnimatorOverrideController fireCollarController;
     public AnimatorOverrideController vineCollarController;
     public AnimatorOverrideController rockCollarController;
+    public Color transparent;
+    public Color solid;
 
     private Animator _anim;
     private Animator _parentAnim;
@@ -68,14 +70,20 @@ public class AnimationEvents : MonoBehaviour
 
         if (collar && _parentAnim != null)
         {
-            if (_parentAnim.GetBool("Fire"))
+            if (_anim.GetBool("Fire"))
                 _anim.runtimeAnimatorController = fireCollarController;
-            else if (_parentAnim.GetBool("Vine"))
+            else if (_anim.GetBool("Vine"))
                 _anim.runtimeAnimatorController = vineCollarController;
-            else if (_parentAnim.GetBool("Rock"))
+            else if (_anim.GetBool("Rock"))
                 _anim.runtimeAnimatorController = rockCollarController;
+        }
+
+        if (collar)
+        {
+            if (_anim.GetBool("Fire") || _anim.GetBool("Vine") || _anim.GetBool("Rock"))
+                _sr.color = solid;
             else
-                _anim.runtimeAnimatorController = null;
+                _sr.color = transparent;
         }
 
 
@@ -118,18 +126,21 @@ public class AnimationEvents : MonoBehaviour
         if (_rb2d.velocity.y <= 0.7f && _rb2d.velocity.y > 0)
             _anim.SetBool("FallTransfer", true);
         //constant fall animation
-        else if (_rb2d.velocity.y <= 0f)
+        else if (_rb2d.velocity.y <= 0f && !PlayerManager.instance.playerMovement.isGrounded)
         {
             _anim.SetBool("FallTransfer", false);
             _anim.SetBool("Falling", true);
         }
 
-        //if hit ground, play the landing animation
+        //if hit ground, play the landing animation (animation cancels on its own when finished)
         if (PlayerManager.instance.playerMovement.isGrounded && !PlayerManager.instance.playerMovement.wasGrounded)
         {
             _anim.SetBool("Falling", false);
             _anim.SetBool("Landing", true);
         }
+
+        if (PlayerManager.instance.playerMovement.hasJumped)
+            _anim.SetBool("Jumping", true);
     }
 
 
