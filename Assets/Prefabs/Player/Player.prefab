@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1975484080}
   - component: {fileID: 1581266440}
   - component: {fileID: 4452209810000737717}
+  - component: {fileID: 1654250384}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -36,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 4233667675472675762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.5, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 2}
+  m_LocalScale: {x: 0.22010653, y: 0.22010653, z: 1.4673768}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f95a1fbef851047be944580b67726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputVector: {x: 0, y: 0}
   teleLastPos: {x: 0, y: 0, z: 0}
   faceDirection: 0
   hasJumped: 0
@@ -111,12 +113,15 @@ MonoBehaviour:
   inputVector: {x: 0, y: 0}
   mousePos: {x: 0, y: 0}
   mouseDirection: {x: 0, y: 0}
+  joystickDirection: {x: 0, y: 0}
+  lastDirection: {x: 0, y: 0}
   materialAbsorberOut: 0
   materialAbsorberSpeed: 35
   materialAbsorberReturnSpeed: 35
   materialAbsorberMaxDistance: 10
   materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
     type: 3}
+  RC: {fileID: 0}
   fireAniPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
     type: 3}
   rockslamAniPrefab: {fileID: 6265150512787786891, guid: aa4284f8ea164e54ea9abe3c3a8a8697,
@@ -133,7 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad789e853fa351c429169fc93c6243f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireCrystal: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: {fileID: 0}
   playerActions: {fileID: 0}
@@ -147,7 +151,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233667675472675762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -233,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMana: 100
+  passiveManaDrain: 0.009
   attackIndex: 0
   specialIndex: 1
 --- !u!212 &1581266440
@@ -296,3 +301,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+--- !u!70 &1654250384
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233667675472675762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 3, y: 6.75}
+  m_Direction: 0
