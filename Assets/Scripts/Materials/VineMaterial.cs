@@ -218,7 +218,7 @@ public class VineMaterial : MaterialClass
             yield return new WaitForEndOfFrame();
         }
 
-        if (onWall && Input.GetKey(KeyCode.Space))
+        if (onWall && Input.GetButton("Abutton"))
         {
              PlayerManager.instance.playerMovement.Jump(PlayerManager.instance.playerMovement.jumpPower);
         }
