@@ -4158,6 +4158,8 @@ MonoBehaviour:
     type: 2}
   rockCollarController: {fileID: 22100000, guid: 28a7831dd5d50454487f30d3e077a5b0,
     type: 2}
+  transparent: {r: 0, g: 0, b: 0, a: 0}
+  solid: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &430209948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22901,17 +22903,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 6e3fb493d94824e43a3700933ce84b6b,
+        type: 3}
     - target: {fileID: 9040459358275439293, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040459358275439293, guid: e253c50ff4fa139479617563fae789f2,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358275439294, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 87ce0fedecd83b241860db970ace8174,
+      objectReference: {fileID: 22100000, guid: 54135cc52ed3c8848989338a68657647,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e253c50ff4fa139479617563fae789f2, type: 3}
