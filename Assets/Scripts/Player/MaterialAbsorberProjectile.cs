@@ -25,6 +25,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        
+
+        
+
     }
 
     void Update()
@@ -46,6 +50,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
+<<<<<<< HEAD
         Attach();
         OnTriggerStay2D(other.collider);
     }
@@ -53,6 +58,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //going outwards
+=======
+        
+        //thrown out
+>>>>>>> origin/CH_Branch2
         if (!attached && !returning)
         {
             if (other.CompareTag("Enemy"))
@@ -63,6 +72,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                     if (enemyScript.material != Material.None)
                     {
                         Attach(enemyScript.material);
+                        
                     }
                 }
             }
@@ -113,6 +123,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     private void Attach(Material material = Material.None)
     {
         //call when absorber hits a collider when going out
+        
+        //Sound for Knife Landing
+        var knifeLand = Resources.Load<AudioClip>("Sounds/KnifeLand");
+        AudioManager.instance.playSound(knifeLand);
         _rigidbody2D.velocity = Vector2.zero;
         attached = true;
         attachedMaterial = material;

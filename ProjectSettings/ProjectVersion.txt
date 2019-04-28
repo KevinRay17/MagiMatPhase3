@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 m_EditorVersion: 2018.3.8f1
 
 =======
 m_EditorVersion: 2018.3.2f1
 >>>>>>> origin/Andrew
+=======
+m_EditorVersion: 2018.3.8f1
+>>>>>>> origin/CH_Branch2
