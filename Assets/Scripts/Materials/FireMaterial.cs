@@ -18,6 +18,12 @@ public class FireMaterial : MaterialClass
     public float specialDashDistance;
     public float specialDashTime; //how long the dash takes
 
+    private Rigidbody2D playerRB;
+    private void Awake()
+    {
+         playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
+    }
+
     public override void Attack(GameObject player)
     {
         Debug.Log("Fire Attack");
@@ -85,22 +91,31 @@ public class FireMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Fire Special");
+        StartCoroutine(DashWait(player));
+    }
 
-        Vector2 direction = PlayerManager.instance.playerActions.lastDirection;
+    IEnumerator DashWait(GameObject player)
+    {
+       
+        //Freeze movement until dash
+        
+        playerRB.velocity = new Vector2(0,0);
+        playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(.5f);
+        playerRB.constraints = RigidbodyConstraints2D.None;
+        playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        Vector2 direction = new Vector2(PlayerManager.instance.playerMovement.inputVector.x, -PlayerManager.instance.playerMovement.inputVector.y);
         //flip player sprite to reflect direction
         //Positive direction = facing right; negative direction = facing left
         if (direction.x < 0)
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
         else
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
-
-
         StartCoroutine(FireSpecial(player, direction));
     }
-
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
-        Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
+      
         //make the player ignore enemy collisions
        // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), true);
         
@@ -131,5 +146,6 @@ public class FireMaterial : MaterialClass
         PlayerManager.instance.playerMovement.canMove = true;
 
         PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
+       PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
     }
 }

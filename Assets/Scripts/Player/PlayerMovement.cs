@@ -11,8 +11,13 @@ using Debug = UnityEngine.Debug;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
-
+    
     private Vector2 _inputVector;
+    [HideInInspector]
+    public Vector2 inputVector
+    {
+        get { return _inputVector;  }
+    }
 
     public Vector3 teleLastPos;
 
@@ -66,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         teleLastPos = transform.position;
     }
 
+    
     [HideInInspector]
     public float horizontal;
     protected float _horizontal
@@ -78,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return vertical; }
     }
+    
 
     void Update()
     {
@@ -186,8 +193,8 @@ public class PlayerMovement : MonoBehaviour
         //check below the player if there is ground
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.3f, -0.94f, 0),
-            transform.position + new Vector3(0.3f, -1.04f, 0), 
+            transform.position + new Vector3(-0.1f, -0.94f, 0),
+            transform.position + new Vector3(0.1f, -1.04f, 0), 
             groundLayers);
     }
 
@@ -211,6 +218,8 @@ public class PlayerMovement : MonoBehaviour
         //handles horizontal movement when grounded or in the air
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
+
+        
 
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
@@ -306,6 +315,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = _rigidbody2D.velocity;
         velocity.y = 0;
         _rigidbody2D.velocity = velocity;
+        
+                
+        //Audio Clip Stuff Below
+        var clip = Resources.Load<AudioClip>("Sounds/JumpLaunch");
+        AudioManager.instance.playSound(clip);
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
