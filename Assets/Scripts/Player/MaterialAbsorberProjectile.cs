@@ -53,7 +53,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //going outwards
-        if (!attached && !returning)
+        if (!returning)
         {
             if (other.CompareTag("Enemy"))
             {
