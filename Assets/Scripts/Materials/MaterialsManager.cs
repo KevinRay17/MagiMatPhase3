@@ -5,7 +5,7 @@ using UnityEngine;
 public class MaterialsManager : MonoBehaviour
 {
     public static Dictionary<Material, MaterialClass> MaterialsDict = new Dictionary<Material, MaterialClass>();
-    
+    public static MaterialClass newMaterialScript; 
     public static void AddMaterialScript(Material material, MaterialClass script)
     {
         if (!MaterialsDict.ContainsKey(material))
@@ -16,7 +16,7 @@ public class MaterialsManager : MonoBehaviour
 
     public static MaterialClass GetMaterialScript(Material material)
     {
-        MaterialsDict.TryGetValue(material, out MaterialClass newMaterialScript);
+        MaterialsDict.TryGetValue(material, out newMaterialScript);
         return newMaterialScript;
     }
 
