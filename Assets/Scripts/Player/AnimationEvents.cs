@@ -87,7 +87,7 @@ public class AnimationEvents : MonoBehaviour
         }
 
 
-        /*
+        
         //checking for current material and changing sprite
         if (PlayerManager.instance.material == Material.None)
         {
@@ -113,7 +113,7 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Fire", false);
             _anim.SetBool("Vine", false);
         }
-        */
+        
         
         //if horizontal input is being pressed, change animation to walking
         //Debug.Log(horizontal);
@@ -123,10 +123,14 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Moving", false);
 
         //at close to the peak of the jump, start the fall animation
-        if (_rb2d.velocity.y <= 0.7f && _rb2d.velocity.y > 0)
+        if (!PlayerManager.instance.playerMovement.isGrounded && _rb2d.velocity.y <= 0.7f && _rb2d.velocity.y > -0.5F)
+        {
             _anim.SetBool("FallTransfer", true);
+            _anim.SetBool("Jumping", false);
+            _anim.SetBool("Jumpup", false);
+        }
         //constant fall animation
-        else if (_rb2d.velocity.y <= 0f && !PlayerManager.instance.playerMovement.isGrounded)
+        else if (_rb2d.velocity.y <= -0.5f && !PlayerManager.instance.playerMovement.isGrounded)
         {
             _anim.SetBool("FallTransfer", false);
             _anim.SetBool("Falling", true);
@@ -136,11 +140,16 @@ public class AnimationEvents : MonoBehaviour
         if (PlayerManager.instance.playerMovement.isGrounded && !PlayerManager.instance.playerMovement.wasGrounded)
         {
             _anim.SetBool("Falling", false);
+            _anim.SetBool("Jumping", false);
+            _anim.SetBool("Jumpup", false);
             _anim.SetBool("Landing", true);
         }
 
         if (PlayerManager.instance.playerMovement.hasJumped)
+        {
+            _anim.SetBool("Landing", false);
             _anim.SetBool("Jumping", true);
+        }
     }
 
 

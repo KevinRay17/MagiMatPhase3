@@ -193,8 +193,8 @@ public class PlayerMovement : MonoBehaviour
         //check below the player if there is ground
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.3f, -0.94f, 0),
-            transform.position + new Vector3(0.3f, -1.04f, 0), 
+            transform.position + new Vector3(-0.1f, -0.94f, 0),
+            transform.position + new Vector3(0.1f, -1.04f, 0), 
             groundLayers);
     }
 

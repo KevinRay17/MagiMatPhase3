@@ -53,6 +53,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
         Attach();
         OnTriggerStay2D(other.collider);
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -62,7 +63,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         
         //thrown out
 
-        if (!attached && !returning)
+        if (!returning)
         {
             if (other.CompareTag("Enemy"))
             {
@@ -81,22 +82,18 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 if (materialSourceScript != null)
                 {
-                    if (materialSourceScript.material == Material.Fire && !FireUnlocked)
-                    {
-                        Attach(Material.None);
-                    }
-                    else
+                    
                     {
                         Attach(materialSourceScript.material);
                     }
                 }
             }
-            else if (other.CompareTag("MaterialUnlock"))
+           /* else if (other.CompareTag("MaterialUnlock"))
             {
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 Attach(materialSourceScript.material);
                 FireUnlocked = true;
-            }
+            }*/
         }
         else
         {
