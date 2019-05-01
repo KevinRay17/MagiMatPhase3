@@ -96,7 +96,7 @@ public class PlayerHealth : MonoBehaviour
             
             
             var PlayerHurt = Resources.Load<AudioClip>("Sounds/PlayerHurt");
-            AudioManager.instance.playSound(PlayerHurt);
+            AudioManager.instance.PlaySound(PlayerHurt);
 
             health -= damageAmount;
             _invincibilityTimer = invincibilityDuration;

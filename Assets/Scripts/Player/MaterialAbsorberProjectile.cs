@@ -118,7 +118,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         
         //Sound for Knife Landing
         var knifeLand = Resources.Load<AudioClip>("Sounds/KnifeLand");
-        AudioManager.instance.playSound(knifeLand);
+        AudioManager.instance.PlaySound(knifeLand);
         _rigidbody2D.velocity = Vector2.zero;
         attached = true;
         attachedMaterial = material;

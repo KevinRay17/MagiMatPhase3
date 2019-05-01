@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
     // int responsible for keeping track of what specific track in the array we are playing on
     public int currentTrackNumber;
+    
 
     public void Awake()
     {
@@ -38,15 +39,24 @@ public class AudioManager : MonoBehaviour
 
 
         instance = this;
+        
+        GameObject soundTrack = new GameObject("SoundTrack");
+        var soundTrackAudioSource = soundTrack.AddComponent<AudioSource>();
+        soundTrackAudioSource.clip = Resources.Load<AudioClip>("Sounds/Phase3Soundtrack");
+        soundTrackAudioSource.loop = true;
+        soundTrackAudioSource.volume = 0.2f;
+        soundTrackAudioSource.Play();
     }
 
     
     //function to call from other scripts when a sound needs to be played 
     //plays sound on one of the many audiosources then moves up the list of audiosources
-    public void playSound(AudioClip clip)
+    public void PlaySound(AudioClip clip, float volume = 1)
     {
+        tracks[currentTrackNumber].volume = volume;
         tracks[currentTrackNumber].PlayOneShot(clip);
         currentTrackNumber = (currentTrackNumber + 1) % numberOfAudioTracks;
+        
     }
 
 
