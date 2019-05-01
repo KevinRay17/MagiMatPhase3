@@ -8707,12 +8707,12 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 760
+      value: 794.23
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -144.8
+      value: -137.86
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
@@ -8778,6 +8778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: groundLayers.m_Bits
       value: 4368
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233667675472675767, guid: b4a6f71d7f6b5b24480c57144058126d,
+        type: 3}
+      propertyPath: ground.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6f71d7f6b5b24480c57144058126d, type: 3}

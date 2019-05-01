@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D nearbyClimbable;
     
     public LayerMask groundLayers;
+    public LayerMask ground;
     public LayerMask climbableLayers;
     
     public float gravityScale;
@@ -110,7 +111,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            teleLastPos = this.transform.position;
+            //check if ground is below the player and set last grounded position for respawn
+            if (Physics2D.OverlapArea(transform.position + new Vector3(-0.1f, -0.94f, 0),
+                transform.position + new Vector3(0.1f, -1.04f, 0),
+                ground))
+            {
+                teleLastPos = this.transform.position;
+            }   
         }
 
         //player can jump if grounded or climbing and has not jumped recently
@@ -190,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool GroundedCheck()
     {
-        //check below the player if there is ground
+        //check below the player if there is ground or water or other objects
         
         return Physics2D.OverlapArea(
             transform.position + new Vector3(-0.1f, -0.94f, 0),
