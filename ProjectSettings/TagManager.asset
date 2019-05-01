@@ -49,6 +49,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg3
+    uniqueID: 2953641699
+    locked: 0
+  - name: bg2
+    uniqueID: 3160156657
+    locked: 0
+  - name: bg1
+    uniqueID: 1780160509
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -57,4 +66,7 @@ TagManager:
     locked: 0
   - name: Particles+Effects
     uniqueID: 563771505
+    locked: 0
+  - name: foreground
+    uniqueID: 397637901
     locked: 0

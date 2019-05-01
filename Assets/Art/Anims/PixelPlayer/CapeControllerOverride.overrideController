@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CapeControllerOverride
-  m_Controller: {fileID: 9100000, guid: 0af9cb5999693d64d9cc41fa15ea0935, type: 2}
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 0a38d0c7cb033084085b4f76f28561a2, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: b2b7d8e8ee3d5e640a29b3348a53844b, type: 2}
@@ -19,8 +19,6 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 591bf888d7b48264682c1a5b02d5eaa4, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 6bfa516e132089c4aa97ef9817ca923b, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: dff00c6e0176c7c41a5b9ceb03146e31, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: cc2598ec3e9e2084eacfc9224854ddd4, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 6cad7209915c99149b7beb1a1b1f0c3b, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: b795dcb5a4d6bcb4d8dc92f37c13d543, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: d14d0e88b29115146abbbb7ecdd8502f, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}

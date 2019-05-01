@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RockCollarController
-  m_Controller: {fileID: 9100000, guid: 0af9cb5999693d64d9cc41fa15ea0935, type: 2}
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: b795dcb5a4d6bcb4d8dc92f37c13d543, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 96f8aa5bc2cb1b44088407270ee45207, type: 2}
@@ -21,7 +21,5 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 0ddc20851ded5444db615c45c68132cf, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 53aa24e4522028a488dbc779ddd50a3c, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: ee6bc32702345bf4c995eeb61384664f, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: cc2598ec3e9e2084eacfc9224854ddd4, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 02dacf8ce9d227744be883809dc4e6a2, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: a11aeaff3539853459f183c00898c9b2, type: 2}

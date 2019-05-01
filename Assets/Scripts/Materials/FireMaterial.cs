@@ -91,6 +91,7 @@ public class FireMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Fire Special");
+        
         StartCoroutine(DashWait(player));
     }
 
@@ -145,7 +146,7 @@ public class FireMaterial : MaterialClass
         //Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
 
-        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
+        PlayerManager.instance.playerMovement.anim.SetBool("Dash", false);
        PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
     }
 }

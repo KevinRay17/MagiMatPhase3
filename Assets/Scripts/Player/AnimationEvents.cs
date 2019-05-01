@@ -45,13 +45,17 @@ public class AnimationEvents : MonoBehaviour
 
     private void Update()
     {
+        _anim.SetInteger("direction", PlayerManager.instance.playerMovement.faceDirection);
+
         //please kill me
         if (_parentAnim != null)
         {
             _anim.SetBool("Fire", _parentAnim.GetBool("Fire"));
             _anim.SetBool("Vine", _parentAnim.GetBool("Vine"));
             _anim.SetBool("Rock", _parentAnim.GetBool("Rock"));
-        }
+            _sr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+            _anim.SetBool("Landing", _parentAnim.GetBool("Landing"));
+        } 
 
         //CAPE COLOR
         if (cape)
@@ -87,7 +91,7 @@ public class AnimationEvents : MonoBehaviour
         }
 
 
-        
+        /*
         //checking for current material and changing sprite
         if (PlayerManager.instance.material == Material.None)
         {
@@ -113,8 +117,9 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Fire", false);
             _anim.SetBool("Vine", false);
         }
+        */
         
-        
+        /*
         //if horizontal input is being pressed, change animation to walking
         //Debug.Log(horizontal);
         if (PlayerManager.instance.playerMovement.horizontal != 0)
@@ -150,6 +155,30 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Landing", false);
             _anim.SetBool("Jumping", true);
         }
+        */
+
+
+
+        if (PlayerManager.instance.playerMovement.justJumped)
+        {
+            //print("jumped");
+            _anim.SetTrigger("jump");
+        }
+
+        if (PlayerManager.instance.playerMovement.isGrounded && !PlayerManager.instance.playerMovement.wasGrounded)
+        {
+            _anim.SetBool("Landing", true);
+        }
+
+        if (PlayerManager.instance.playerHealth.health <= 0)
+            _anim.SetBool("Dead", true);
+        else
+            _anim.SetBool("Dead", false);
+
+
+        _anim.SetBool("grounded", PlayerManager.instance.playerMovement.isGrounded);
+        _anim.SetFloat("xVel", Mathf.Abs(PlayerManager.instance.playerMovement.getSpeed().x));
+        _anim.SetFloat("yVel", PlayerManager.instance.playerMovement.getSpeed().y);
     }
 
 
@@ -173,7 +202,8 @@ public class AnimationEvents : MonoBehaviour
 
     public void TurnAtkAniOff()
     {
-        _anim.SetBool("BasicAtk", false);
+        //_anim.SetBool("BasicAtk", false);
+        _anim.SetBool("Atk", false);
     }
 
     public void JumpUpTransfer()
@@ -196,5 +226,15 @@ public class AnimationEvents : MonoBehaviour
     public void TurnOffLanding()
     {
         _anim.SetBool("Landing", false);
+    }
+    
+    public void TurnOffThrow()
+    {
+        _anim.SetBool("Throw", false);
+    }
+
+    public void TurnOffSpecial()
+    {
+        _anim.SetBool("Special", false);
     }
 }

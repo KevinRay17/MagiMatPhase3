@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9040459358275439292}
   - component: {fileID: 9040459358275439293}
   - component: {fileID: 9040459358275439294}
-  m_Layer: 0
+  - component: {fileID: 1921021088}
+  m_Layer: 11
   m_Name: collar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9040459358275439283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 9040459358843517330}
   m_RootOrder: 1
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e3fb493d94824e43a3700933ce84b6b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &9040459358275439294
@@ -90,7 +91,7 @@ Animator:
   m_GameObject: {fileID: 9040459358275439283}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 59e706ac968b4524eb5654cb697270f4, type: 2}
+  m_Controller: {fileID: 22100000, guid: 28a7831dd5d50454487f30d3e077a5b0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,6 +100,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1921021088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040459358275439283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc50230d6018bc14bb4693f50e3ebc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cape: 0
+  collar: 1
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  fireColor: {r: 0, g: 0, b: 0, a: 0}
+  vineColor: {r: 0, g: 0, b: 0, a: 0}
+  rockColor: {r: 0, g: 0, b: 0, a: 0}
+  fireCollarController: {fileID: 22100000, guid: 54135cc52ed3c8848989338a68657647,
+    type: 2}
+  vineCollarController: {fileID: 22100000, guid: 87ce0fedecd83b241860db970ace8174,
+    type: 2}
+  rockCollarController: {fileID: 22100000, guid: 28a7831dd5d50454487f30d3e077a5b0,
+    type: 2}
+  transparent: {r: 0, g: 0, b: 0, a: 0}
+  solid: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &9040459358755557323
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +138,7 @@ GameObject:
   - component: {fileID: 9040459358755557334}
   - component: {fileID: 9040459358755557333}
   - component: {fileID: 9040459358755557335}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,8 +153,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9040459358755557323}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00030517578, y: 0, z: -0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 9040459358843517330}
   m_RootOrder: 0
@@ -214,12 +241,14 @@ MonoBehaviour:
   cape: 1
   collar: 0
   baseColor: {r: 1, g: 1, b: 1, a: 0}
-  fireColor: {r: 1, g: 0.30380613, b: 0.25943398, a: 1}
-  vineColor: {r: 0.6452367, g: 1, b: 0.3254717, a: 1}
-  rockColor: {r: 0.59451765, g: 0.59451765, b: 0.754717, a: 1}
+  fireColor: {r: 0.5566038, g: 0.032394927, b: 0, a: 1}
+  vineColor: {r: 0.47782126, g: 0.8207547, b: 0.16647384, a: 1}
+  rockColor: {r: 0.74759704, g: 0.74759704, b: 0.9056604, a: 1}
   fireCollarController: {fileID: 0}
   vineCollarController: {fileID: 0}
   rockCollarController: {fileID: 0}
+  transparent: {r: 0, g: 0, b: 0, a: 0}
+  solid: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &9040459358843517327
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,9 +270,10 @@ GameObject:
   - component: {fileID: 9040459358843517320}
   - component: {fileID: 9040459358843517331}
   - component: {fileID: 9040459358843517340}
-  m_Layer: 0
+  - component: {fileID: 340277606}
+  m_Layer: 11
   m_Name: P_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +287,7 @@ Transform:
   m_GameObject: {fileID: 9040459358843517327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 66.37396, y: 3.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 9040459358755557332}
   - {fileID: 9040459358275439292}
@@ -319,7 +349,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9040459358843517327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -352,6 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleLastPos: {x: 0, y: 0, z: 0}
   faceDirection: 0
+  justJumped: 0
   hasJumped: 0
   isGrounded: 0
   wasGrounded: 0
@@ -418,6 +449,7 @@ MonoBehaviour:
   materialAbsorberMaxDistance: 10
   materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
     type: 3}
+  RC: {fileID: 0}
   fireAniPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
     type: 3}
   rockslamAniPrefab: {fileID: 6265150512787786891, guid: aa4284f8ea164e54ea9abe3c3a8a8697,
@@ -434,7 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad789e853fa351c429169fc93c6243f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireCrystal: {fileID: 0}
   playerMovement: {fileID: 0}
   playerHealth: {fileID: 0}
   playerActions: {fileID: 0}
@@ -489,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMana: 100
-  passiveManaDrain: 0.06666667
+  passiveManaDrain: 0.009
   attackIndex: 0
   specialIndex: 1
 --- !u!114 &9040459358843517320
@@ -515,7 +546,7 @@ Animator:
   m_GameObject: {fileID: 9040459358843517327}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0af9cb5999693d64d9cc41fa15ea0935, type: 2}
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -545,3 +576,21 @@ MonoBehaviour:
   fireCollarController: {fileID: 0}
   vineCollarController: {fileID: 0}
   rockCollarController: {fileID: 0}
+  transparent: {r: 0, g: 0, b: 0, a: 0}
+  solid: {r: 0, g: 0, b: 0, a: 0}
+--- !u!70 &340277606
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040459358843517327}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.4, y: 1.1}
+  m_Direction: 0
