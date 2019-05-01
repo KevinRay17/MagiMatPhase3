@@ -19,7 +19,8 @@ public class FireMaterial : MaterialClass
     public float specialDashTime; //how long the dash takes
 
     private Rigidbody2D playerRB;
-    private void Awake()
+    
+    private void Start()
     {
          playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
     }
