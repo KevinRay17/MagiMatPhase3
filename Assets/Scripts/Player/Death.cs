@@ -16,8 +16,6 @@ public class Death : MonoBehaviour
     // youDiedText is set to false as soon as the scene is reloaded so there's no issues on reloading the screen
     void Awake()
     {
-        youDiedText.SetActive(false);
-        
         // Set our respawn to where we're placed in the level, indicating this is the starting area
         respawnPosition = transform.position;
     }
