@@ -40,7 +40,7 @@ public class VineMaterial : MaterialClass
         }
         else
         {
-            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
             float directionAngle = GlobalFunctions.Vector2DirectionToAngle(direction);
 
             //for animation but overall flip code I guess
@@ -94,7 +94,7 @@ public class VineMaterial : MaterialClass
             canGrapple = false;
             Debug.Log("Vine Special");
 
-            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
             RaycastHit2D hit =
                 Physics2D.Raycast(player.transform.position, direction, maxGrappleDistance, grappleLayer);
 
@@ -218,7 +218,7 @@ public class VineMaterial : MaterialClass
             yield return new WaitForEndOfFrame();
         }
 
-        if (onWall && Input.GetButton("Abutton"))
+        if (onWall && InputManager.GetJumpButton())
         {
              PlayerManager.instance.playerMovement.Jump(PlayerManager.instance.playerMovement.jumpPower);
         }
