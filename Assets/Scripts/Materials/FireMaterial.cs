@@ -40,7 +40,7 @@ public class FireMaterial : MaterialClass
         }
         else
         {
-            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
 
             //flip player sprite with mouse position
             if (direction.x < 0)

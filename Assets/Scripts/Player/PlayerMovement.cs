@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         /*
          * sorry i have to move this for animation
         //axis inputs to Vector2
+<<<<<<< HEAD
         float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
         float vertical = Input.GetAxisRaw("LeftJSVertical");
         */
@@ -100,6 +101,19 @@ public class PlayerMovement : MonoBehaviour
         
         _inputVector = new Vector2(horizontal, vertical);
         
+=======
+        float horizontal = InputManager.GetMovementAxisHorizontal();
+        float vertical = InputManager.GetMovementAxisVertical();
+        _inputVector = new Vector2(horizontal, vertical);
+
+        //if A or D are being pressed, set animation to walking
+        //Debug.Log(horizontal);
+        if (horizontal != 0)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
+
+>>>>>>> origin/master
         //grounded check and check if the player was recently grounded
         //if player was recently grounded, set _hasJumped to false
         wasGrounded = isGrounded;
@@ -121,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //player can jump if grounded or climbing and has not jumped recently
-        if (Input.GetButtonDown("Abutton") && (isGrounded || isClimbing) && !hasJumped && canMove)
+        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && !hasJumped && canMove)
         {
             if (isClimbing)
             {
@@ -145,9 +159,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (nearbyClimbable)
             {
-                if ((Input.GetAxisRaw("LeftJSVertical") < -0.5) && canClimb)
+                if ((InputManager.GetMovementAxisVertical() < -0.5) && canClimb)
                 {
-                    Debug.Log("the x Axis is : " + Input.GetAxisRaw("LeftJSVertical"));
                     //changes for changing movement mode to climbing
                     isClimbing = true;
                     hasJumped = false;
@@ -184,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         if (hasJumped)
         {
             float vertVelocity = _rigidbody2D.velocity.y;
-            if (vertVelocity > 0 && !Input.GetButton("Abutton"))
+            if (vertVelocity > 0 && !InputManager.GetJumpButton())
             {
                 _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
             }
