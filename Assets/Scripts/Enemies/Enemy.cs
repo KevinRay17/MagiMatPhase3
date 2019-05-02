@@ -2,79 +2,84 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
     public Material material;
+    public int health;
+
+    [Header("Detection")] 
+    public bool isAggroed;
+    public bool detectionRequiresLOS; //does the enemy need to see the player to get aggro
+    public float detectionRange; //range of enemy vision
+    public float dropAggroRange; //how far away the player must be to drop aggro
     
+
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Update()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        //check if the enemy is still aggroed
+        isAggroed = DetectPlayer();
+    }
+    
+    //handles enemy aggro
+    protected virtual bool DetectPlayer()
+    {
+        float distanceToPlayer = Vector3.Distance(PlayerManager.instance.player.transform.position,transform.position);
+
+        //if not aggroed
+        if (!isAggroed)
+        {
+            //check if the player is within the detectionRange
+            if (distanceToPlayer < detectionRange)
+            {
+                //if requiresLOS, use a raycast to check if the enemy can see the player
+                if (detectionRequiresLOS)
+                {
+                    Vector2 directionToPlayer = PlayerManager.instance.player.transform.position - transform.position;
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer);
+                    return hit.transform == PlayerManager.instance.player.transform;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //if aggroed
+        else
+        {
+            //check if the player is within the dropAggroRange
+            //if not, drop aggro
+            if (distanceToPlayer > dropAggroRange)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected abstract void Behaviour();
+    
+    protected abstract void Attack();
+
+    public void TakeDamage(int damage)
     {
-        
+        health -= damage;
     }
+
 }
-
-/*public class FireToad : Enemy
-{
-    [HideInInspector] public bool _isGrounded;
-    [HideInInspector] public bool _isJumping;
-    public float jumpPower;
-    public GameObject Fireball;
-    
-    void Update()
-    {
-        //Will jump if it is on the ground and isn't already in the jumping process
-        if (_isGrounded && !_isJumping)
-        {
-            StartCoroutine(JumpAttack());
-        }
-    }
-    void Jump(float power)
-    {
-        //add upward force for jump
-        //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
-        
-        Vector2 velocity = _rigidbody2D.velocity;
-        velocity.y = 0;
-        _rigidbody2D.velocity = velocity;
-        _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-    }
-
-    //Wait a few seconds, jumps, attacks during the jump at different heights
-    IEnumerator JumpAttack()
-    {
-        _isJumping = true;
-        float JumpWait = 3;
-        float AttackWait = Random.Range(.2f, .3f);
-        yield return new WaitForSeconds(JumpWait);
-        Jump(jumpPower);
-        _isGrounded = false;
-        yield return new WaitForSeconds(AttackWait);
-        GameObject FireballClone = Instantiate(Fireball, transform.position, Quaternion.identity);
-    }
-
-    //Set grounded when on the ground
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.layer == 8)
-        {
-            _isGrounded = true;
-        }
-    }
-}*/

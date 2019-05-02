@@ -10,10 +10,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     [HideInInspector]public float maxDistance = 1000; //max distance before projectile automatically returning, change in PlayerActions script (materialAbsorberMaxDistance)
     private float _distanceTravelled;
 
-    [HideInInspector] public bool attached; //whether or not the absorber has hit a target
+    [HideInInspector] public bool attached = false; //whether or not the absorber has hit a target
     [HideInInspector] public Material attachedMaterial = Material.None; //if attached or returning, the material that the absorber is now holding
 
-    [HideInInspector] public bool returning;
+    [HideInInspector] public bool returning = false;
     [HideInInspector] public float returnSpeed; //speed that absorber returns to player, change in PlayerActions script
 
     public GameObject particlePrefab;
@@ -46,10 +46,16 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        //thrown out
-        if (!attached && !returning)
+        Attach();
+        OnTriggerStay2D(other.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        //going outwards
+        if (!returning)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy"))
             {
                 Enemy enemyScript = other.gameObject.GetComponent<Enemy>();
                 if (enemyScript != null)
@@ -60,53 +66,50 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                     }
                 }
             }
-            else if (other.gameObject.CompareTag("MaterialSource"))
+            else if (other.CompareTag("MaterialSource"))
             {
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 if (materialSourceScript != null)
                 {
-                    if (materialSourceScript.material != Material.None && FireUnlocked)
+                    if (materialSourceScript.material == Material.Fire && !FireUnlocked)
                     {
-                        Attach(materialSourceScript.material);
+                        Attach(Material.None);
                     }
-                    else if (materialSourceScript.material == Material.Vine ||
-                             materialSourceScript.material == Material.Rock)
+                    else
                     {
                         Attach(materialSourceScript.material);
                     }
                 }
             }
-            else if (other.gameObject.CompareTag("MaterialUnlock"))
+            else if (other.CompareTag("MaterialUnlock"))
             {
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 Attach(materialSourceScript.material);
                 FireUnlocked = true;
-
             }
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        //returning
-        if (other.CompareTag("Player"))
+        else
         {
-            //if the absorber is returning and collides with the player, give the player the attachedMaterial and destroy itself
-            if (returning)
+            //returning
+            if (other.CompareTag("Player"))
             {
-                if (attachedMaterial != Material.None)
+                //if the absorber is returning and collides with the player, give the player the attachedMaterial and destroy itself
+                if (returning)
                 {
-                    ResourceController.currentMana = 100f;
-                    PlayerManager.instance.ChangeMaterial(attachedMaterial);
-                }
+                    if (attachedMaterial != Material.None)
+                    {
+                        ResourceController.currentMana = 100f;
+                        PlayerManager.instance.ChangeMaterial(attachedMaterial);
+                    }
 
-                PlayerManager.instance.playerActions.materialAbsorberOut = false;
-                DestroySelf();
+                    PlayerManager.instance.playerActions.materialAbsorberOut = false;
+                    DestroySelf();
+                }
             }
         }
     }
 
-    private void Attach(Material material)
+    private void Attach(Material material = Material.None)
     {
         //call when absorber hits a collider when going out
         _rigidbody2D.velocity = Vector2.zero;
@@ -121,6 +124,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         attached = false;
         returning = true;
         
+        //on return, allow the absorber to collide with the player again and make it a trigger so it can fly through obstacles
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), false);
         _collider2D.isTrigger = true;
     }
