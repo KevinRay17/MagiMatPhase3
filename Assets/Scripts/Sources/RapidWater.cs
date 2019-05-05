@@ -33,6 +33,6 @@ public class RapidWater : MonoBehaviour
         else if (rapidUp)
             player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100);
         else if (rapidDown)
-            player.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100);
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 75);
     }
 }
