@@ -11,8 +11,13 @@ using Debug = UnityEngine.Debug;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
-
-    [FormerlySerializedAs("_inputVector")] public Vector2 inputVector;
+    
+    private Vector2 _inputVector;
+    [HideInInspector]
+    public Vector2 inputVector
+    {
+        get { return _inputVector;  }
+    }
 
     public Vector3 teleLastPos;
 
@@ -37,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D nearbyClimbable;
     
     public LayerMask groundLayers;
+    public LayerMask ground;
     public LayerMask climbableLayers;
     
     public float gravityScale;
@@ -66,36 +72,39 @@ public class PlayerMovement : MonoBehaviour
         teleLastPos = transform.position;
     }
 
+    
+    [HideInInspector]
+    public float horizontal;
+    protected float _horizontal
+    {
+        get { return horizontal; }
+    }
+    [HideInInspector]
+    public float vertical;
+    protected float _vertical
+    {
+        get { return vertical; }
+    }
+    
+
     void Update()
-    {   
-        //animation! checking for current material and changing sprite
-        if (PlayerManager.instance.material == Material.None)
-        {
-            anim.SetBool("Fire", false);
-            anim.SetBool("Vine", false);
-            anim.SetBool("Rock", false);
-        } else if (PlayerManager.instance.material == Material.Vine)
-        {
-            anim.SetBool("Vine", true);
-            anim.SetBool("Fire", false);
-            anim.SetBool("Rock", false);
-        } else if (PlayerManager.instance.material == Material.Fire)
-        {
-            anim.SetBool("Fire", true);
-            anim.SetBool("Rock", false);
-            anim.SetBool("Vine", false);
-        } else if (PlayerManager.instance.material == Material.Rock)
-        {
-            anim.SetBool("Rock", true);
-            anim.SetBool("Fire", false);
-            anim.SetBool("Vine", false);
-        }
-
-
+    {
+        /*
+         * sorry i have to move this for animation
         //axis inputs to Vector2
+<<<<<<< HEAD
         float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
         float vertical = Input.GetAxisRaw("LeftJSVertical");
-        inputVector = new Vector2(horizontal, vertical);
+        */
+       // horizontal = Input.GetAxisRaw("LeftJSHorizontal");
+        //vertical = Input.GetAxisRaw("LeftJSVertical");
+        
+        //_inputVector = new Vector2(horizontal, vertical);
+        
+//=======
+        float horizontal = InputManager.GetMovementAxisHorizontal();
+        float vertical = InputManager.GetMovementAxisVertical();
+        _inputVector = new Vector2(horizontal, vertical);
 
         //if A or D are being pressed, set animation to walking
         //Debug.Log(horizontal);
@@ -104,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         else
             anim.SetBool("Moving", false);
 
+//>>>>>>> origin/master
         //grounded check and check if the player was recently grounded
         //if player was recently grounded, set _hasJumped to false
         wasGrounded = isGrounded;
@@ -113,19 +123,19 @@ public class PlayerMovement : MonoBehaviour
             hasJumped = false;
         }
 
-        //for jump animation to play i guess
         if (isGrounded)
         {
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Rockcrash", false);
-            teleLastPos = this.transform.position;
+            //check if ground is below the player and set last grounded position for respawn
+            if (Physics2D.OverlapArea(transform.position + new Vector3(-0.1f, -0.94f, 0),
+                transform.position + new Vector3(0.1f, -1.04f, 0),
+                ground))
+            {
+                teleLastPos = this.transform.position;
+            }   
         }
-        else
-            anim.SetBool("Jumping", true);
-        
 
         //player can jump if grounded or climbing and has not jumped recently
-        if (Input.GetButtonDown("Abutton") && (isGrounded || isClimbing) && !hasJumped && canMove)
+        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && !hasJumped && canMove)
         {
             if (isClimbing)
             {
@@ -134,6 +144,8 @@ public class PlayerMovement : MonoBehaviour
             Jump(jumpPower);
             hasJumped = true;
         }
+
+        //Debug.Log(_rigidbody2D.velocity.y);
 
         //if the player is not currently climbing, circleCast nearby to look for climbables
         //if there is a nearby climbable, press W to start climbing
@@ -147,9 +159,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (nearbyClimbable)
             {
-                if ((Input.GetAxisRaw("LeftJSVertical") < -0.5) && canClimb)
+                if ((InputManager.GetMovementAxisVertical() < -0.5) && canClimb)
                 {
-                    Debug.Log("the x Axis is : " + Input.GetAxisRaw("LeftJSVertical"));
                     //changes for changing movement mode to climbing
                     isClimbing = true;
                     hasJumped = false;
@@ -186,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         if (hasJumped)
         {
             float vertVelocity = _rigidbody2D.velocity.y;
-            if (vertVelocity > 0 && !Input.GetButton("Abutton"))
+            if (vertVelocity > 0 && !InputManager.GetJumpButton())
             {
                 _rigidbody2D.AddForce(Vector2.down * jumpDownwardForce * 4 * Time.deltaTime); 
             }
@@ -199,11 +210,11 @@ public class PlayerMovement : MonoBehaviour
 
     bool GroundedCheck()
     {
-        //check below the player if there is ground
+        //check below the player if there is ground or water or other objects
         
         return Physics2D.OverlapArea(
-            transform.position + new Vector3(-0.3f, -0.94f, 0),
-            transform.position + new Vector3(0.3f, -1.04f, 0), 
+            transform.position + new Vector3(-0.1f, -0.94f, 0),
+            transform.position + new Vector3(0.1f, -1.04f, 0), 
             groundLayers);
     }
 
@@ -226,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //handles horizontal movement when grounded or in the air
         Vector2 velocity = _rigidbody2D.velocity;
-        Vector2 horizontalInput = new Vector2(inputVector.x, 0);
+        Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
 
         
 
@@ -262,11 +273,11 @@ public class PlayerMovement : MonoBehaviour
             currentDirection = 1;
         }
 
-        if (inputVector.x < 0)
+        if (_inputVector.x < 0)
         {
             moveDirection = -1;
         }
-        else if (inputVector.x > 0)
+        else if (_inputVector.x > 0)
         {
             moveDirection = 1;
         }
@@ -301,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
 
         //handles vertical movement when climbing
 
-        Vector3 verticalInput = new Vector2(0, inputVector.y);
+        Vector3 verticalInput = new Vector2(0, _inputVector.y);
         
         //set face direction if verticalInput != 0;
         if (verticalInput.y > 0)
@@ -339,29 +350,5 @@ public class PlayerMovement : MonoBehaviour
         isClimbing = false;
         canClimb = false;
         _rigidbody2D.gravityScale = gravityScale;
-    }
-    
-    //ANIMATION STUFF
-    public void TurnRockAniOff()
-    {
-        anim.SetBool("Rockslam", false);
-        anim.SetBool("Rockexplo", false);
-    }
-
-    public void TurnFireAniOff()
-    {
-        anim.SetBool("Firearc", false);
-    }
-
-    public void TurnOffVineAni()
-    {
-        anim.SetBool("Vineatk", false);
-        anim.SetBool("VineUp", false);
-        anim.SetBool("VineDown", false);
-    }
-
-    public void TurnAtkAniOff()
-    {
-        anim.SetBool("BasicAtk", false);
     }
 }
