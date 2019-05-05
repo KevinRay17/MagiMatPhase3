@@ -96,12 +96,12 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
         float vertical = Input.GetAxisRaw("LeftJSVertical");
         */
-        horizontal = Input.GetAxisRaw("LeftJSHorizontal");
-        vertical = Input.GetAxisRaw("LeftJSVertical");
+       // horizontal = Input.GetAxisRaw("LeftJSHorizontal");
+        //vertical = Input.GetAxisRaw("LeftJSVertical");
         
-        _inputVector = new Vector2(horizontal, vertical);
+        //_inputVector = new Vector2(horizontal, vertical);
         
-=======
+//=======
         float horizontal = InputManager.GetMovementAxisHorizontal();
         float vertical = InputManager.GetMovementAxisVertical();
         _inputVector = new Vector2(horizontal, vertical);
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         else
             anim.SetBool("Moving", false);
 
->>>>>>> origin/master
+//>>>>>>> origin/master
         //grounded check and check if the player was recently grounded
         //if player was recently grounded, set _hasJumped to false
         wasGrounded = isGrounded;
