@@ -64,6 +64,12 @@ TagManager:
   - name: Player
     uniqueID: 3989676985
     locked: 0
+  - name: cape
+    uniqueID: 98622429
+    locked: 0
+  - name: collar
+    uniqueID: 983671601
+    locked: 0
   - name: Particles+Effects
     uniqueID: 563771505
     locked: 0

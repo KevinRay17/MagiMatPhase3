@@ -55,6 +55,7 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Rock", _parentAnim.GetBool("Rock"));
             _sr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
             _anim.SetBool("Landing", _parentAnim.GetBool("Landing"));
+            _anim.SetBool("Throw", _parentAnim.GetBool("Throw"));
         } 
 
         //CAPE COLOR
@@ -90,8 +91,7 @@ public class AnimationEvents : MonoBehaviour
                 _sr.color = transparent;
         }
 
-
-        /*
+        
         //checking for current material and changing sprite
         if (PlayerManager.instance.material == Material.None)
         {
@@ -117,7 +117,7 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Fire", false);
             _anim.SetBool("Vine", false);
         }
-        */
+        
         
         /*
         //if horizontal input is being pressed, change animation to walking
@@ -165,10 +165,18 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetTrigger("jump");
         }
 
+        if (PlayerManager.instance.playerActions.didAttack && PlayerManager.instance.playerMovement.anim.GetBool("Landing"))
+        {
+            PlayerManager.instance.playerMovement.anim.SetBool("Landing", false);
+            PlayerManager.instance.playerActions.didAttack = false;
+        }
+
         if (PlayerManager.instance.playerMovement.isGrounded && !PlayerManager.instance.playerMovement.wasGrounded)
         {
             _anim.SetBool("Landing", true);
         }
+        else if (_anim.GetBool("Atk"))
+            _anim.SetBool("Landing", false);
 
         if (PlayerManager.instance.playerHealth.health <= 0)
             _anim.SetBool("Dead", true);

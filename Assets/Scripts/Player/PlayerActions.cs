@@ -54,8 +54,6 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
-        
-            
         joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
         if (joystickDirection.x == 1 || joystickDirection.x == -1 || joystickDirection.y == 1 || joystickDirection.y == -1)
         {
@@ -126,12 +124,12 @@ public class PlayerActions : MonoBehaviour
         _currentMaterialAbsorber.maxDistance = materialAbsorberMaxDistance;
         _currentMaterialAbsorber.returnSpeed = materialAbsorberReturnSpeed;
     }
-    
+
     public void Attack()
     {
         didAttack = true;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
-
+        
         PlayerManager.instance.playerMovement.anim.SetBool("Atk", true);
 
         if (PlayerManager.instance.material == Material.None)
@@ -164,7 +162,6 @@ public class PlayerActions : MonoBehaviour
                 
             }
             */
-
             var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
             AudioManager.instance.playSound(clip);
             _groundPounding = true;
@@ -262,12 +259,12 @@ public class PlayerActions : MonoBehaviour
         {
             Destroy(other.gameObject);
             _groundPounding = false;
+            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
         }
         else if (_groundPounding)
         {
+            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
             _groundPounding = false;
         }  
     }
-
-    
 }

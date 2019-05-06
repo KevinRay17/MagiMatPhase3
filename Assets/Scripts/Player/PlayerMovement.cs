@@ -122,6 +122,11 @@ public class PlayerMovement : MonoBehaviour
         {
             teleLastPos = this.transform.position;
         }
+        
+        //animation stuff
+        if (isGrounded && anim.GetBool("Landing") && horizontal != 0)
+            anim.SetBool("Landing", false);
+
 
         //player can jump if grounded or climbing and has not jumped recently
         if (Input.GetButtonDown("Abutton") && (isGrounded || isClimbing) && !hasJumped && canMove)
@@ -233,7 +238,13 @@ public class PlayerMovement : MonoBehaviour
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
+            /*
             //if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            {
+                spriteRenderer.flipX = true;
+                faceDirection = 2;
+            }
+            */
             if (!anim.GetBool("Atk"))
             {
                 spriteRenderer.flipX = true;
@@ -242,7 +253,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (horizontalInput.x < 0)
         {
+            /*
             //if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            {
+                spriteRenderer.flipX = false;
+                faceDirection = 4;
+            }
+            */
             if (!anim.GetBool("Atk"))
             {
                 spriteRenderer.flipX = false;
@@ -336,7 +353,12 @@ public class PlayerMovement : MonoBehaviour
     {
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
-        
+
+        if (anim.GetBool("Landing"))
+            anim.SetBool("Landing", false);
+
+
+
         Vector2 velocity = _rigidbody2D.velocity;
         velocity.y = 0;
         _rigidbody2D.velocity = velocity;
