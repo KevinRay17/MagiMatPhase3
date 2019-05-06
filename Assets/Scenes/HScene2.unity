@@ -4946,12 +4946,12 @@ PrefabInstance:
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 185.8
+      value: 492
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -55.6
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
@@ -14461,6 +14461,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4835105139835576913, guid: 9999041801a79104d8ed200bfaea4816,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 545585999614030861, guid: 9999041801a79104d8ed200bfaea4816,
         type: 3}
       propertyPath: m_Tiles.Array.size
@@ -14535,11 +14540,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_RefCount
       value: 53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835105139835576913, guid: 9999041801a79104d8ed200bfaea4816,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9999041801a79104d8ed200bfaea4816, type: 3}

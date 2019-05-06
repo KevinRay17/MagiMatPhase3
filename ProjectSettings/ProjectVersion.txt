@@ -1,5 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+m_EditorVersion: 2018.3.8f1
+=======
+
+m_EditorVersion: 2018.3.8f1
+
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 m_EditorVersion: 2018.3.8f1
@@ -12,4 +19,5 @@ m_EditorVersion: 2018.3.8f1
 >>>>>>> origin/CH_Branch2
 =======
 m_EditorVersion: 2018.3.8f1
+>>>>>>> origin/master
 >>>>>>> origin/master

@@ -13,6 +13,8 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     [HideInInspector] public bool attached = false; //whether or not the absorber has hit a target
     [HideInInspector] public Material attachedMaterial = Material.None; //if attached or returning, the material that the absorber is now holding
 
+    private bool canPlaySound = true;
+
     [HideInInspector] public bool returning = false;
     [HideInInspector] public float returnSpeed; //speed that absorber returns to player, change in PlayerActions script
 
@@ -118,10 +120,18 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     private void Attach(Material material = Material.None)
     {
         //call when absorber hits a collider when going out
-        
-        //Sound for Knife Landing
         var knifeLand = Resources.Load<AudioClip>("Sounds/KnifeLand");
-        AudioManager.instance.playSound(knifeLand);
+
+        //Sound for Knife Landing
+        if (canPlaySound)
+        {
+            Debug.Log("knifelandSound");
+            AudioManager.instance.PlaySound(knifeLand);
+            canPlaySound = false;
+        }
+
+
+        
         _rigidbody2D.velocity = Vector2.zero;
         attached = true;
         attachedMaterial = material;
@@ -133,6 +143,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         attached = false;
         returning = true;
+        canPlaySound = true;
         
         //on return, allow the absorber to collide with the player again and make it a trigger so it can fly through obstacles
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), false);
