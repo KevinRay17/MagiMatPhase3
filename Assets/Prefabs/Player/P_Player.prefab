@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 983671601
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -193,8 +193,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 98622429
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 83c14d27ec5f1ac43bfe9a3b3025d9bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cape: 1
   collar: 0
-  baseColor: {r: 1, g: 1, b: 1, a: 0}
+  baseColor: {r: 0.8078432, g: 0.63529414, b: 0.2901961, a: 1}
   fireColor: {r: 0.5566038, g: 0.032394927, b: 0, a: 1}
   vineColor: {r: 0.47782126, g: 0.8207547, b: 0.16647384, a: 1}
   rockColor: {r: 0.74759704, g: 0.74759704, b: 0.9056604, a: 1}
@@ -328,8 +328,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -305290311
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 18b1641ef48e7c04bbf27578f8affdda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -399,6 +399,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 4352
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
   climbableLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -440,7 +443,7 @@ MonoBehaviour:
   didAttack: 0
   inputVector: {x: 0, y: 0}
   mousePos: {x: 0, y: 0}
-  mouseDirection: {x: 0, y: 0}
+  aimDirection: {x: 0, y: 0}
   joystickDirection: {x: 0, y: 0}
   lastDirection: {x: 0, y: 0}
   materialAbsorberOut: 0
@@ -505,7 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ab7179d26383043bbd3001fa5ae3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  youDiedText: {fileID: 0}
   timeTilRespawn: 2
 --- !u!114 &9040459358843517321
 MonoBehaviour:

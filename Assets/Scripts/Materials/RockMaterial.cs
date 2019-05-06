@@ -128,5 +128,6 @@ public class RockMaterial : MaterialClass
             Rigidbody2D projRB = projectile.GetComponent<Rigidbody2D>();
             projRB.velocity = spawnOffset.normalized * projectileSpeed;
         }
+        PlayerManager.instance.playerMovement.anim.SetBool("Special", false);
     }
 }

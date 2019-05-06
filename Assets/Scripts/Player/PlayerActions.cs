@@ -210,14 +210,8 @@ public class PlayerActions : MonoBehaviour
     {
         PlayerManager.instance.materialScript.Special(this.gameObject);
 
-        PlayerManager.instance.playerMovement.anim.SetBool("Special", true);
-
-        //animation stuff
-        if (PlayerManager.instance.material == Material.Fire)
-        {
-            //PlayerManager.instance.playerMovement.anim.SetBool("Dashing", true);
-            PlayerManager.instance.playerMovement.anim.SetBool("Dash", true);
-        }
+        if (!PlayerManager.instance.material.Equals(Material.None))
+            PlayerManager.instance.playerMovement.anim.SetBool("Special", true);
     }
     
     void DebugChangeMaterial()

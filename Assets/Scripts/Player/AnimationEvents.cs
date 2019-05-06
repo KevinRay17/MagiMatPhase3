@@ -29,6 +29,7 @@ public class AnimationEvents : MonoBehaviour
     private Animator _parentAnim;
     private Rigidbody2D _rb2d;
     private SpriteRenderer _sr;
+    private SpriteRenderer _parentsr;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class AnimationEvents : MonoBehaviour
         {
             _rb2d = GetComponentInParent<Rigidbody2D>();
             _parentAnim = transform.parent.GetComponent<Animator>();
+            _parentsr = transform.parent.GetComponent<SpriteRenderer>();
         }
         else
             _rb2d = GetComponent<Rigidbody2D>();
@@ -69,6 +71,16 @@ public class AnimationEvents : MonoBehaviour
                 _sr.color = rockColor;
             else
                 _sr.color = baseColor;
+
+            Color a = _sr.color;
+
+            if (PlayerManager.instance.playerHealth.invincible)
+                a.a = _parentsr.color.a;
+
+            if (PlayerManager.instance.playerHealth.isPlayerDead)
+                a.a = 0f;
+
+            _sr.color = a;
         }
 
         //COLLAR ANIMATOR
@@ -85,7 +97,9 @@ public class AnimationEvents : MonoBehaviour
 
         if (collar)
         {
-            if (_anim.GetBool("Fire") || _anim.GetBool("Vine") || _anim.GetBool("Rock"))
+            if (PlayerManager.instance.playerHealth.invincible)
+                _sr.color = _parentsr.color;
+            else if (_anim.GetBool("Fire") || _anim.GetBool("Vine") || _anim.GetBool("Rock"))
                 _sr.color = solid;
             else
                 _sr.color = transparent;

@@ -169,6 +169,7 @@ public class VineMaterial : MaterialClass
             Destroy(grapple);
             canGrapple = true;
         }
+        PlayerManager.instance.playerMovement.anim.SetBool("Special", false);
     }
     
     IEnumerator GrappleToPoint(GameObject player, Vector2 grapplePosition, GameObject grapple)
