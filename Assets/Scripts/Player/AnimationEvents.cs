@@ -29,6 +29,7 @@ public class AnimationEvents : MonoBehaviour
     private Animator _parentAnim;
     private Rigidbody2D _rb2d;
     private SpriteRenderer _sr;
+    private SpriteRenderer _parentsr;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class AnimationEvents : MonoBehaviour
         {
             _rb2d = GetComponentInParent<Rigidbody2D>();
             _parentAnim = transform.parent.GetComponent<Animator>();
+            _parentsr = transform.parent.GetComponent<SpriteRenderer>();
         }
         else
             _rb2d = GetComponent<Rigidbody2D>();
@@ -45,13 +47,18 @@ public class AnimationEvents : MonoBehaviour
 
     private void Update()
     {
+        _anim.SetInteger("direction", PlayerManager.instance.playerMovement.faceDirection);
+
         //please kill me
         if (_parentAnim != null)
         {
             _anim.SetBool("Fire", _parentAnim.GetBool("Fire"));
             _anim.SetBool("Vine", _parentAnim.GetBool("Vine"));
             _anim.SetBool("Rock", _parentAnim.GetBool("Rock"));
-        }
+            _sr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+            _anim.SetBool("Landing", _parentAnim.GetBool("Landing"));
+            _anim.SetBool("Throw", _parentAnim.GetBool("Throw"));
+        } 
 
         //CAPE COLOR
         if (cape)
@@ -64,6 +71,16 @@ public class AnimationEvents : MonoBehaviour
                 _sr.color = rockColor;
             else
                 _sr.color = baseColor;
+
+            Color a = _sr.color;
+
+            if (PlayerManager.instance.playerHealth.invincible)
+                a.a = _parentsr.color.a;
+
+            if (PlayerManager.instance.playerHealth.isPlayerDead)
+                a.a = 0f;
+
+            _sr.color = a;
         }
 
         //COLLAR ANIMATOR
@@ -80,12 +97,13 @@ public class AnimationEvents : MonoBehaviour
 
         if (collar)
         {
-            if (_anim.GetBool("Fire") || _anim.GetBool("Vine") || _anim.GetBool("Rock"))
+            if (PlayerManager.instance.playerHealth.invincible)
+                _sr.color = _parentsr.color;
+            else if (_anim.GetBool("Fire") || _anim.GetBool("Vine") || _anim.GetBool("Rock"))
                 _sr.color = solid;
             else
                 _sr.color = transparent;
         }
-
 
         
         //checking for current material and changing sprite
@@ -115,6 +133,7 @@ public class AnimationEvents : MonoBehaviour
         }
         
         
+        /*
         //if horizontal input is being pressed, change animation to walking
         //Debug.Log(horizontal);
         if (PlayerManager.instance.playerMovement.horizontal != 0)
@@ -150,6 +169,38 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Landing", false);
             _anim.SetBool("Jumping", true);
         }
+        */
+
+
+
+        if (PlayerManager.instance.playerMovement.justJumped)
+        {
+            //print("jumped");
+            _anim.SetTrigger("jump");
+        }
+
+        if (PlayerManager.instance.playerActions.didAttack && PlayerManager.instance.playerMovement.anim.GetBool("Landing"))
+        {
+            PlayerManager.instance.playerMovement.anim.SetBool("Landing", false);
+            PlayerManager.instance.playerActions.didAttack = false;
+        }
+
+        if (PlayerManager.instance.playerMovement.isGrounded && !PlayerManager.instance.playerMovement.wasGrounded)
+        {
+            _anim.SetBool("Landing", true);
+        }
+        else if (_anim.GetBool("Atk"))
+            _anim.SetBool("Landing", false);
+
+        if (PlayerManager.instance.playerHealth.health <= 0)
+            _anim.SetBool("Dead", true);
+        else
+            _anim.SetBool("Dead", false);
+
+
+        _anim.SetBool("grounded", PlayerManager.instance.playerMovement.isGrounded);
+        _anim.SetFloat("xVel", Mathf.Abs(PlayerManager.instance.playerMovement.getSpeed().x));
+        _anim.SetFloat("yVel", PlayerManager.instance.playerMovement.getSpeed().y);
     }
 
 
@@ -173,7 +224,8 @@ public class AnimationEvents : MonoBehaviour
 
     public void TurnAtkAniOff()
     {
-        _anim.SetBool("BasicAtk", false);
+        //_anim.SetBool("BasicAtk", false);
+        _anim.SetBool("Atk", false);
     }
 
     public void JumpUpTransfer()
@@ -196,5 +248,15 @@ public class AnimationEvents : MonoBehaviour
     public void TurnOffLanding()
     {
         _anim.SetBool("Landing", false);
+    }
+    
+    public void TurnOffThrow()
+    {
+        _anim.SetBool("Throw", false);
+    }
+
+    public void TurnOffSpecial()
+    {
+        _anim.SetBool("Special", false);
     }
 }

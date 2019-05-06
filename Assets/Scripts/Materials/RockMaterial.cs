@@ -18,9 +18,12 @@ public class RockMaterial : MaterialClass
     public float projectileSpeed;
     public GameObject projectilePrefab;
 
+    
+
 
     public override void Attack(GameObject player)
     {
+        
         Debug.Log("Rock Attack");
         //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
 
@@ -34,12 +37,14 @@ public class RockMaterial : MaterialClass
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
                 attackDirectionV2 = Vector2.left;
             }
-            else
+            else if (attackDirection > 0)
             {
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
                 attackDirectionV2 = Vector2.right;
             }
 
+
+            
             Vector3 directionalOffset = Vector2.zero;
             //directionalOffset.x = attackOffset.x;
             //directionalOffset.y = attackOffset.y;
@@ -77,7 +82,7 @@ public class RockMaterial : MaterialClass
                 //hbScript.lifetime = 999f; //in case it's a really long fall
 
                 //animation stuff
-                PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);
+                //PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);
             }
         }
             /*
@@ -123,5 +128,6 @@ public class RockMaterial : MaterialClass
             Rigidbody2D projRB = projectile.GetComponent<Rigidbody2D>();
             projRB.velocity = spawnOffset.normalized * projectileSpeed;
         }
+        PlayerManager.instance.playerMovement.anim.SetBool("Special", false);
     }
 }

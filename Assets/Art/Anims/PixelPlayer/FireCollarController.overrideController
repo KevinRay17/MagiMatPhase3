@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FireCollarController
-  m_Controller: {fileID: 9100000, guid: 0af9cb5999693d64d9cc41fa15ea0935, type: 2}
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 97bec5e6aaeb14545b8f6492ef48a3c4, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 803046bb0f708ca428139c634d8f0a46, type: 2}
@@ -19,8 +19,6 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 8722deeacec61af4ca1160031cd099cc, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 0a38d0c7cb033084085b4f76f28561a2, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 145275f72a38dc54bbf8ee7c3bacbcb2, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: cc2598ec3e9e2084eacfc9224854ddd4, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: eee8d16be0227254689a2c27079bafa6, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: b795dcb5a4d6bcb4d8dc92f37c13d543, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 7e1b663915712f1429a8dfdb224eba17, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}
