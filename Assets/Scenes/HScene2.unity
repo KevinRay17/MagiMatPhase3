@@ -7610,8 +7610,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886874146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 632.64, y: -110.78, z: 1.96875}
-  m_LocalScale: {x: 0.747, y: 1.3022084, z: 1}
+  m_LocalPosition: {x: 632.64, y: -102.28, z: 1.96875}
+  m_LocalScale: {x: 0.747, y: 3.0336246, z: 1}
   m_Children: []
   m_Father: {fileID: 2059474289}
   m_RootOrder: 22
@@ -12862,6 +12862,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4233667675472675770, guid: b4a6f71d7f6b5b24480c57144058126d,
+        type: 3}
+      propertyPath: dmgOverlayImage
+      value: 
+      objectReference: {fileID: 1968508017}
     - target: {fileID: 4233667675472675767, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: groundLayers.m_Bits
@@ -12872,11 +12877,6 @@ PrefabInstance:
       propertyPath: ground.m_Bits
       value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 4233667675472675770, guid: b4a6f71d7f6b5b24480c57144058126d,
-        type: 3}
-      propertyPath: dmgOverlayImage
-      value: 
-      objectReference: {fileID: 1968508017}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a6f71d7f6b5b24480c57144058126d, type: 3}
 --- !u!4 &1234087004 stripped
