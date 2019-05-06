@@ -9,7 +9,18 @@ public abstract class Enemy : MonoBehaviour
 
     public Material material;
     public int health;
+    public EnemySpriteMask flickerMask;
 
+    [Header("Movement")] 
+    public bool stationary;
+    protected float startX; //set in Start() to get patrol bounds
+    protected bool facingRight; //face direction
+    public float patrolSpeed;
+    public float patrolRange; //how far from startX this enemy will patrol
+    protected float patrolWaitTimer; //timer for patrolWaitDuration
+    public float patrolWaitDuration; //how long the enemy waits when reaching either end of its patrol bounds
+    public float chaseSpeed;
+    
     [Header("Detection")] 
     public bool isAggroed;
     public bool detectionRequiresLOS; //does the enemy need to see the player to get aggro
@@ -23,10 +34,28 @@ public abstract class Enemy : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    protected virtual void Start()
+    {
+        //get startingX position for patrol bounds
+        startX = transform.position.x;
+    }
+    
     protected virtual void Update()
     {
         //check if the enemy is still aggroed
         isAggroed = DetectPlayer();
+        
+        //if aggroed, do enemy-specific behaviour
+        if (isAggroed)
+        {
+            AggroedBehaviour();
+        }
+        
+        //if not aggroed and not stationary, patrol
+        if (!isAggroed && !stationary)
+        {
+            Patrol();
+        }
     }
     
     //handles enemy aggro
@@ -73,13 +102,74 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected abstract void Behaviour();
+    protected virtual void Patrol()
+    {
+        //check if the enemy is currently waiting at the end of its patrol bounds
+        //if it is, reduce the timer til it reaches 0
+        //at 0, flip the sprite's direction
+        if (patrolWaitTimer > 0)
+        {
+            patrolWaitTimer -= Time.deltaTime;
+            if (patrolWaitTimer <= 0)
+            {
+                facingRight = !facingRight;
+                _spriteRenderer.flipX = !_spriteRenderer.flipX;
+            }
+            return;
+        }
+        
+        //if the enemy is not waiting, move based on its current facing
+        //also check if the enemy reaches its patrol bounds
+        //if it does, set patrolWaitTimer
+        if (facingRight)
+        {
+            _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+            if (transform.position.x > startX + patrolRange)
+            {
+                patrolWaitTimer = patrolWaitDuration;
+            }
+        }
+        else
+        {
+            _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+            if (transform.position.x < startX - patrolRange)
+            {
+                patrolWaitTimer = patrolWaitDuration;
+            }
+        }
+    }
     
+    //called in update when aggroed
+    protected abstract void AggroedBehaviour();
+    
+    //the special attack of this enemy, should be called in AggroedBehaviour
     protected abstract void Attack();
 
+    //call this method to damage enemy
     public void TakeDamage(int damage)
     {
         health -= damage;
+        if (flickerMask != null)
+        {
+            flickerMask.Flicker();
+        }
+        if (health <= 0)
+        {
+            Death();
+        }
     }
 
+    //called in TakeDamage when enemy reaches 0 health
+    protected virtual void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("HurtBox"))
+        {
+            TakeDamage(1);
+        }
+    }
 }
