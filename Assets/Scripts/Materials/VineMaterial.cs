@@ -93,6 +93,9 @@ public class VineMaterial : MaterialClass
         if (canGrapple){
             canGrapple = false;
             Debug.Log("Vine Special");
+            
+            var clip = Resources.Load<AudioClip>("Sounds/VineSpecial");
+            AudioManager.instance.PlaySound(clip, 0.8f);
 
             Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
             RaycastHit2D hit =

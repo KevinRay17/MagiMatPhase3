@@ -94,6 +94,8 @@ public class FireMaterial : MaterialClass
         Debug.Log("Fire Special");
         
         StartCoroutine(DashWait(player));
+        var clip = Resources.Load<AudioClip>("Sounds/FireSpecial");
+        AudioManager.instance.PlaySound(clip, 0.8f);
     }
 
     IEnumerator DashWait(GameObject player)

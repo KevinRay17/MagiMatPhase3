@@ -157,8 +157,8 @@ public class PlayerActions : MonoBehaviour
                 
             }
             */
-            var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
-            AudioManager.instance.PlaySound(clip);
+            var clip = Resources.Load<AudioClip>("Sounds/RockAttack");
+            AudioManager.instance.PlaySound(clip, 0.8f);
             _groundPounding = true;
             this._rigidbody2D.AddForce(new Vector2(0,_downwardStompSpeed));
         }
@@ -178,7 +178,7 @@ public class PlayerActions : MonoBehaviour
                 PlayerManager.instance.playerMovement.anim.SetBool("VineDown", true);
             */
 
-            var VineAttack = Resources.Load<AudioClip>("Sounds/vineAttack");
+            var VineAttack = Resources.Load<AudioClip>("Sounds/VineAttack");
             AudioManager.instance.PlaySound(VineAttack);
         }
         if  (PlayerManager.instance.material == Material.Fire)
