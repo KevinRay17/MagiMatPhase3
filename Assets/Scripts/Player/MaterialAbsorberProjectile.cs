@@ -16,6 +16,8 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     [HideInInspector] public bool returning = false;
     [HideInInspector] public float returnSpeed; //speed that absorber returns to player, change in PlayerActions script
 
+    public float returnDelay;
+
     public GameObject particlePrefab;
     public int particleAmount;
 
@@ -44,13 +46,12 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Attach();
-        OnTriggerStay2D(other.collider);
+        OnTriggerEnter2D(other.collider);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //going outwards
         if (!returning)
@@ -87,6 +88,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                 Attach(materialSourceScript.material);
                 FireUnlocked = true;
             }
+            else
+            {
+                Attach();
+            }
         }
         else
         {
@@ -111,10 +116,12 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void Attach(Material material = Material.None)
     {
+        Debug.Log(material);
         //call when absorber hits a collider when going out
         _rigidbody2D.velocity = Vector2.zero;
         attached = true;
         attachedMaterial = material;
+        StartCoroutine(AttachReturn());
     }
 
     public void StartReturning()
@@ -127,6 +134,12 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         //on return, allow the absorber to collide with the player again and make it a trigger so it can fly through obstacles
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), false);
         _collider2D.isTrigger = true;
+    }
+
+    IEnumerator AttachReturn()
+    {
+        yield return new WaitForSeconds(returnDelay);
+        StartReturning();
     }
     
     private void SpawnParticles()

@@ -146,6 +146,6 @@ public class FireMaterial : MaterialClass
         PlayerManager.instance.playerMovement.canMove = true;
 
         PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
-       PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
+        PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
     }
 }
