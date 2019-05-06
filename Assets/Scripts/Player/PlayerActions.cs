@@ -77,18 +77,11 @@ public class PlayerActions : MonoBehaviour
             }
             else
             {
-//<<<<<<< HEAD
-  //              ThrowMaterialAbsorber(mouseDirection);
+                // ThrowMaterialAbsorber(mouseDirection);
                 //Sound for Knife Landing
                 var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
-<<<<<<< HEAD
                 AudioManager.instance.PlaySound(knifeThrow);
-=======
-                AudioManager.instance.playSound(knifeThrow);
-//=======
                 ThrowMaterialAbsorber(aimDirection);
-//>>>>>>> origin/master
->>>>>>> origin/master
             }
         }
         
