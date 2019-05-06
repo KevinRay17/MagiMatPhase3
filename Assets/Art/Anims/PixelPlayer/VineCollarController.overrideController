@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VineCollarController
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e7e616d1fc959fc42b906b6b0ea2b857, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b795dcb5a4d6bcb4d8dc92f37c13d543, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 79159e5e86b75a44b9fe513e4c97a773, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a38d0c7cb033084085b4f76f28561a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 90b7f2fd71d01a9449cd8739b0cccf78, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6bfa516e132089c4aa97ef9817ca923b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6c9c76dd7a7301c4da83853b08c37357, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d71031a7aaa52b046a50e7a82807e3a8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ad748051e3b3c064faccb01362805761, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 53aa24e4522028a488dbc779ddd50a3c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f030eed9b40bb25458520a32dc4d238a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 97bec5e6aaeb14545b8f6492ef48a3c4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0fb2abd02dd0c8e4f915303d12c0ebf3, type: 2}

@@ -19,7 +19,8 @@ public class FireMaterial : MaterialClass
     public float specialDashTime; //how long the dash takes
 
     private Rigidbody2D playerRB;
-    private void Awake()
+    
+    private void Start()
     {
          playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
     }
@@ -39,7 +40,7 @@ public class FireMaterial : MaterialClass
         }
         else
         {
-            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
 
             //flip player sprite with mouse position
             if (direction.x < 0)
@@ -91,6 +92,7 @@ public class FireMaterial : MaterialClass
     public override void Special(GameObject player)
     {
         Debug.Log("Fire Special");
+        
         StartCoroutine(DashWait(player));
     }
 
@@ -145,7 +147,7 @@ public class FireMaterial : MaterialClass
         //Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
         PlayerManager.instance.playerMovement.canMove = true;
 
-        PlayerManager.instance.playerMovement.anim.SetBool("Dashing", false);
-       PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
+        PlayerManager.instance.playerMovement.anim.SetBool("Special", false);
+        PlayerManager.instance.playerActions.RC.resetCooldown(PlayerManager.instance.playerActions.RC.specialIndex);
     }
 }

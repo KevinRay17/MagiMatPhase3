@@ -7,7 +7,7 @@ public class VineGrappleCollision : MonoBehaviour
     private VineMaterial _vineScript = (VineMaterial) MaterialsManager.GetMaterialScript(Material.Vine);
     void Update()
     {   
-        if (Input.GetButtonDown("Abutton"))
+        if (InputManager.GetJumpButtonDown())
         {
             DetachVineGrapple();
         }

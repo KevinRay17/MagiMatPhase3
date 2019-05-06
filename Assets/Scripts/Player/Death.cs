@@ -7,6 +7,7 @@ using UnityEngine.UI;
 // TODO: Modify PlayerManager, move canMove variable to PlayerManager
 public class Death : MonoBehaviour
 {
+
     // Text enabled telling the player they died
     public GameObject youDiedText;
     
@@ -21,8 +22,6 @@ public class Death : MonoBehaviour
     // youDiedText is set to false as soon as the scene is reloaded so there's no issues on reloading the screen
     void Awake()
     {
-        youDiedText.SetActive(false);
-        
         // Set our respawn to where we're placed in the level, indicating this is the starting area
         respawnPosition = transform.position;
     }
@@ -43,9 +42,11 @@ public class Death : MonoBehaviour
         // canMove variable controls whether or not movement can be influenced through input, setting it to false
         // 'disables' movement so players can't move after dying
         PlayerManager.instance.playerMovement.canMove = false;
+
         PlayerManager.instance.playerHealth.health = 1;
         // Instantiates the text set in the inspector on death
         //youDiedText.SetActive(true);
+
         
         // Waits to reload the screen
         StartCoroutine(waitForText());
@@ -70,13 +71,11 @@ public class Death : MonoBehaviour
     
     private void Respawn()
     {
-        // Set the 'You Died' text to false, meaning it no longer shows
-        youDiedText.SetActive(false);
-        
         // Respawn at our last checkpoint position, stored in respawnPosition
         //Player.transform.position = respawnPosition;
         
         // TODO: Reset our health, mana, material, etc.
+        
         
         // Everything is reset, so now we can move again!
         PlayerManager.instance.playerMovement.canMove = true;

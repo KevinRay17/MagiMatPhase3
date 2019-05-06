@@ -18,7 +18,7 @@ public class PlayerActions : MonoBehaviour
     
     public Vector2 inputVector;
     public Vector2 mousePos;
-    public Vector2 mouseDirection;
+    public Vector2 aimDirection;
     
     //Direction of right joystick
     public Vector2 joystickDirection;
@@ -56,11 +56,8 @@ public class PlayerActions : MonoBehaviour
     {
         
             
-        joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
-        if (joystickDirection.x == 1 || joystickDirection.x == -1 || joystickDirection.y == 1 || joystickDirection.y == -1)
-        {
-            lastDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
-        }
+        aimDirection = InputManager.GetAimDirection();
+        
         //Debug.Log(joystickDirection);
         didAttackResetCounter -= 1;
         if (didAttackResetCounter < 0)
@@ -68,17 +65,11 @@ public class PlayerActions : MonoBehaviour
             didAttack = false;
         }
         //axis inputs to Vector2
-        float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
-        float vertical = Input.GetAxisRaw("LeftJSVertical");
+        float horizontal = InputManager.GetMovementAxisHorizontal();
+        float vertical = InputManager.GetMovementAxisVertical();
         inputVector = new Vector2(horizontal, vertical);
-        
-        //get mousePos and mouseDirection
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 playerPos = transform.position;
-        //mouseDirection = (mousePos - playerPos).normalized;
-        mouseDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
 
-        if (Input.GetButtonDown("LeftBumper"))
+        if (InputManager.GetThrowButtonDown())
         {
             if (materialAbsorberOut)
             {
@@ -86,17 +77,24 @@ public class PlayerActions : MonoBehaviour
             }
             else
             {
-                ThrowMaterialAbsorber(mouseDirection);
+//<<<<<<< HEAD
+  //              ThrowMaterialAbsorber(mouseDirection);
+                //Sound for Knife Landing
+                var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
+                AudioManager.instance.playSound(knifeThrow);
+//=======
+                ThrowMaterialAbsorber(aimDirection);
+//>>>>>>> origin/master
             }
         }
         
-        if (Input.GetButtonDown("Xbutton") && RC.isAvailable(RC.attackIndex)) {
+        if (InputManager.GetAttackButtonDown() && RC.isAvailable(RC.attackIndex)) {
             
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetButtonDown("RightBumper") && RC.isAvailable(RC.specialIndex)) {
+        if (InputManager.GetSpecialButtonDown() && RC.isAvailable(RC.specialIndex)) {
             Special();
             RC.resetCooldown(RC.specialIndex);
         }
@@ -121,25 +119,33 @@ public class PlayerActions : MonoBehaviour
         _currentMaterialAbsorber.maxDistance = materialAbsorberMaxDistance;
         _currentMaterialAbsorber.returnSpeed = materialAbsorberReturnSpeed;
     }
-    
+
     public void Attack()
     {
         didAttack = true;
         PlayerManager.instance.materialScript.Attack(this.gameObject);
+        
+        PlayerManager.instance.playerMovement.anim.SetBool("Atk", true);
 
         if (PlayerManager.instance.material == Material.None)
         {
             //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
-            PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
+            //PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
+
+            var BasicAttack = Resources.Load<AudioClip>("Sounds/BasicAttack");
+            AudioManager.instance.playSound(BasicAttack);
         }
         //Ground pound with Rock Abilities
         else if (PlayerManager.instance.material == Material.Rock)
         {
+            /*
             //animation stuff
             //only create the rocks if you're on the ground
             if (PlayerManager.instance.playerMovement.isGrounded)
             {
+                
                 PlayerManager.instance.playerMovement.anim.SetBool("Rockslam", true);
+                //PlayerManager.instance.playerMovement.anim.SetBool("Special", true);
                 GameObject rockslamObj = Instantiate(rockslamAniPrefab, transform.position, Quaternion.identity);
                 rockslamObj.transform.parent = gameObject.transform;
                 SpriteRenderer rockslamSR = rockslamObj.GetComponent<SpriteRenderer>();
@@ -148,9 +154,9 @@ public class PlayerActions : MonoBehaviour
                     rockslamSR.flipX = true;
                 else
                     rockslamSR.flipX = false;
+                
             }
-
-
+            */
             var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
             AudioManager.instance.playSound(clip);
             _groundPounding = true;
@@ -162,19 +168,22 @@ public class PlayerActions : MonoBehaviour
 
             //vertical attack
             //Debug.Log(PlayerManager.instance.playerMovement.faceDirection);
+            
+            /*
             if (PlayerManager.instance.playerMovement.faceDirection == 1)
                 PlayerManager.instance.playerMovement.anim.SetBool("VineUp", true);
             else if (PlayerManager.instance.playerMovement.faceDirection == 2 || PlayerManager.instance.playerMovement.faceDirection == 4)
                 PlayerManager.instance.playerMovement.anim.SetBool("Vineatk", true);
             else if (PlayerManager.instance.playerMovement.faceDirection == 3)
                 PlayerManager.instance.playerMovement.anim.SetBool("VineDown", true);
-
+            */
 
             var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
             AudioManager.instance.playSound(SFX);
         }
         if  (PlayerManager.instance.material == Material.Fire)
         {
+            /*
             //fire prefab animation
             PlayerManager.instance.playerMovement.anim.SetBool("Firearc", true);
             GameObject fireObj = Instantiate(fireAniPrefab, transform.position, Quaternion.identity);
@@ -188,10 +197,12 @@ public class PlayerActions : MonoBehaviour
                 fireSR.flipX = true;
             else if (PlayerManager.instance.playerMovement.faceDirection == 4)
                 fireSR.flipX = false;
+            */
 
 
-            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
-            AudioManager.instance.playSound(SFX);
+
+            var fireAttack = Resources.Load<AudioClip>("Sounds/FireAttack");
+            AudioManager.instance.playSound(fireAttack);
         }
     }
     
@@ -199,19 +210,8 @@ public class PlayerActions : MonoBehaviour
     {
         PlayerManager.instance.materialScript.Special(this.gameObject);
 
-        //animation stuff
-        if (PlayerManager.instance.material == Material.Fire)
-        {
-            PlayerManager.instance.playerMovement.anim.SetBool("Dashing", true);
-        }
-        else if (PlayerManager.instance.material == Material.Rock)
-        {
-            PlayerManager.instance.playerMovement.anim.SetBool("Rockexplo", true);
-        }
-        else if (PlayerManager.instance.material == Material.Vine)
-        {
-            //don't have ani for vine special .-.
-        }
+        if (!PlayerManager.instance.material.Equals(Material.None))
+            PlayerManager.instance.playerMovement.anim.SetBool("Special", true);
     }
     
     void DebugChangeMaterial()
@@ -248,12 +248,12 @@ public class PlayerActions : MonoBehaviour
         {
             Destroy(other.gameObject);
             _groundPounding = false;
+            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
         }
         else if (_groundPounding)
         {
+            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
             _groundPounding = false;
         }  
     }
-
-    
 }

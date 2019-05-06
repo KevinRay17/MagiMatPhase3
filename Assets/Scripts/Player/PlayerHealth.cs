@@ -94,6 +94,11 @@ public class PlayerHealth : MonoBehaviour
             //make dmg overlay image pop up when damaged (alpha value from 0-1)
             dmgOverlayColor.a = 1f;
 
+            PlayerManager.instance.playerMovement.anim.SetTrigger("Hurt");
+            
+            var PlayerHurt = Resources.Load<AudioClip>("Sounds/PlayerHurt");
+            AudioManager.instance.playSound(PlayerHurt);
+
             health -= damageAmount;
             _invincibilityTimer = invincibilityDuration;
             StartCoroutine(HitPause());

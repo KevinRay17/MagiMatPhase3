@@ -32,7 +32,7 @@ TagManager:
   - Enemies
   - EnemiesCollide
   - Absorber
-  - 
+  - Water
   - 
   - 
   - 
@@ -49,6 +49,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg3
+    uniqueID: 2953641699
+    locked: 0
+  - name: bg2
+    uniqueID: 3160156657
+    locked: 0
+  - name: bg1
+    uniqueID: 1780160509
+    locked: 0
+  - name: ehh
+    uniqueID: 3291332991
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -58,6 +70,15 @@ TagManager:
   - name: Player
     uniqueID: 3989676985
     locked: 0
+  - name: cape
+    uniqueID: 98622429
+    locked: 0
+  - name: collar
+    uniqueID: 983671601
+    locked: 0
   - name: Particles+Effects
     uniqueID: 563771505
+    locked: 0
+  - name: foreground
+    uniqueID: 397637901
     locked: 0

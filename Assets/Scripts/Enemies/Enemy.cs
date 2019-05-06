@@ -2,79 +2,174 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
 
     public Material material;
+    public int health;
+    public EnemySpriteMask flickerMask;
+
+    [Header("Movement")] 
+    public bool stationary;
+    protected float startX; //set in Start() to get patrol bounds
+    protected bool facingRight; //face direction
+    public float patrolSpeed;
+    public float patrolRange; //how far from startX this enemy will patrol
+    protected float patrolWaitTimer; //timer for patrolWaitDuration
+    public float patrolWaitDuration; //how long the enemy waits when reaching either end of its patrol bounds
+    public float chaseSpeed;
     
+    [Header("Detection")] 
+    public bool isAggroed;
+    public bool detectionRequiresLOS; //does the enemy need to see the player to get aggro
+    public float detectionRange; //range of enemy vision
+    public float dropAggroRange; //how far away the player must be to drop aggro
+    
+
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        //get startingX position for patrol bounds
+        startX = transform.position.x;
+    }
+    
+    protected virtual void Update()
+    {
+        //check if the enemy is still aggroed
+        isAggroed = DetectPlayer();
+        
+        //if aggroed, do enemy-specific behaviour
+        if (isAggroed)
+        {
+            AggroedBehaviour();
+        }
+        
+        //if not aggroed and not stationary, patrol
+        if (!isAggroed && !stationary)
+        {
+            Patrol();
+        }
+    }
+    
+    //handles enemy aggro
+    protected virtual bool DetectPlayer()
+    {
+        float distanceToPlayer = Vector3.Distance(PlayerManager.instance.player.transform.position,transform.position);
+
+        //if not aggroed
+        if (!isAggroed)
+        {
+            //check if the player is within the detectionRange
+            if (distanceToPlayer < detectionRange)
+            {
+                //if requiresLOS, use a raycast to check if the enemy can see the player
+                if (detectionRequiresLOS)
+                {
+                    Vector2 directionToPlayer = PlayerManager.instance.player.transform.position - transform.position;
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer);
+                    return hit.transform == PlayerManager.instance.player.transform;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //if aggroed
+        else
+        {
+            //check if the player is within the dropAggroRange
+            //if not, drop aggro
+            if (distanceToPlayer > dropAggroRange)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Patrol()
     {
+        //check if the enemy is currently waiting at the end of its patrol bounds
+        //if it is, reduce the timer til it reaches 0
+        //at 0, flip the sprite's direction
+        if (patrolWaitTimer > 0)
+        {
+            patrolWaitTimer -= Time.deltaTime;
+            if (patrolWaitTimer <= 0)
+            {
+                facingRight = !facingRight;
+                _spriteRenderer.flipX = !_spriteRenderer.flipX;
+            }
+            return;
+        }
         
+        //if the enemy is not waiting, move based on its current facing
+        //also check if the enemy reaches its patrol bounds
+        //if it does, set patrolWaitTimer
+        if (facingRight)
+        {
+            _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+            if (transform.position.x > startX + patrolRange)
+            {
+                patrolWaitTimer = patrolWaitDuration;
+            }
+        }
+        else
+        {
+            _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+            if (transform.position.x < startX - patrolRange)
+            {
+                patrolWaitTimer = patrolWaitDuration;
+            }
+        }
+    }
+    
+    //called in update when aggroed
+    protected abstract void AggroedBehaviour();
+    
+    //the special attack of this enemy, should be called in AggroedBehaviour
+    protected abstract void Attack();
+
+    //call this method to damage enemy
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (flickerMask != null)
+        {
+            flickerMask.Flicker();
+        }
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    //called in TakeDamage when enemy reaches 0 health
+    protected virtual void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("HurtBox"))
+        {
+            TakeDamage(1);
+        }
     }
 }
-
-/*public class FireToad : Enemy
-{
-    [HideInInspector] public bool _isGrounded;
-    [HideInInspector] public bool _isJumping;
-    public float jumpPower;
-    public GameObject Fireball;
-    
-    void Update()
-    {
-        //Will jump if it is on the ground and isn't already in the jumping process
-        if (_isGrounded && !_isJumping)
-        {
-            StartCoroutine(JumpAttack());
-        }
-    }
-    void Jump(float power)
-    {
-        //add upward force for jump
-        //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
-        
-        Vector2 velocity = _rigidbody2D.velocity;
-        velocity.y = 0;
-        _rigidbody2D.velocity = velocity;
-        _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-    }
-
-    //Wait a few seconds, jumps, attacks during the jump at different heights
-    IEnumerator JumpAttack()
-    {
-        _isJumping = true;
-        float JumpWait = 3;
-        float AttackWait = Random.Range(.2f, .3f);
-        yield return new WaitForSeconds(JumpWait);
-        Jump(jumpPower);
-        _isGrounded = false;
-        yield return new WaitForSeconds(AttackWait);
-        GameObject FireballClone = Instantiate(Fireball, transform.position, Quaternion.identity);
-    }
-
-    //Set grounded when on the ground
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.layer == 8)
-        {
-            _isGrounded = true;
-        }
-    }
-}*/

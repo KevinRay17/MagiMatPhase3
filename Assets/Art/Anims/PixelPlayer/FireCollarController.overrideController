@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FireCollarController
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 97bec5e6aaeb14545b8f6492ef48a3c4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 803046bb0f708ca428139c634d8f0a46, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 53aa24e4522028a488dbc779ddd50a3c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7815b463816775e4eb4b4900b5a2430f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d71031a7aaa52b046a50e7a82807e3a8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ec1ec68e47bb1924193638077e124b3e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6bfa516e132089c4aa97ef9817ca923b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8722deeacec61af4ca1160031cd099cc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a38d0c7cb033084085b4f76f28561a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 145275f72a38dc54bbf8ee7c3bacbcb2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b795dcb5a4d6bcb4d8dc92f37c13d543, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7e1b663915712f1429a8dfdb224eba17, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 86b12a2eecc5bed4fa4e5a8ad925ef2a, type: 2}

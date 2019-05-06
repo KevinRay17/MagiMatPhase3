@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockGolem : Enemy
+/*public class RockGolem : Enemy
 {
     
    
@@ -100,3 +100,4 @@ public class RockGolem : Enemy
 
 
 }
+*/
