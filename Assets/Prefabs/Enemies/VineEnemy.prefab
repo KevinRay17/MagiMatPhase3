@@ -109,6 +109,7 @@ MonoBehaviour:
   dropAggroRange: 15
   attackRange: 3
   attackChargeDuration: 1
+  attackCooldown: 0.3
   vineHitBox: {fileID: 2672472757980954087, guid: 19fa8986a2c203a4c98bfab6a2d26d17,
     type: 3}
   movingSprite: {fileID: 21300004, guid: e4b918d633ef67e40969fd0603f73e13, type: 3}

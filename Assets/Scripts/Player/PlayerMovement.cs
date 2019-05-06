@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         //axis inputs to Vector2
         float horizontal = InputManager.GetMovementAxisHorizontal();
         float vertical = InputManager.GetMovementAxisVertical();
-        _inputVector = new Vector2(horizontal, vertical);
+        inputVector = new Vector2(horizontal, vertical);
 
         //if A or D are being pressed, set animation to walking
         //Debug.Log(horizontal);
