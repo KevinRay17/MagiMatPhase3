@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
     {
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
-            return Input.GetButton(instance.keyboardJump.ToString());
+            return Input.GetKey(instance.keyboardJump);
         }
         else
         {
@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
     {
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
-            return Input.GetButtonDown(instance.keyboardJump.ToString());
+            return Input.GetKeyDown(instance.keyboardJump);
         }
         else
         {
@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
     {
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
-            return Input.GetButtonDown(instance.keyboardThrow.ToString());
+            return Input.GetKeyDown(instance.keyboardThrow);
         }
         else
         {
@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
     {
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
-            return Input.GetButtonDown(instance.keyboardAttack.ToString());
+            return Input.GetKeyDown(instance.keyboardAttack);
         }
         else
         {
@@ -77,7 +77,7 @@ public class InputManager : MonoBehaviour
     {
         if (InputManager.instance.inputDevice == InputDevice.Keyboard)
         {
-            return Input.GetButtonDown(instance.keyboardSpecial.ToString());
+            return Input.GetKeyDown(instance.keyboardSpecial);
         }
         else
         {
@@ -119,7 +119,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            return new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
+            return new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical") * -1);
         } 
     }
     

@@ -58,10 +58,9 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //going outwards
-
-        
+        //going outwards    
         //thrown out
+
 
         if (!returning)
         {

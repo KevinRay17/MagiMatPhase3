@@ -19,7 +19,8 @@ public class FireMaterial : MaterialClass
     public float specialDashTime; //how long the dash takes
 
     private Rigidbody2D playerRB;
-    private void Awake()
+    
+    private void Start()
     {
          playerRB = PlayerManager.instance.gameObject.GetComponent<Rigidbody2D>();
     }
@@ -39,7 +40,7 @@ public class FireMaterial : MaterialClass
         }
         else
         {
-            Vector2 direction = PlayerManager.instance.playerActions.mouseDirection;
+            Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
 
             //flip player sprite with mouse position
             if (direction.x < 0)

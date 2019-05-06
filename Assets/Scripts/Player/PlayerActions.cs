@@ -18,7 +18,7 @@ public class PlayerActions : MonoBehaviour
     
     public Vector2 inputVector;
     public Vector2 mousePos;
-    public Vector2 mouseDirection;
+    public Vector2 aimDirection;
     
     //Direction of right joystick
     public Vector2 joystickDirection;
@@ -54,11 +54,10 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
-        joystickDirection = new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical"));
-        if (joystickDirection.x == 1 || joystickDirection.x == -1 || joystickDirection.y == 1 || joystickDirection.y == -1)
-        {
-            lastDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
-        }
+        
+            
+        aimDirection = InputManager.GetAimDirection();
+        
         //Debug.Log(joystickDirection);
         didAttackResetCounter -= 1;
         if (didAttackResetCounter < 0)
@@ -66,17 +65,11 @@ public class PlayerActions : MonoBehaviour
             didAttack = false;
         }
         //axis inputs to Vector2
-        float horizontal = Input.GetAxisRaw("LeftJSHorizontal");
-        float vertical = Input.GetAxisRaw("LeftJSVertical");
+        float horizontal = InputManager.GetMovementAxisHorizontal();
+        float vertical = InputManager.GetMovementAxisVertical();
         inputVector = new Vector2(horizontal, vertical);
-        
-        //get mousePos and mouseDirection
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 playerPos = transform.position;
-        //mouseDirection = (mousePos - playerPos).normalized;
-        mouseDirection = new Vector2(joystickDirection.x, joystickDirection.y * -1);
 
-        if (Input.GetButtonDown("LeftBumper"))
+        if (InputManager.GetThrowButtonDown())
         {
             if (materialAbsorberOut)
             {
@@ -84,22 +77,24 @@ public class PlayerActions : MonoBehaviour
             }
             else
             {
-                PlayerManager.instance.playerMovement.anim.SetBool("Throw", true);
-
-                ThrowMaterialAbsorber(mouseDirection);
+//<<<<<<< HEAD
+  //              ThrowMaterialAbsorber(mouseDirection);
                 //Sound for Knife Landing
                 var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
                 AudioManager.instance.playSound(knifeThrow);
+//=======
+                ThrowMaterialAbsorber(aimDirection);
+//>>>>>>> origin/master
             }
         }
         
-        if (Input.GetButtonDown("Xbutton") && RC.isAvailable(RC.attackIndex)) {
+        if (InputManager.GetAttackButtonDown() && RC.isAvailable(RC.attackIndex)) {
             
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }
         
-        if (Input.GetButtonDown("RightBumper") && RC.isAvailable(RC.specialIndex)) {
+        if (InputManager.GetSpecialButtonDown() && RC.isAvailable(RC.specialIndex)) {
             Special();
             RC.resetCooldown(RC.specialIndex);
         }
