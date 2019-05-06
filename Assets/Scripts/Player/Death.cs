@@ -9,6 +9,8 @@ public class Death : MonoBehaviour
 {
     // Text enabled telling the player they died
     public GameObject youDiedText;
+    
+    public GameObject GameOverObject;
 
     public float timeTilRespawn;
 
@@ -44,7 +46,8 @@ public class Death : MonoBehaviour
 
         // Instantiates the text set in the inspector on death
         youDiedText.SetActive(true);
-        
+        Instantiate(GameOverObject, Camera.main.transform.position - 10 * (Vector3.forward), Quaternion.identity,
+            Camera.main.transform);
         // Waits to reload the screen
         StartCoroutine(waitForText());
     }
