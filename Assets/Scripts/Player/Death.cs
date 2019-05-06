@@ -43,11 +43,10 @@ public class Death : MonoBehaviour
         // canMove variable controls whether or not movement can be influenced through input, setting it to false
         // 'disables' movement so players can't move after dying
         PlayerManager.instance.playerMovement.canMove = false;
-
+        PlayerManager.instance.playerHealth.health = 1;
         // Instantiates the text set in the inspector on death
-        youDiedText.SetActive(true);
-        Instantiate(GameOverObject, Camera.main.transform.position - 10 * (Vector3.forward), Quaternion.identity,
-            Camera.main.transform);
+        //youDiedText.SetActive(true);
+        
         // Waits to reload the screen
         StartCoroutine(waitForText());
     }
@@ -57,6 +56,8 @@ public class Death : MonoBehaviour
         // Waits for the same amount of time before destroying instantiatedYouDiedText.
         // Separated in case we want to add some kind of fade out function in the future,
         // in that case, un-comment timeTilTextDestroy and use it instead of timeTilRespawn in the destroy statement above
+        Instantiate(GameOverObject, Camera.main.transform.position + Vector3.forward, Quaternion.identity,
+        Camera.main.transform);
         yield return new WaitForSeconds(timeTilRespawn);
         
         /*
