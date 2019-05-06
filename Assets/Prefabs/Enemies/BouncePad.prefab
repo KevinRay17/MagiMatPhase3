@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2424825175106802313}
   - component: {fileID: 6397836795407663189}
   - component: {fileID: 372967882197641318}
+  - component: {fileID: 3599835649068653189}
   m_Layer: 0
   m_Name: BouncePad
-  m_TagString: Untagged
+  m_TagString: MaterialSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 1800
+--- !u!114 &3599835649068653189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793601668342416017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec728428cce2cb44801e355b69e777b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: 1

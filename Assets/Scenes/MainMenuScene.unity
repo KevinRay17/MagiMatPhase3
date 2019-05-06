@@ -1931,7 +1931,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dmgOverlayImage
       value: 
-      objectReference: {fileID: 1671998281}
+      objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675766, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_Enabled
@@ -2834,18 +2834,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b94f820a648629c4b96f575bf9bf4be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1671998281 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7953347567796429239, guid: 2fe9c57b52e5438409c2e5b98303e05e,
-    type: 3}
-  m_PrefabInstance: {fileID: 698422924}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671998277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1843115392

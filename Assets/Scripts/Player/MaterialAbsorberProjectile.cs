@@ -13,6 +13,8 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     [HideInInspector] public bool attached = false; //whether or not the absorber has hit a target
     [HideInInspector] public Material attachedMaterial = Material.None; //if attached or returning, the material that the absorber is now holding
 
+    private bool canPlaySound = true;
+
     [HideInInspector] public bool returning = false;
     [HideInInspector] public float returnSpeed; //speed that absorber returns to player, change in PlayerActions script
 
@@ -27,6 +29,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        
+
+        
+
     }
 
     void Update()
@@ -48,12 +54,22 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+<<<<<<< HEAD
         OnTriggerEnter2D(other.collider);
+=======
+
+        Attach();
+        OnTriggerStay2D(other.collider);
+        
+>>>>>>> origin/master
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //going outwards
+        //going outwards    
+        //thrown out
+
+
         if (!returning)
         {
             if (other.CompareTag("Enemy"))
@@ -64,6 +80,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                     if (enemyScript.material != Material.None)
                     {
                         Attach(enemyScript.material);
+                        
                     }
                 }
             }
@@ -72,26 +89,26 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 if (materialSourceScript != null)
                 {
-                    if (materialSourceScript.material == Material.Fire && !FireUnlocked)
-                    {
-                        Attach(Material.None);
-                    }
-                    else
+                    
                     {
                         Attach(materialSourceScript.material);
                     }
                 }
             }
-            else if (other.CompareTag("MaterialUnlock"))
+           /* else if (other.CompareTag("MaterialUnlock"))
             {
                 MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
                 Attach(materialSourceScript.material);
                 FireUnlocked = true;
+<<<<<<< HEAD
             }
             else
             {
                 Attach();
             }
+=======
+            }*/
+>>>>>>> origin/master
         }
         else
         {
@@ -118,6 +135,18 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     {
         Debug.Log(material);
         //call when absorber hits a collider when going out
+        var knifeLand = Resources.Load<AudioClip>("Sounds/KnifeLand");
+
+        //Sound for Knife Landing
+        if (canPlaySound)
+        {
+            Debug.Log("knifelandSound");
+            AudioManager.instance.PlaySound(knifeLand);
+            canPlaySound = false;
+        }
+
+
+        
         _rigidbody2D.velocity = Vector2.zero;
         attached = true;
         attachedMaterial = material;
@@ -130,6 +159,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         attached = false;
         returning = true;
+        canPlaySound = true;
         
         //on return, allow the absorber to collide with the player again and make it a trigger so it can fly through obstacles
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Absorber"), false);

@@ -60,11 +60,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: 0
-  attackUseFaceDirection: 0
+  attackUseFaceDirection: 1
   attackDamage: 1
-  attackOffset: 5
+  attackOffset: 0.5
   attackHitMultipleTargets: 0
-  attackSize: {x: 8, y: 8}
+  attackSize: {x: 1, y: 1}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
 --- !u!114 &1865942283175699856
@@ -80,17 +80,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: 1
-  attackUseFaceDirection: 0
+  attackUseFaceDirection: 1
   attackDamage: 1
-  attackOffset: 7
+  attackOffset: 1
   attackHitMultipleTargets: 0
-  attackSize: {x: 10, y: 6}
+  attackSize: {x: 2, y: 1}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
   canGrapple: 1
   onGrapple: 0
-  grappleShootSpeed: 20
-  grappleSpeed: 20
+  onWall: 0
+  grappleShootSpeed: 30
+  grappleSpeed: 30
   maxGrappleDistance: 10
   maxGrappleTime: 3
   grappleLayer:
@@ -115,7 +116,7 @@ MonoBehaviour:
   attackDamage: 1
   attackOffset: 1
   attackHitMultipleTargets: 0
-  attackSize: {x: 3, y: 2.5}
+  attackSize: {x: 2, y: 2.5}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
   specialDashDistance: 5
@@ -134,10 +135,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: 3
   attackDamage: 1
-  attackMoveSpeed: 20
-  attackOffset: {x: 1, y: 0}
+  attackMoveSpeed: 10
+  attackOffset: {x: 0.5, y: 0}
   attackHitMultipleTargets: 1
-  attackSize: {x: 1.8, y: 2}
+  attackSize: {x: 1, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
     type: 3}
   specialRadius: 1

@@ -33,11 +33,13 @@ public class NoneMaterial : MaterialClass
             //flip player sprite with mouse position
             if (direction.x < 0)
             {
+                Debug.Log("left");
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
                 PlayerManager.instance.playerMovement.faceDirection = 4;
             }
             else
             {
+                Debug.Log("right");
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
                 PlayerManager.instance.playerMovement.faceDirection = 2;
             }
