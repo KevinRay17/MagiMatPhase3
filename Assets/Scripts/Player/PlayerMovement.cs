@@ -22,8 +22,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 teleLastPos;
 
     [HideInInspector] public int faceDirection; //1 = UP, 2 = RIGHT, 3 = DOWN, 4 = LEFT
-    
+
     //states
+    public bool justJumped;
     [HideInInspector] public bool hasJumped; //whether or not the player has jumped recently, set to false when recently grounded/climbing
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool wasGrounded;
@@ -57,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return _spriteRenderer; }
     }
+
+    [HideInInspector] public Vector2 getSpeed()
+    {
+        return _rigidbody2D.velocity;
+    }
     
     void Awake()
     { 
@@ -85,10 +91,14 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return vertical; }
     }
-    
+
+    Vector3 verticalInput;
+
+
 
     void Update()
     {
+        justJumped = false;
         /*
          * sorry i have to move this for animation
         //axis inputs to Vector2
@@ -133,6 +143,11 @@ public class PlayerMovement : MonoBehaviour
                 teleLastPos = this.transform.position;
             }   
         }
+        
+        //animation stuff
+        if (isGrounded && anim.GetBool("Landing") && horizontal != 0)
+            anim.SetBool("Landing", false);
+
 
         //player can jump if grounded or climbing and has not jumped recently
         if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && !hasJumped && canMove)
@@ -143,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Jump(jumpPower);
             hasJumped = true;
+            justJumped = true;
         }
 
         //Debug.Log(_rigidbody2D.velocity.y);
@@ -238,13 +254,18 @@ public class PlayerMovement : MonoBehaviour
         //handles horizontal movement when grounded or in the air
         Vector2 velocity = _rigidbody2D.velocity;
         Vector2 horizontalInput = new Vector2(_inputVector.x, 0);
-
         
-
         //set face direction if horizontalInput != 0;
         if (horizontalInput.x > 0)
         {
-            if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            /*
+            //if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            {
+                spriteRenderer.flipX = true;
+                faceDirection = 2;
+            }
+            */
+            if (!anim.GetBool("Atk"))
             {
                 spriteRenderer.flipX = true;
                 faceDirection = 2;
@@ -252,14 +273,35 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (horizontalInput.x < 0)
         {
-            if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            /*
+            //if (!anim.GetBool("Vineatk") && !anim.GetBool("BasicAtk"))
+            {
+                spriteRenderer.flipX = false;
+                faceDirection = 4;
+            }
+            */
+            if (!anim.GetBool("Atk"))
             {
                 spriteRenderer.flipX = false;
                 faceDirection = 4;
             }
         }
 
-        
+        //moved this from the climb function
+        //handles vertical movement when climbing
+        verticalInput = new Vector2(0, _inputVector.y);
+
+        //set face direction if verticalInput != 0;
+        if (verticalInput.y > 0)
+        {
+            faceDirection = 3;
+        }
+        else if (verticalInput.y < 0)
+        {
+            faceDirection = 1;
+        }
+
+
         //get player's current velocity direction and input directions
         int currentDirection = 0;
         int moveDirection = 0;
@@ -307,31 +349,36 @@ public class PlayerMovement : MonoBehaviour
 
     void Climb()
     {
+        /*
         anim.SetBool("Moving", false);
         anim.SetBool("Climbing", true);
+        */
 
-        //handles vertical movement when climbing
+        Vector3 verticalinput = new Vector2(0, _inputVector.y);
 
-        Vector3 verticalInput = new Vector2(0, _inputVector.y);
-        
         //set face direction if verticalInput != 0;
-        if (verticalInput.y > 0)
-        {
-            faceDirection = 1;
-        }
-        else if (verticalInput.y < 0)
+        if (verticalinput.y > 0)
         {
             faceDirection = 3;
         }
-        
-        _rigidbody2D.MovePosition(transform.position + (-verticalInput * climbSpeed * Time.fixedDeltaTime));
+        else if (verticalinput.y < 0)
+        {
+            faceDirection = 1;
+        }
+
+        _rigidbody2D.MovePosition(transform.position + (-verticalinput * climbSpeed * Time.fixedDeltaTime));
     }
 
     public void Jump(float power)
     {
         //add upward force for jump
         //set y velocity to 0 for consistent jump height even if there was previously a downward velocity
-        
+
+        if (anim.GetBool("Landing"))
+            anim.SetBool("Landing", false);
+
+
+
         Vector2 velocity = _rigidbody2D.velocity;
         velocity.y = 0;
         _rigidbody2D.velocity = velocity;

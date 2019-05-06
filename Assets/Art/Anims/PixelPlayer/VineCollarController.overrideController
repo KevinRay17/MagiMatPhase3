@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: VineCollarController
-  m_Controller: {fileID: 9100000, guid: 0af9cb5999693d64d9cc41fa15ea0935, type: 2}
+  m_Controller: {fileID: 9100000, guid: c65e0b79ec09efc4491bda3ab0828231, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: f3a4cdb072bb6f240bf2db3565ef1ec0, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: e7e616d1fc959fc42b906b6b0ea2b857, type: 2}
@@ -23,5 +23,3 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: f030eed9b40bb25458520a32dc4d238a, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 97bec5e6aaeb14545b8f6492ef48a3c4, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 0fb2abd02dd0c8e4f915303d12c0ebf3, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: cc2598ec3e9e2084eacfc9224854ddd4, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: d257d399746a4014abd9e5d7b6fc3ac2, type: 2}
