@@ -27,7 +27,7 @@ public class Trampoline : MonoBehaviour
             playerRigidbody = thingICollidedWith.gameObject.GetComponent<Rigidbody2D>();
             
             // Resets vertical velocity to 0, ensuring that the same force is always applied regardless of how fast the player is falling
-            playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, playerRigidbody.velocity.y);
+            playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, 0);
             
             // Apply bounceForce
             playerRigidbody.AddForce(transform.up * bounceForce);
