@@ -58,7 +58,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Patrol();
         }
-        Debug.Log(CanMoveForward());
     }
     
     //handles enemy aggro
@@ -110,6 +109,7 @@ public abstract class Enemy : MonoBehaviour
         //check if the enemy is currently waiting at the end of its patrol bounds
         //if it is, reduce the timer til it reaches 0
         //at 0, flip the sprite's direction
+        Debug.Log(patrolWaitTimer);
         if (patrolWaitTimer > 0)
         {
             patrolWaitTimer -= Time.deltaTime;
@@ -145,6 +145,7 @@ public abstract class Enemy : MonoBehaviour
         }
         else
         {
+            Debug.Log("cant move forward");
             patrolWaitTimer = patrolWaitDuration;
         }
     }
@@ -161,7 +162,7 @@ public abstract class Enemy : MonoBehaviour
             aheadDistance = Vector2.left * groundCheckAheadDistance;
         }
         Debug.DrawLine(transform.position, (Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance);
-        return Physics2D.OverlapPoint((Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance, LayerMask.NameToLayer("Ground"));
+        return Physics2D.OverlapPoint((Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance);
     }
     
     //called in update when aggroed
