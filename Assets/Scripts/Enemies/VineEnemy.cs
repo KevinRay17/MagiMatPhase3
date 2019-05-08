@@ -31,16 +31,21 @@ public class VineEnemy : Enemy
             }
             else
             {
-                _spriteRenderer.sprite = movingSprite;
-                facingRight = transform.position.x < target.x;
-                _spriteRenderer.flipX = facingRight;
-                if (facingRight)
+                if (CanMoveForward())
                 {
-                    _rigidbody2D.MovePosition(transform.position + (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
-                }
-                else
-                {
-                    _rigidbody2D.MovePosition(transform.position - (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    _spriteRenderer.sprite = movingSprite;
+                    facingRight = transform.position.x < target.x;
+                    _spriteRenderer.flipX = facingRight;
+                    if (facingRight)
+                    {
+                        _rigidbody2D.MovePosition(transform.position +
+                                                  (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    }
+                    else
+                    {
+                        _rigidbody2D.MovePosition(transform.position -
+                                                  (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    }
                 }
             }
         }
@@ -60,22 +65,29 @@ public class VineEnemy : Enemy
             }
             return;
         }
-        
-        if (facingRight)
+
+        if (CanMoveForward())
         {
-            _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
-            if (transform.position.x > startX + patrolRange)
+            if (facingRight)
             {
-                patrolWaitTimer = patrolWaitDuration;
+                _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+                if (transform.position.x > startX + patrolRange)
+                {
+                    patrolWaitTimer = patrolWaitDuration;
+                }
+            }
+            else
+            {
+                _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+                if (transform.position.x < startX - patrolRange)
+                {
+                    patrolWaitTimer = patrolWaitDuration;
+                }
             }
         }
         else
         {
-            _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
-            if (transform.position.x < startX - patrolRange)
-            {
-                patrolWaitTimer = patrolWaitDuration;
-            }
+            patrolWaitTimer = patrolWaitDuration;
         }
 
         _spriteRenderer.sprite = movingSprite;
