@@ -98,6 +98,8 @@ MonoBehaviour:
   material: 1
   health: 2
   flickerMask: {fileID: 5943203178796388473}
+  distanceToGround: 1
+  groundCheckAheadDistance: 0.5
   stationary: 0
   patrolSpeed: 2
   patrolRange: 5

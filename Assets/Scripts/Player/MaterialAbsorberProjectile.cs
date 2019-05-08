@@ -54,14 +54,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-<<<<<<< HEAD
         OnTriggerEnter2D(other.collider);
-=======
-
-        Attach();
-        OnTriggerStay2D(other.collider);
-        
->>>>>>> origin/master
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -95,20 +88,6 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                     }
                 }
             }
-           /* else if (other.CompareTag("MaterialUnlock"))
-            {
-                MaterialSource materialSourceScript = other.gameObject.GetComponent<MaterialSource>();
-                Attach(materialSourceScript.material);
-                FireUnlocked = true;
-<<<<<<< HEAD
-            }
-            else
-            {
-                Attach();
-            }
-=======
-            }*/
->>>>>>> origin/master
         }
         else
         {
