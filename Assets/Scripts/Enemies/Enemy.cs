@@ -10,6 +10,8 @@ public abstract class Enemy : MonoBehaviour
     public Material material;
     public int health;
     public EnemySpriteMask flickerMask;
+    public float distanceToGround;
+    public float groundCheckAheadDistance;
 
     [Header("Movement")] 
     public bool stationary;
@@ -56,6 +58,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Patrol();
         }
+        Debug.Log(CanMoveForward());
     }
     
     //handles enemy aggro
@@ -121,22 +124,44 @@ public abstract class Enemy : MonoBehaviour
         //if the enemy is not waiting, move based on its current facing
         //also check if the enemy reaches its patrol bounds
         //if it does, set patrolWaitTimer
-        if (facingRight)
+        if (CanMoveForward())
         {
-            _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
-            if (transform.position.x > startX + patrolRange)
+            if (facingRight)
             {
-                patrolWaitTimer = patrolWaitDuration;
+                _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+                if (transform.position.x > startX + patrolRange)
+                {
+                    patrolWaitTimer = patrolWaitDuration;
+                }
+            }
+            else
+            {
+                _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
+                if (transform.position.x < startX - patrolRange)
+                {
+                    patrolWaitTimer = patrolWaitDuration;
+                }
             }
         }
         else
         {
-            _rigidbody2D.MovePosition(transform.position - (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
-            if (transform.position.x < startX - patrolRange)
-            {
-                patrolWaitTimer = patrolWaitDuration;
-            }
+            patrolWaitTimer = patrolWaitDuration;
         }
+    }
+
+    protected virtual bool CanMoveForward()
+    {
+        Vector2 aheadDistance;
+        if (facingRight)
+        {
+            aheadDistance = Vector2.right * groundCheckAheadDistance;
+        }
+        else
+        {
+            aheadDistance = Vector2.left * groundCheckAheadDistance;
+        }
+        Debug.DrawLine(transform.position, (Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance);
+        return Physics2D.OverlapPoint((Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance, LayerMask.NameToLayer("Ground"));
     }
     
     //called in update when aggroed
