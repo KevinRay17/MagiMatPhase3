@@ -88,6 +88,10 @@ public class MaterialAbsorberProjectile : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                Attach();
+            }
         }
         else
         {
