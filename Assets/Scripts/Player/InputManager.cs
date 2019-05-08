@@ -13,13 +13,14 @@ public class InputManager : MonoBehaviour
     
     public InputDevice inputDevice;
 
-    [Header("Keyboard Binds")] 
+    [Header("Keyboard")] 
     public KeyCode keyboardJump;
     public KeyCode keyboardThrow;
     public KeyCode keyboardAttack;
     public KeyCode keyboardSpecial;
-    
-    [Header("Controller Binds")]
+
+    [Header("Controller")] 
+    public bool useRightStickToAim;
     public string controllerJump;
     public string controllerThrow;
     public string controllerAttack;
@@ -119,7 +120,14 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            return new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical") * -1);
+            if (InputManager.instance.useRightStickToAim)
+            {
+                return new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical") * -1).normalized;
+            }
+            else
+            {
+                return new Vector2(Input.GetAxisRaw("LeftJSHorizontal"), Input.GetAxisRaw("LeftJSVertical") * -1).normalized;
+            }
         } 
     }
     

@@ -8,8 +8,10 @@ public class VineEnemy : Enemy
     protected bool isChargingAttack;
     public float attackRange;
     public float attackChargeDuration;
+    public float attackCooldown;
     public GameObject vineHitBox;
 
+    [Header("Sprites")]
     public Sprite movingSprite;
     public Sprite waitingSprite;
     public Sprite chargingSprite;
@@ -17,12 +19,15 @@ public class VineEnemy : Enemy
     
     protected override void AggroedBehaviour()
     {
+        //if isAggroed, check if the player is within range
+        //if in range, start attacking
+        //if not, move towards the player
         if (!isChargingAttack)
         {
             Vector2 target = PlayerManager.instance.player.transform.position;
             if (Vector3.Distance(transform.position, target) < attackRange)
             {
-                StartCoroutine(ChargeAttack());
+                Attack();
             }
             else
             {
@@ -41,11 +46,9 @@ public class VineEnemy : Enemy
         }
     }
 
+    //same as normal patrol function but we change the sprite based on state
     protected override void Patrol()
     {
-        //check if the enemy is currently waiting at the end of its patrol bounds
-        //if it is, reduce the timer til it reaches 0
-        //at 0, flip the sprite's direction
         if (patrolWaitTimer > 0)
         {
             _spriteRenderer.sprite = waitingSprite;
@@ -58,9 +61,6 @@ public class VineEnemy : Enemy
             return;
         }
         
-        //if the enemy is not waiting, move based on its current facing
-        //also check if the enemy reaches its patrol bounds
-        //if it does, set patrolWaitTimer
         if (facingRight)
         {
             _rigidbody2D.MovePosition(transform.position + (new Vector3(patrolSpeed, 0, 0) * Time.deltaTime));
@@ -85,20 +85,18 @@ public class VineEnemy : Enemy
     {
         isChargingAttack = true;
         
+        //face towards the player when the attack starts
         Vector2 target = PlayerManager.instance.player.transform.position;
         facingRight = transform.position.x < target.x;
         _spriteRenderer.flipX = facingRight;
+        
+        //start charging attack, wait for duration
         _spriteRenderer.sprite = chargingSprite;
         yield return new WaitForSeconds(attackChargeDuration);
+        
+        //spawn hitBox for attack based on the face direction that was determined above
         _spriteRenderer.sprite = attackingSprite;
-        Attack();
-        yield return new WaitForSeconds(0.3f);
-        isChargingAttack = false;
-    }
-
-    protected override void Attack()
-    {
-
+        
         if (facingRight)
         {
             GameObject hitBox = Instantiate(vineHitBox, transform.position + new Vector3(1.5f, 0, 0), Quaternion.identity);
@@ -107,5 +105,15 @@ public class VineEnemy : Enemy
         {
             GameObject hitBox = Instantiate(vineHitBox, transform.position - new Vector3(1.5f, 0, 0), Quaternion.identity);
         }
+        
+        //wait for attackCooldown duration, so no new attack starts
+        yield return new WaitForSeconds(attackCooldown);
+        
+        isChargingAttack = false;
+    }
+
+    protected override void Attack()
+    {
+        StartCoroutine(ChargeAttack());
     }
 }
