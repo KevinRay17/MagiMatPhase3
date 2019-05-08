@@ -23,9 +23,11 @@ public class EnemySpriteMask : MonoBehaviour
 
     void Update()
     {
+        //if onHitFlickerTimer is greater than 0, the spriteRenderer should be enabled
         if (onHitFlickerTimer > 0)
         {
             _spriteMask.sprite = transform.parent.GetComponent<SpriteRenderer>().sprite;
+            //the shape of the flicker is based on the spriteMask, but there is no flipX bool, so we change localScale instead
             if (transform.parent.GetComponent<SpriteRenderer>().flipX)
             {
                 transform.localScale = new Vector3(-1,1,1);
@@ -38,6 +40,7 @@ public class EnemySpriteMask : MonoBehaviour
             onHitFlickerTimer -= Time.deltaTime;
             if (onHitFlickerTimer <= 0)
             {
+                //when the timer reaches zero again, re-disable the spriteRenderer
                 _spriteRenderer.enabled = false;
             }
         }
@@ -45,6 +48,8 @@ public class EnemySpriteMask : MonoBehaviour
 
     public void Flicker()
     {
+        //call this method when enemy is hit
+        //sets timer to onHitFlickerDuration
         onHitFlickerTimer = onHitFlickerDuration;
     }
 }

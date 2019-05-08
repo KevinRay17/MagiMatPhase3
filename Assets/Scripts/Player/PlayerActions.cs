@@ -81,7 +81,7 @@ public class PlayerActions : MonoBehaviour
   //              ThrowMaterialAbsorber(mouseDirection);
                 //Sound for Knife Landing
                 var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
-                AudioManager.instance.playSound(knifeThrow);
+                AudioManager.instance.PlaySound(knifeThrow);
 //=======
                 ThrowMaterialAbsorber(aimDirection);
 //>>>>>>> origin/master
@@ -133,7 +133,7 @@ public class PlayerActions : MonoBehaviour
             //PlayerManager.instance.playerMovement.anim.SetBool("BasicAtk", true);
 
             var BasicAttack = Resources.Load<AudioClip>("Sounds/BasicAttack");
-            AudioManager.instance.playSound(BasicAttack);
+            AudioManager.instance.PlaySound(BasicAttack);
         }
         //Ground pound with Rock Abilities
         else if (PlayerManager.instance.material == Material.Rock)
@@ -157,8 +157,8 @@ public class PlayerActions : MonoBehaviour
                 
             }
             */
-            var clip = Resources.Load<AudioClip>("Sounds/rockThrow");
-            AudioManager.instance.playSound(clip);
+            var clip = Resources.Load<AudioClip>("Sounds/RockAttack");
+            AudioManager.instance.PlaySound(clip, 0.8f);
             _groundPounding = true;
             this._rigidbody2D.AddForce(new Vector2(0,_downwardStompSpeed));
         }
@@ -178,8 +178,8 @@ public class PlayerActions : MonoBehaviour
                 PlayerManager.instance.playerMovement.anim.SetBool("VineDown", true);
             */
 
-            var SFX = Resources.Load<AudioClip>("Sounds/vineAttack");
-            AudioManager.instance.playSound(SFX);
+            var VineAttack = Resources.Load<AudioClip>("Sounds/VineAttack");
+            AudioManager.instance.PlaySound(VineAttack);
         }
         if  (PlayerManager.instance.material == Material.Fire)
         {
@@ -202,7 +202,7 @@ public class PlayerActions : MonoBehaviour
 
 
             var fireAttack = Resources.Load<AudioClip>("Sounds/FireAttack");
-            AudioManager.instance.playSound(fireAttack);
+            AudioManager.instance.PlaySound(fireAttack);
         }
     }
     

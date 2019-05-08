@@ -240,6 +240,8 @@ MonoBehaviour:
   material: 2
   health: 1
   flickerMask: {fileID: 5527409341051917439}
+  distanceToGround: 1
+  groundCheckAheadDistance: 1
   stationary: 0
   patrolSpeed: 3
   patrolRange: 7

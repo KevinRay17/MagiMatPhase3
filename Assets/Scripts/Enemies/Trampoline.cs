@@ -22,7 +22,7 @@ public class Trampoline : MonoBehaviour
         if (thingICollidedWith.gameObject.CompareTag("Player"))
         {
             var clip = Resources.Load<AudioClip>("Sounds/BouncePad");
-            AudioManager.instance.playSound(clip);
+            AudioManager.instance.PlaySound(clip);
             // Get and store the Player's rigidbody for later use
             playerRigidbody = thingICollidedWith.gameObject.GetComponent<Rigidbody2D>();
             
