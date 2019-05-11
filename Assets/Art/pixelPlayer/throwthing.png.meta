@@ -1,15 +1,12 @@
 fileFormatVersion: 2
-guid: d350daa5e3e186b40a22fb4527699511
+guid: d85d15dcc0bbc854d8262cdd7b117a07
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Run_rock_0
-    21300002: Run_rock_1
-    21300004: Run_rock_2
-    21300006: Run_rock_3
-    21300008: Run_rock_4
-    21300010: Run_rock_5
-    21300012: Run_rock_6
-    21300014: Run_rock_7
+    21300000: throwthing_0
+    21300002: throwthing_1
+    21300004: throwthing_2
+    21300006: throwthing_3
+    21300008: throwthing_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -125,161 +122,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_rock_0
+      name: throwthing_0
       rect:
         serializedVersion: 2
         x: 0
         y: 176
         width: 80
         height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e0c04bf427dbe04fa0493c4a198d8dd
+      spriteID: d3ebbb836f604754688b1c6b701eec01
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_rock_1
+      name: throwthing_1
       rect:
         serializedVersion: 2
         x: 80
         y: 176
         width: 80
         height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6eb8209c2392d774082f79922dad75dd
+      spriteID: 83ef0ec000c3332448b0315667796fe6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_rock_2
+      name: throwthing_2
       rect:
         serializedVersion: 2
         x: 160
         y: 176
         width: 80
         height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 548ad88c01df551438001154cfc7a34a
+      spriteID: ab690ba6262c9bf49b8f169ccd0bc914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_rock_3
+      name: throwthing_3
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 80
         height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dbc713ea9508314495430fb37d1fe67
+      spriteID: 2fef9654e3f7be44bb0d773257f3c185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_rock_4
+      name: throwthing_4
       rect:
         serializedVersion: 2
         x: 80
         y: 96
         width: 80
         height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44fa04ed7cb0d8545b2c78463700d4b6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_rock_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 96
-        width: 80
-        height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f40eaffdbd215a6418d479e000c393e2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_rock_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 80
-        height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5051468137d9938409e97989875f4981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_rock_7
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 80
-        height: 80
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f01d3a8449f491a4f9d4e4e4f74ef0fd
+      spriteID: 44f18fab4676b064fbbf8cefb00ad363
       vertices: []
       indices: 
       edges: []
@@ -287,7 +224,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d54ab7cf696d43042872ff48455dc17e
+    spriteID: a23eae90216a9ec4cb7d0656857820c9
     vertices: []
     indices: 
     edges: []

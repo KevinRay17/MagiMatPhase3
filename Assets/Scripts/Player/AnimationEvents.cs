@@ -58,6 +58,9 @@ public class AnimationEvents : MonoBehaviour
             _sr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
             _anim.SetBool("Landing", _parentAnim.GetBool("Landing"));
             _anim.SetBool("Throw", _parentAnim.GetBool("Throw"));
+            _anim.SetBool("Atk", _parentAnim.GetBool("Atk"));
+            _anim.SetBool("Special", _parentAnim.GetBool("Special"));
+            _anim.SetBool("Dead", _parentAnim.GetBool("Dead"));
         } 
 
         //CAPE COLOR
@@ -77,7 +80,7 @@ public class AnimationEvents : MonoBehaviour
             if (PlayerManager.instance.playerHealth.invincible)
                 a.a = _parentsr.color.a;
 
-            if (PlayerManager.instance.playerHealth.isPlayerDead)
+            if (PlayerManager.instance.playerHealth.isPlayerDead || _anim.GetBool("Special") || _anim.GetBool("Dead"))
                 a.a = 0f;
 
             _sr.color = a;
