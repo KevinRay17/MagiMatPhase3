@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimationEvents : MonoBehaviour
 {
+    VineMaterial vineCS;
+
     [Tooltip("DO NOT CHECK if not cape object")]
     public bool cape;
 
@@ -25,6 +27,7 @@ public class AnimationEvents : MonoBehaviour
     public Color transparent;
     public Color solid;
 
+    GameObject player;
     private Animator _anim;
     private Animator _parentAnim;
     private Rigidbody2D _rb2d;
@@ -33,6 +36,13 @@ public class AnimationEvents : MonoBehaviour
 
     private void Start()
     {
+        if (transform.parent != null)
+            player = transform.parent.gameObject;
+        else
+            player = gameObject;
+
+        vineCS = FindObjectOfType<VineMaterial>();
+
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         if (transform.parent != null)
@@ -61,7 +71,10 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Atk", _parentAnim.GetBool("Atk"));
             _anim.SetBool("Special", _parentAnim.GetBool("Special"));
             _anim.SetBool("Dead", _parentAnim.GetBool("Dead"));
-        } 
+            _anim.SetBool("Hug", _parentAnim.GetBool("Hug"));
+            _anim.SetBool("HugTop", _parentAnim.GetBool("HugTop"));
+            _anim.SetBool("Climb", _parentAnim.GetBool("Climb"));
+        }
 
         //CAPE COLOR
         if (cape)
@@ -108,7 +121,7 @@ public class AnimationEvents : MonoBehaviour
                 _sr.color = transparent;
         }
 
-        
+
         //checking for current material and changing sprite
         if (PlayerManager.instance.material == Material.None)
         {
@@ -134,8 +147,8 @@ public class AnimationEvents : MonoBehaviour
             _anim.SetBool("Fire", false);
             _anim.SetBool("Vine", false);
         }
-        
-        
+
+
         /*
         //if horizontal input is being pressed, change animation to walking
         //Debug.Log(horizontal);
@@ -204,6 +217,30 @@ public class AnimationEvents : MonoBehaviour
         _anim.SetBool("grounded", PlayerManager.instance.playerMovement.isGrounded);
         _anim.SetFloat("xVel", Mathf.Abs(PlayerManager.instance.playerMovement.getSpeed().x));
         _anim.SetFloat("yVel", PlayerManager.instance.playerMovement.getSpeed().y);
+        
+        //Debug.Log(vineCS.onWall);
+
+        if (vineCS.onWall)
+        {
+            /*
+             * fuck this
+            if (Mathf.Abs(player.transform.position.y) > (Mathf.Abs(vineCS.grapplepos.y) + 2f))
+                Debug.Log("hug");
+            else
+                Debug.Log("ahh");
+            */
+            _anim.SetBool("Hug", true);
+                
+            if (player.transform.position.x > vineCS.grapplepos.x)
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+            else
+                PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+        }
+        else if (!vineCS.onWall)
+        {
+            _anim.SetBool("Hug", false);
+            _anim.SetBool("HugTop", false);
+        }
     }
 
 
