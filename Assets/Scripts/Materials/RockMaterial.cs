@@ -114,6 +114,9 @@ public class RockMaterial : MaterialClass
 
     public override void Special(GameObject player)
     {
+        var clip = Resources.Load<AudioClip>("Sounds/RockSpecial");
+        AudioManager.instance.PlaySound(clip, 0.8f);
+        
         Debug.Log("Rock Special");
         float radiansBetweenOrbiters = (360 * Mathf.Deg2Rad) / numberOfProjectiles;
 

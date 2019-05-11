@@ -18,12 +18,14 @@ public class InputManager : MonoBehaviour
     public KeyCode keyboardThrow;
     public KeyCode keyboardAttack;
     public KeyCode keyboardSpecial;
+    public KeyCode keyboardPause;
     
     [Header("Controller Binds")]
     public string controllerJump;
     public string controllerThrow;
     public string controllerAttack;
     public string controllerSpecial;
+    public string controllerPause;
 
     public static bool GetJumpButton()
     {
@@ -46,6 +48,18 @@ public class InputManager : MonoBehaviour
         else
         {
             return Input.GetButtonDown(instance.controllerJump);
+        }
+    }
+
+    public static bool GetPauseButton()
+    {
+        if (InputManager.instance.inputDevice == InputDevice.Keyboard)
+        {
+            return Input.GetKeyDown(instance.keyboardPause);
+        }
+        else
+        {
+            return Input.GetButtonDown(instance.controllerPause);
         }
     }
     

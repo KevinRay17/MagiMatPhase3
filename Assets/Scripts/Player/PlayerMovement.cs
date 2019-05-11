@@ -131,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !wasGrounded)
         {
             hasJumped = false;
+            var clip = Resources.Load<AudioClip>("Audio/JumpLand");
+            AudioManager.instance.PlaySound(clip);
         }
 
         if (isGrounded)
@@ -386,7 +388,7 @@ public class PlayerMovement : MonoBehaviour
                 
         //Audio Clip Stuff Below
         var clip = Resources.Load<AudioClip>("Sounds/JumpLaunch");
-        AudioManager.instance.playSound(clip);
+        AudioManager.instance.PlaySound(clip);
 
         _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }

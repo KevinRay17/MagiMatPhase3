@@ -17,7 +17,7 @@ public class CheatSheetScript : MonoBehaviour
     {
 
             
-        if (Input.GetKeyDown(KeyCode.P))
+        if (InputManager.GetPauseButton())
         {
             paused = !paused;
             SetPause();

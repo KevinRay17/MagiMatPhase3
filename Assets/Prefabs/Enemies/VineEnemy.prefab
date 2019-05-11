@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5943203177754626468}
   - component: {fileID: 5943203177754626467}
   - component: {fileID: 5943203177754626466}
-  - component: {fileID: 5943203177754626465}
+  - component: {fileID: 2830167212374821356}
   m_Layer: 13
   m_Name: VineEnemy
   m_TagString: Enemy
@@ -98,6 +98,8 @@ MonoBehaviour:
   material: 1
   health: 2
   flickerMask: {fileID: 5943203178796388473}
+  distanceToGround: 1
+  groundCheckAheadDistance: 0.5
   stationary: 0
   patrolSpeed: 2
   patrolRange: 5
@@ -109,6 +111,7 @@ MonoBehaviour:
   dropAggroRange: 15
   attackRange: 3
   attackChargeDuration: 1
+  attackCooldown: 0.3
   vineHitBox: {fileID: 2672472757980954087, guid: 19fa8986a2c203a4c98bfab6a2d26d17,
     type: 3}
   movingSprite: {fileID: 21300004, guid: e4b918d633ef67e40969fd0603f73e13, type: 3}
@@ -136,8 +139,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5943203177754626465
-BoxCollider2D:
+--- !u!70 &2830167212374821356
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,19 +152,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.8239889, y: 0.16373944}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20, y: 20}
-    newSize: {x: 2.5333333, y: 1.9666667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.531488, y: 5.8594546}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.1632436, y: 0.39182305}
+  m_Size: {x: 2.429657, y: 6.849798}
+  m_Direction: 0
 --- !u!1 &5943203178796388472
 GameObject:
   m_ObjectHideFlags: 0

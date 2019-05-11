@@ -51,6 +51,7 @@ MonoBehaviour:
   attachedMaterial: 0
   returning: 0
   returnSpeed: 0
+  returnDelay: 0.25
   particlePrefab: {fileID: 5649834849070784572, guid: 29a0887fc3c31ee449c94172ee81fc7b,
     type: 3}
   particleAmount: 5
