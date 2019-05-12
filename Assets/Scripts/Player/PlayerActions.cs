@@ -35,10 +35,6 @@ public class PlayerActions : MonoBehaviour
     private bool _groundPounding = false;
 
     [HideInInspector] public ResourceController RC;
-    
-    [Header("Animation prefabs")]
-    public GameObject fireAniPrefab;
-    public GameObject rockslamAniPrefab;
 
     //private AudioClip someAudio;
 

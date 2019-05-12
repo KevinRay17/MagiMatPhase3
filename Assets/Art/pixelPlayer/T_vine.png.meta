@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: f448f2b8b00736140955427fc11169e5
+guid: 51d5e62088fcd9c41b960679b85d90aa
 TextureImporter:
   fileIDToRecycleName:
-    21300000: vinedownFX_0
-    21300002: vinedownFX_1
-    21300004: vinedownFX_2
-    21300006: vinedownFX_3
+    21300000: T_vine_0
+    21300002: T_vine_1
+    21300004: T_vine_2
+    21300006: T_vine_3
+    21300008: T_vine_4
+    21300010: T_vine_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -121,81 +123,121 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vinedownFX_0
+      name: T_vine_0
       rect:
         serializedVersion: 2
         x: 0
         y: 176
         width: 80
         height: 80
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4bed35249118c945bfcf917dc5035ac
+      spriteID: 721f3f3d690352948a5e010ba527e50c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vinedownFX_1
+      name: T_vine_1
       rect:
         serializedVersion: 2
         x: 80
         y: 176
         width: 80
         height: 80
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa006d495444e1842a543e54b3829cb6
+      spriteID: e18fa10099140994992aa451d9febf39
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vinedownFX_2
+      name: T_vine_2
       rect:
         serializedVersion: 2
         x: 160
         y: 176
         width: 80
         height: 80
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ebfd0f79c238c34a8b75d06822f6597
+      spriteID: 6edd96a8c135a224ab27803257e7d31e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vinedownFX_3
+      name: T_vine_3
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 80
         height: 80
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af9266dc25c40594583871a80ebb3fa0
+      spriteID: e79015fd967b99648bcedd7bcc077897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_vine_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4cfaefa28533cf40b61ee0552d12701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_vine_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.45816994, y: 0.4414379}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d06adef09d4cffc458d1e71a9f2a0eb3
       vertices: []
       indices: 
       edges: []
@@ -203,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 67e1840809e3d5e47a393a98f3b10a32
+    spriteID: 85e1008cea20a4149af41f13c4d11f0f
     vertices: []
     indices: 
     edges: []

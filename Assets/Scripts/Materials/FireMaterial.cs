@@ -13,6 +13,7 @@ public class FireMaterial : MaterialClass
     public bool attackHitMultipleTargets;
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
+    public GameObject atkFxAnimation;
     
     [Header("Special")]
     public float specialDashDistance;
@@ -74,6 +75,11 @@ public class FireMaterial : MaterialClass
             hitBoxSize = new Vector2(hitBoxSize.y, hitBoxSize.x);
         }
         */
+
+        GameObject fx = Instantiate(atkFxAnimation, player.transform.position, Quaternion.identity);
+        fx.transform.parent = player.transform;
+        SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+        fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
 
         Vector2 spawnpos = player.transform.position;
         spawnpos.y = player.transform.position.y + 0.5f;
