@@ -25,6 +25,12 @@ public class VineMaterial : MaterialClass
     public LayerMask grappleLayer; //layers that the grapple can hit
     public GameObject grapplePrefab;
 
+    private Vector2 _grapplepos;
+    [HideInInspector] public Vector2 grapplepos
+    {
+        get { return _grapplepos; }
+    }
+
     
     public override void Attack(GameObject player)
     {
@@ -93,6 +99,9 @@ public class VineMaterial : MaterialClass
         if (canGrapple){
             canGrapple = false;
             Debug.Log("Vine Special");
+            
+            var clip = Resources.Load<AudioClip>("Sounds/VineSpecial");
+            AudioManager.instance.PlaySound(clip, 0.8f);
 
             Vector2 direction = PlayerManager.instance.playerActions.aimDirection;
             RaycastHit2D hit =
@@ -103,6 +112,7 @@ public class VineMaterial : MaterialClass
             {
                 //grapple hit
                 grapplePosition = hit.point;
+                _grapplepos = grapplePosition;
                 StartCoroutine(ShootGrapple(player, grapplePosition, true));
             }
             else
@@ -221,9 +231,11 @@ public class VineMaterial : MaterialClass
 
         if (onWall && InputManager.GetJumpButton())
         {
-             PlayerManager.instance.playerMovement.Jump(PlayerManager.instance.playerMovement.jumpPower);
+            PlayerManager.instance.playerMovement.Jump(PlayerManager.instance.playerMovement.jumpPower);
+            onWall = false;
         }
-        
+
+
         //reset gravity, collisions, and movement
         playerRB.gravityScale = PlayerManager.instance.playerMovement.gravityScale;
         // Physics2D.IgnoreLayerCollision(player.layer, LayerMask.NameToLayer("Enemies"), false);
