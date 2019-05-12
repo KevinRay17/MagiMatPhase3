@@ -93,7 +93,7 @@ public class AnimationEvents : MonoBehaviour
             if (PlayerManager.instance.playerHealth.invincible)
                 a.a = _parentsr.color.a;
 
-            if (PlayerManager.instance.playerHealth.isPlayerDead || _anim.GetBool("Special") || _anim.GetBool("Dead"))
+            if (PlayerManager.instance.playerHealth.isPlayerDead || (_anim.GetBool("Special") && !_anim.GetBool("Vine")) || _anim.GetBool("Dead"))
                 a.a = 0f;
 
             _sr.color = a;
