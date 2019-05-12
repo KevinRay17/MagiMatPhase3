@@ -84,6 +84,10 @@ public class NewRockGolem : MonoBehaviour
         isWaiting = true;
         isThrowing = true;
         yield return new WaitForSeconds(3);
+        
+        var enemyRockThrow = Resources.Load<AudioClip>("Sounds/EnemyRockThrow");
+        AudioManager.instance.PlaySound(enemyRockThrow);
+        
         GameObject BoulderClone = Instantiate(boulder, transform.position, Quaternion.identity);
         BoulderClone.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(new Vector3(
                                                             BoulderClone.gameObject.transform.position.x -
