@@ -109,6 +109,8 @@ MonoBehaviour:
   detectionRequiresLOS: 0
   detectionRange: 8
   dropAggroRange: 15
+  deathAnim: {fileID: 7386146878349638690, guid: 531d7bd5a83965649b3f632ebcdbe89e,
+    type: 3}
   attackRange: 10
   attackChargeDuration: 3
   boulderSpeed: 20

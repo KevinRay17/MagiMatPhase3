@@ -28,6 +28,9 @@ public abstract class Enemy : MonoBehaviour
     public bool detectionRequiresLOS; //does the enemy need to see the player to get aggro
     public float detectionRange; //range of enemy vision
     public float dropAggroRange; //how far away the player must be to drop aggro
+ 
+    
+    public ParticleSystem deathAnim;
     
 
     protected virtual void Awake()
@@ -181,6 +184,10 @@ public abstract class Enemy : MonoBehaviour
         }
         if (health <= 0)
         {
+            if (material == Material.Rock)
+            {
+                Instantiate(deathAnim, transform.position, Quaternion.identity);
+            }
             Death();
         }
     }
