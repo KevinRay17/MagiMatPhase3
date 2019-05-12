@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4574878047826534113}
   - component: {fileID: 4574878047826534112}
   - component: {fileID: 4574878047826534115}
-  - component: {fileID: 2116913593023475261}
-  m_Layer: 0
+  - component: {fileID: 4936666749816849680}
+  m_Layer: 8
   m_Name: RockSource
   m_TagString: MaterialSource
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67f372b5645e9464c956ba80f55a6322, type: 3}
-  m_Color: {r: 0.5377358, g: 0.5095605, b: 0.47939655, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0e95b547741483445a2627b742e14290, type: 3}
+  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: 3
---- !u!61 &2116913593023475261
-BoxCollider2D:
+--- !u!60 &4936666749816849680
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,12 +111,16 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.3, y: 1.1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.65000004, y: 0.55}
+      - {x: -0.65000004, y: -0.55}
+      - {x: 0.65000004, y: -0.55}
+      - {x: 0.65000004, y: -0.05}
+      - {x: 0.15, y: 0.55}

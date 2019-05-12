@@ -108,6 +108,7 @@ public class ResourceController : MonoBehaviour
             }
             */
             PlayerManager.instance.material = Material.None;
+            PlayerManager.instance.ChangeMaterial(Material.None);
         }
 
 
@@ -171,7 +172,14 @@ public class ResourceController : MonoBehaviour
 */
     public bool isAvailable(int indexToCheck)
     {
-        return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();
+        if (PlayerManager.instance.material == Material.None)
+        {
+            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck];
+        }
+        else
+        {
+            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();  
+        }
     }
 
     public void resetCooldown(int indexToReset)

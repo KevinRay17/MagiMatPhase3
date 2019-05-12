@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4574878047826534113}
   - component: {fileID: 4574878047826534112}
   - component: {fileID: 4574878047826534115}
-  - component: {fileID: 2116913593023475261}
+  - component: {fileID: 9069619628444190146}
   m_Layer: 0
   m_Name: VineSource
   m_TagString: MaterialSource
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4574878047826534114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.56, y: 4.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4395, y: 1.4395, z: 1.4395}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67f372b5645e9464c956ba80f55a6322, type: 3}
-  m_Color: {r: 0.03769684, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 04e2298d5afbd4c42934330256c0330b, type: 3}
+  m_Color: {r: 0.5785238, g: 1, b: 0.5613208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: 1
---- !u!61 &2116913593023475261
-BoxCollider2D:
+--- !u!60 &9069619628444190146
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,19 +104,24 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.78125, y: 0.5625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.328125, y: 0.28125}
+      - {x: -0.390625, y: 0.21875}
+      - {x: -0.390625, y: -0.28125}
+      - {x: 0.390625, y: -0.28125}
+      - {x: 0.390625, y: 0.15625}
+      - {x: 0.328125, y: 0.28125}

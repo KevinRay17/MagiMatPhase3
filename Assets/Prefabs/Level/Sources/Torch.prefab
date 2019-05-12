@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6717486182181905274}
   m_Layer: 0
   m_Name: Torch
-  m_TagString: MaterialUnlock
+  m_TagString: MaterialSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6717486182181905275}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.619583, y: 11.539732, z: -1.0405203}
   m_LocalScale: {x: 2.1086, y: 2.1086, z: 2.1086}
   m_Children: []
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: f3206685e72ec6749b3abebff357f916, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45204fc484826af4ba87a9cfdcb44e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +111,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 0.4375, y: 1.125}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
