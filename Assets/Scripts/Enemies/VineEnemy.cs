@@ -111,10 +111,17 @@ public class VineEnemy : Enemy
         
         if (facingRight)
         {
+            var EnemyVine = Resources.Load<AudioClip>("Sounds/EnemyVine");
+            AudioManager.instance.PlaySound(EnemyVine);
+            
             GameObject hitBox = Instantiate(vineHitBox, transform.position + new Vector3(1.5f, 0, 0), Quaternion.identity);
+
         }
         else
         {
+            var EnemyVine = Resources.Load<AudioClip>("Sounds/EnemyVine");
+            AudioManager.instance.PlaySound(EnemyVine);
+            
             GameObject hitBox = Instantiate(vineHitBox, transform.position - new Vector3(1.5f, 0, 0), Quaternion.identity);
         }
         
@@ -126,6 +133,7 @@ public class VineEnemy : Enemy
 
     protected override void Attack()
     {
+
         StartCoroutine(ChargeAttack());
     }
 }

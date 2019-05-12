@@ -51,6 +51,9 @@ public class FireEnemy : Enemy
             timer += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        
+        var EnemyFire = Resources.Load<AudioClip>("Sounds/EnemyFire");
+        AudioManager.instance.PlaySound(EnemyFire);
 
         //after the dash is finished, start coroutine for fireball attack
         StartCoroutine(ChargeAttack());
