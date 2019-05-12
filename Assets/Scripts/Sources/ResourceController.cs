@@ -98,7 +98,7 @@ public class ResourceController : MonoBehaviour
         if (currentMana > 0)
         {
             curMat = PlayerManager.instance.material;
-            currentMana -= passiveManaDrain*100; //constantly drain mana every frame >:(
+            currentMana -= passiveManaDrain*10; //constantly drain mana every frame >:(
         }
 
         if (currentMana < 0)

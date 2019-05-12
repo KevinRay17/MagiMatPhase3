@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 983671601
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 98622429
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 83c14d27ec5f1ac43bfe9a3b3025d9bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -305290311
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 18b1641ef48e7c04bbf27578f8affdda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -450,13 +450,9 @@ MonoBehaviour:
   materialAbsorberSpeed: 35
   materialAbsorberReturnSpeed: 35
   materialAbsorberMaxDistance: 10
-  materialAbsorberPrefab: {fileID: 5649834849070784572, guid: f961469beb86b2448b8ffc24273c7934,
+  materialAbsorberPrefab: {fileID: 7840251050919398423, guid: c352d6ffd1c2107428ea4f91a28128fa,
     type: 3}
   RC: {fileID: 0}
-  fireAniPrefab: {fileID: 5432773283970621395, guid: 91b86e6166513b248bcfe6f5abfd97fa,
-    type: 3}
-  rockslamAniPrefab: {fileID: 6265150512787786891, guid: aa4284f8ea164e54ea9abe3c3a8a8697,
-    type: 3}
 --- !u!114 &9040459358843517332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ab7179d26383043bbd3001fa5ae3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  youDiedText: {fileID: 0}
+  GameOverObject: {fileID: 0}
   timeTilRespawn: 2
 --- !u!114 &9040459358843517321
 MonoBehaviour:
@@ -521,6 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b5097f1eb12984cb20e8f32ecc02a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TFire: {fileID: 1484329424044124780, guid: d4fbc918fcbba5c4491cba456b36520d, type: 3}
+  TVine: {fileID: 1472567078940100815, guid: dfba0f9590ff06140bc59e01a5ece3e2, type: 3}
+  TRock: {fileID: 2428971745946364043, guid: ae82326fa97d243408e8e506c5c6c62e, type: 3}
   maxMana: 100
   passiveManaDrain: 0.009
   attackIndex: 0
