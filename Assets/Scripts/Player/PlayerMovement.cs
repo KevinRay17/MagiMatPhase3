@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         //player can jump if grounded or climbing and has not jumped recently
-        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && !hasJumped && canMove)
+        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && canMove)
         {
             _anim.SetBool("Climb", false);
 
