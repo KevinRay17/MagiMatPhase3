@@ -7,6 +7,13 @@ using UnityEngine;
 // this script is responsible for the managenent of the now coined "mana" AKA resource amount
 public class ResourceController : MonoBehaviour
 {
+    //animation things
+    [Header("Animation Prefabs")]
+    Material curMat; //keeps track of what material just went out
+    public GameObject TFire;
+    public GameObject TVine;
+    public GameObject TRock;
+
 
     //float responsible for the amount of mana current had
     static public float currentMana;
@@ -77,6 +84,7 @@ public class ResourceController : MonoBehaviour
         cooldowns[0, specialIndex] = 0;
         cooldowns[1, specialIndex] = specialCooldown;
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -89,7 +97,8 @@ public class ResourceController : MonoBehaviour
         
         if (currentMana > 0)
         {
-            currentMana -= passiveManaDrain*10; //constantly drain mana every frame >:(
+            curMat = PlayerManager.instance.material;
+            currentMana -= passiveManaDrain*100; //constantly drain mana every frame >:(
         }
 
         if (currentMana < 0)
@@ -108,7 +117,24 @@ public class ResourceController : MonoBehaviour
             }
             */
             PlayerManager.instance.material = Material.None;
-            PlayerManager.instance.ChangeMaterial(Material.None);
+
+            //animation
+            //play something cool when material dies
+            if (curMat == Material.Fire)
+            {
+                GameObject fx = Instantiate(TFire, transform.position, Quaternion.identity);
+                fx.transform.parent = transform;
+            } else if (curMat == Material.Vine)
+            {
+                GameObject fx = Instantiate(TVine, transform.position, Quaternion.identity);
+                fx.transform.parent = transform;
+            }
+            else if (curMat == Material.Rock)
+            {
+                GameObject fx = Instantiate(TRock, transform.position, Quaternion.identity);
+                fx.transform.parent = transform;
+            }
+            curMat = Material.None;
         }
 
 
@@ -172,14 +198,7 @@ public class ResourceController : MonoBehaviour
 */
     public bool isAvailable(int indexToCheck)
     {
-        if (PlayerManager.instance.material == Material.None)
-        {
-            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck];
-        }
-        else
-        {
-            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();  
-        }
+        return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();
     }
 
     public void resetCooldown(int indexToReset)
