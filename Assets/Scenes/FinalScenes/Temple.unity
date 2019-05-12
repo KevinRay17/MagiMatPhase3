@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4729,41 +4734,56 @@ PrefabInstance:
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[4].m_Data.r
-      value: 0.98099107
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[4].m_Data.g
-      value: 0.68534166
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[4].m_Data.b
-      value: 0.7005826
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[5].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[5].m_Data.r
-      value: NaN
+      value: 0.98099107
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[5].m_Data.g
-      value: NaN
+      value: 0.68534166
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[5].m_Data.b
-      value: NaN
+      value: 0.7005826
       objectReference: {fileID: 0}
     - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[5].m_Data.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[6].second.m_TileColorIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
+        type: 3}
+      propertyPath: m_TileColorArray.Array.data[4].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620712901091304209, guid: 74dbd09d9c437924292dcd7f44624b57,
+        type: 3}
+      propertyPath: m_TileColorArray.Array.data[4].m_Data.a
       value: NaN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4854,6 +4874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -5078,6 +5103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5226,6 +5256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -5595,6 +5630,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5691,7 +5731,7 @@ Transform:
   - {fileID: 1029083326}
   - {fileID: 22593689}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &154197157
 GameObject:
@@ -5737,7 +5777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &159833585
 PrefabInstance:
@@ -5941,6 +5981,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -6176,6 +6221,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d8b2267a0d3c14b9947cbcbb417620, type: 3}
+--- !u!1001 &222526862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5527409341061542212, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_Name
+      value: FireEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 505.27835
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -50.32874
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8feffb8dff5ffe642810c79a4eb1feab, type: 3}
 --- !u!1001 &232747410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6187,6 +6301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -6351,7 +6470,7 @@ RectTransform:
   - {fileID: 1896472622}
   - {fileID: 1968508016}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6375,6 +6494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -6526,6 +6650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6668,6 +6797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -6895,6 +7029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -7300,7 +7439,7 @@ Transform:
   - {fileID: 865952813}
   - {fileID: 778037834}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &420817473
 PrefabInstance:
@@ -7756,6 +7895,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7824,6 +7968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -8160,7 +8309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &535435732
 PrefabInstance:
@@ -8173,6 +8322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -8242,6 +8396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -8461,6 +8620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8529,6 +8693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -8638,6 +8807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -8998,6 +9172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9153,7 +9332,7 @@ Transform:
   m_Children:
   - {fileID: 329690613}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &665488093
 PrefabInstance:
@@ -9166,6 +9345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -9247,6 +9431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -9571,6 +9760,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9628,6 +9822,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0808df689fcc31428d6dbe68ecbb24b, type: 3}
+--- !u!1001 &760913411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5527409341061542212, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_Name
+      value: FireEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 494.26666
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -51.00194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8feffb8dff5ffe642810c79a4eb1feab, type: 3}
 --- !u!1001 &761135260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9761,6 +10024,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9842,6 +10110,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9910,6 +10183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -10169,6 +10447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -10574,6 +10857,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10757,6 +11045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -13961,6 +14254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14048,6 +14346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14116,6 +14419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -14325,6 +14633,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14393,6 +14706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -14504,6 +14822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -14765,7 +15088,7 @@ PrefabInstance:
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4233667675472675760, guid: b4a6f71d7f6b5b24480c57144058126d,
         type: 3}
@@ -14832,6 +15155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -15392,6 +15720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15574,6 +15907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -15932,6 +16270,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 376629574}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1402593396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5527409341061542212, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_Name
+      value: FireEnemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 487.00565
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -40.71153
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527409341061542223, guid: 8feffb8dff5ffe642810c79a4eb1feab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8feffb8dff5ffe642810c79a4eb1feab, type: 3}
 --- !u!1001 &1414353608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16384,6 +16791,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16452,6 +16864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -16610,7 +17027,7 @@ Transform:
   - {fileID: 604067123}
   - {fileID: 953277177}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1472438045
 PrefabInstance:
@@ -16623,6 +17040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -16775,12 +17197,12 @@ PrefabInstance:
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 182.7
+      value: 512.3
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -56.5
+      value: -50.7
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
@@ -16810,7 +17232,7 @@ PrefabInstance:
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
@@ -17826,6 +18248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17900,6 +18327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -18066,6 +18498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -18636,7 +19073,7 @@ Transform:
   - {fileID: 819603836}
   - {fileID: 1705851288}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1859158655
 PrefabInstance:
@@ -18649,6 +19086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -19073,6 +19515,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireToad (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19332,6 +19779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
@@ -19836,7 +20288,7 @@ PrefabInstance:
     - target: {fileID: 5207764879329811259, guid: 02f256878927ad14fa5e8d06c82ef283,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5207764879329811259, guid: 02f256878927ad14fa5e8d06c82ef283,
         type: 3}
@@ -19936,7 +20388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2067590653 stripped
 Transform:
@@ -20024,6 +20476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireToad (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212876197783737877, guid: e0808df689fcc31428d6dbe68ecbb24b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212876197783737878, guid: e0808df689fcc31428d6dbe68ecbb24b,
         type: 3}
