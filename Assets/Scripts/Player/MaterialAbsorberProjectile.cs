@@ -23,7 +23,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
     public GameObject particlePrefab;
     public int particleAmount;
 
-    public static bool FireUnlocked = false;
+    public static bool FireUnlocked = true;
     
     void Awake()
     {
@@ -31,6 +31,7 @@ public class MaterialAbsorberProjectile : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
         
 
+        Debug.Log("the status of this retarded bool is: " + FireUnlocked);
         
 
     }

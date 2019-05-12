@@ -19,7 +19,10 @@ public class GolemProjectile : MonoBehaviour
         life+= 1 *Time.deltaTime;
         if (life > lifeTime)
         {
+            var RockLand = Resources.Load<AudioClip>("Sounds/EnemyRockLand");
+            AudioManager.instance.PlaySound(RockLand);
             Destroy(gameObject);
+            
         }
 
     }
@@ -29,6 +32,8 @@ public class GolemProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerManager.instance.playerHealth.TakeDamage(1);
+            var RockLand = Resources.Load<AudioClip>("Sounds/EnemyRockLand");
+            AudioManager.instance.PlaySound(RockLand);
             Destroy(gameObject);
         }
     }
