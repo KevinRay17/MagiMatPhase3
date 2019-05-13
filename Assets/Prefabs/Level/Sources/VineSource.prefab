@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4574878047826534112}
   - component: {fileID: 4574878047826534115}
   - component: {fileID: 9069619628444190146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VineSource
   m_TagString: MaterialSource
   m_Icon: {fileID: 0}

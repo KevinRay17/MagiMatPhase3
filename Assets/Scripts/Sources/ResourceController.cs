@@ -101,7 +101,7 @@ public class ResourceController : MonoBehaviour
             currentMana -= passiveManaDrain*10; //constantly drain mana every frame >:(
         }
 
-        if (currentMana < 0)
+        if (currentMana < 0 && PlayerManager.instance.material != Material.None)
         {
             /*
             oneTimeUse = 1;
@@ -117,6 +117,7 @@ public class ResourceController : MonoBehaviour
             }
             */
             PlayerManager.instance.material = Material.None;
+            PlayerManager.instance.ChangeMaterial(Material.None);
 
             //animation
             //play something cool when material dies
@@ -198,7 +199,12 @@ public class ResourceController : MonoBehaviour
 */
     public bool isAvailable(int indexToCheck)
     {
+        if (PlayerManager.instance.material != Material.None)
         return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();
+        else
+        {
+            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck];
+        }
     }
 
     public void resetCooldown(int indexToReset)

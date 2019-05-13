@@ -38,7 +38,6 @@ public class PlayerManager : MonoBehaviour
     {
         material = newMaterial;
         materialScript = MaterialsManager.GetMaterialScript(newMaterial);
-
         Debug.Log("New Material: " + material);
     }
     

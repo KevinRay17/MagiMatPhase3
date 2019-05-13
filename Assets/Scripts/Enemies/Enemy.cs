@@ -112,7 +112,7 @@ public abstract class Enemy : MonoBehaviour
         //check if the enemy is currently waiting at the end of its patrol bounds
         //if it is, reduce the timer til it reaches 0
         //at 0, flip the sprite's direction
-        Debug.Log(patrolWaitTimer);
+        //.Debug.Log(patrolWaitTimer);
         if (patrolWaitTimer > 0)
         {
             patrolWaitTimer -= Time.deltaTime;
