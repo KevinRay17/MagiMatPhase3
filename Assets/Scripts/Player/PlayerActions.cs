@@ -94,7 +94,6 @@ public class PlayerActions : MonoBehaviour
         }
         
         if (InputManager.GetAttackButtonDown() && RC.isAvailable(RC.attackIndex)) {
-            
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }

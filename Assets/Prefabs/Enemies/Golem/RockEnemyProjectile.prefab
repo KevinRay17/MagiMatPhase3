@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6232474629585020216}
   - component: {fileID: 3927256701511792113}
   - component: {fileID: 4741817223208238766}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RockEnemyProjectile
   m_TagString: MaterialSource
   m_Icon: {fileID: 0}
@@ -168,6 +168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BoulderDust
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456767626073241101, guid: dc2c1c3afce40fc4d94ca176162cb977,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3456767626073241088, guid: dc2c1c3afce40fc4d94ca176162cb977,
         type: 3}

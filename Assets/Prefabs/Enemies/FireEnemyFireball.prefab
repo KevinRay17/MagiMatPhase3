@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2895817315691952362}
   - component: {fileID: 4884232081910591802}
   - component: {fileID: 2649991002643679770}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FireEnemyFireball
   m_TagString: MaterialSource
   m_Icon: {fileID: 0}
@@ -167,6 +167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FirebalParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849848073708975755, guid: 71cdc51fc68932d488508826f01bd48b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2266412644990911930, guid: 71cdc51fc68932d488508826f01bd48b,
         type: 3}
