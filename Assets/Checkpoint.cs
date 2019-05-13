@@ -12,6 +12,8 @@ public class Checkpoint : MonoBehaviour
     public ParticleSystem ding;
     private void Start()
     {
+        GameObject particle = GameObject.Find("CPParticle");
+        ding = particle.GetComponent<ParticleSystem>();
         cp= GameObject.FindGameObjectWithTag("spawn").GetComponent<DontDestroy>();
     }
 
