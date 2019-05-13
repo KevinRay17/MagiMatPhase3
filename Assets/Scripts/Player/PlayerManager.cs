@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public PlayerActions playerActions;
 
     public GameObject player;
+    public DontDestroy cp;
 
     public Material material;
     [HideInInspector] public MaterialClass materialScript;
@@ -31,6 +32,8 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        cp = GameObject.FindGameObjectWithTag("spawn").GetComponent<DontDestroy>();
+        transform.position = cp.transform.position;
         ChangeMaterial(Material.None);
     }
 
@@ -38,7 +41,6 @@ public class PlayerManager : MonoBehaviour
     {
         material = newMaterial;
         materialScript = MaterialsManager.GetMaterialScript(newMaterial);
-
         Debug.Log("New Material: " + material);
     }
     

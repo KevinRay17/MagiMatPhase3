@@ -43,7 +43,7 @@ public class EventTriggers : MonoBehaviour
         {
             ResourceController.currentMana = 0;
             PlayerManager.instance.material = Material.None;
-            PlayerManager.instance.materialScript = new NoneMaterial();
+            PlayerManager.instance.ChangeMaterial(Material.None);
             
         }
 

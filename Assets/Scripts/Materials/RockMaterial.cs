@@ -11,6 +11,7 @@ public class RockMaterial : MaterialClass
     public bool attackHitMultipleTargets;
     public Vector2 attackSize; //size of hurt box assuming the attack is directed left or right
     public GameObject hurtBoxPrefab;
+    public GameObject atkFxAnimation;
 
     [Header("Special")] 
     public float specialRadius;
@@ -18,12 +19,12 @@ public class RockMaterial : MaterialClass
     public float projectileSpeed;
     public GameObject projectilePrefab;
 
-    
+
 
 
     public override void Attack(GameObject player)
     {
-        
+
         Debug.Log("Rock Attack");
         //int attackDirection = PlayerManager.instance.playerMovement.faceDirection;
 
@@ -44,7 +45,6 @@ public class RockMaterial : MaterialClass
             }
 
 
-            
             Vector3 directionalOffset = Vector2.zero;
             //directionalOffset.x = attackOffset.x;
             //directionalOffset.y = attackOffset.y;
@@ -63,7 +63,13 @@ public class RockMaterial : MaterialClass
 
                 hbScript.speed = attackMoveSpeed;
                 hbScript.direction = attackDirectionV2;
-            } else
+
+                //animation
+                GameObject fx = Instantiate(atkFxAnimation, player.transform.position, Quaternion.identity);
+                SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+                fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+            }
+            else
             {
                 //this is the downwards crash
                 //instantiate a hit box below player
@@ -79,38 +85,9 @@ public class RockMaterial : MaterialClass
                 hbScript.hitMultipleTargets = attackHitMultipleTargets;
 
                 hbScript.speed = 0f;
-                //hbScript.lifetime = 999f; //in case it's a really long fall
-
-                //animation stuff
-                //PlayerManager.instance.playerMovement.anim.SetBool("Rockcrash", true);
             }
         }
-            /*
-            if (PlayerManager.instance.playerMovement.isGrounded)
-            {
-                if (attackDirection == 2 || attackDirection == 4)
-                {
-                    Vector2 attackDirectionV2 = GlobalFunctions.FaceDirectionToVector2(attackDirection);
-
-                    Vector3 directionalOffset = Vector2.zero;
-                    directionalOffset.x = attackOffset.x * attackDirectionV2.x;
-                    directionalOffset.y = attackOffset.y;
-
-                    GameObject hurtBox = Instantiate(hurtBoxPrefab, player.transform.position + directionalOffset,
-                        Quaternion.identity);
-                    RockAttackHurtBox hbScript = hurtBox.GetComponent<RockAttackHurtBox>();
-
-                    hbScript._spriteRenderer.size = attackSize;
-                    hbScript._boxCollider.size = attackSize;
-                    hbScript.damage = attackDamage;
-                    hbScript.hitMultipleTargets = attackHitMultipleTargets;
-
-                    hbScript.speed = attackMoveSpeed;
-                    hbScript.direction = attackDirectionV2;
-                }
-            }
-            */
-        }
+    }
 
     public override void Special(GameObject player)
     {

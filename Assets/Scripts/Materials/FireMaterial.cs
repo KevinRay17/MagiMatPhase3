@@ -13,6 +13,7 @@ public class FireMaterial : MaterialClass
     public bool attackHitMultipleTargets;
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
+    public GameObject atkFxAnimation;
     
     [Header("Special")]
     public float specialDashDistance;
@@ -75,6 +76,11 @@ public class FireMaterial : MaterialClass
         }
         */
 
+        GameObject fx = Instantiate(atkFxAnimation, player.transform.position, Quaternion.identity);
+        fx.transform.parent = player.transform;
+        SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+        fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+
         Vector2 spawnpos = player.transform.position;
         spawnpos.y = player.transform.position.y + 0.5f;
         GameObject hurtBox = Instantiate(hurtBoxPrefab, spawnpos, Quaternion.identity);
@@ -93,12 +99,22 @@ public class FireMaterial : MaterialClass
     {
         Debug.Log("Fire Special");
         
-        StartCoroutine(DashWait(player));
+       // StartCoroutine(DashWait(player));
         var clip = Resources.Load<AudioClip>("Sounds/FireSpecial");
         AudioManager.instance.PlaySound(clip, 0.8f);
+        
+        Vector2 direction = new Vector2(PlayerManager.instance.playerMovement.inputVector.x, -PlayerManager.instance.playerMovement.inputVector.y);
+        //flip player sprite to reflect direction
+        //Positive direction = facing right; negative direction = facing left
+        if (direction.x < 0)
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+        else
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+        
+        StartCoroutine(FireSpecial(player, direction));
     }
 
-    IEnumerator DashWait(GameObject player)
+    /*IEnumerator DashWait(GameObject player)
     {
        
         //Freeze movement until dash
@@ -117,6 +133,7 @@ public class FireMaterial : MaterialClass
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
         StartCoroutine(FireSpecial(player, direction));
     }
+    */
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
       

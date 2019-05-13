@@ -12,6 +12,9 @@ public class VineMaterial : MaterialClass
     public bool attackHitMultipleTargets;
     public Vector2 attackSize;
     public GameObject hurtBoxPrefab;
+    public GameObject sideatkFx;
+    public GameObject upatkFx;
+    public GameObject downatkFx;
 
     //special stuff
     [HideInInspector] public bool canGrapple = true;
@@ -65,17 +68,39 @@ public class VineMaterial : MaterialClass
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
             }
             //please just end me
+            /*
             //flips sprite even if aiming up or down
             if (directionAngle >= 180)
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
             else
                 PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
-
-
+            */
 
             attackDirection = Mathf.RoundToInt(directionAngle / 90);
             attackDirection += 1;
             attackDirection = attackDirection == 5 ? 1 : attackDirection;
+        }
+
+        if (PlayerManager.instance.playerMovement.faceDirection == 1)
+        {
+            GameObject fx = Instantiate(upatkFx, player.transform.position, Quaternion.identity);
+            fx.transform.parent = player.transform;
+            SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+            fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+        }
+        else if (PlayerManager.instance.playerMovement.faceDirection == 3)
+        {
+            GameObject fx = Instantiate(downatkFx, player.transform.position, Quaternion.identity);
+            fx.transform.parent = player.transform;
+            SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+            fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
+        }
+        else
+        {
+            GameObject fx = Instantiate(sideatkFx, player.transform.position, Quaternion.identity);
+            fx.transform.parent = player.transform;
+            SpriteRenderer fxsr = fx.GetComponent<SpriteRenderer>();
+            fxsr.flipX = PlayerManager.instance.playerMovement.spriteRenderer.flipX;
         }
 
         if (attackDirection == 1 || attackDirection == 3)

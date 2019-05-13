@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
 
     public Material material;
     public int health;
@@ -37,6 +38,7 @@ public abstract class Enemy : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -112,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
         //check if the enemy is currently waiting at the end of its patrol bounds
         //if it is, reduce the timer til it reaches 0
         //at 0, flip the sprite's direction
-        Debug.Log(patrolWaitTimer);
+        //.Debug.Log(patrolWaitTimer);
         if (patrolWaitTimer > 0)
         {
             patrolWaitTimer -= Time.deltaTime;
@@ -121,6 +123,8 @@ public abstract class Enemy : MonoBehaviour
                 facingRight = !facingRight;
                 _spriteRenderer.flipX = !_spriteRenderer.flipX;
             }
+            
+            _animator.Play("idle");
             return;
         }
         
@@ -145,6 +149,7 @@ public abstract class Enemy : MonoBehaviour
                     patrolWaitTimer = patrolWaitDuration;
                 }
             }
+            _animator.Play("run");
         }
         else
         {
