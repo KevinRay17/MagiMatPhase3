@@ -113,7 +113,7 @@ MonoBehaviour:
   deathAnim: {fileID: 7386146878349638690, guid: 531d7bd5a83965649b3f632ebcdbe89e,
     type: 3}
   attackRange: 10
-  attackChargeDuration: 2
+  attackChargeDuration: 1.5
   boulderSpeed: 20
   boulderSpawnOffset: {x: 0, y: 2}
   boulderPrefab: {fileID: 153586109630658924, guid: 35489c374c927fe45ad50ec57e2c38f4,
