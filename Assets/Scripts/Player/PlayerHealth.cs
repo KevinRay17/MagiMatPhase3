@@ -64,10 +64,12 @@ public class PlayerHealth : MonoBehaviour
         {
             invincible = true;
             _invincibilityTimer -= Time.deltaTime;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemies"), true);
         }
         else
         {
             invincible = false;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemies"), false);
         }
         
         UpdateColor();
@@ -124,17 +126,12 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
-    }
-
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+        
         if (collision.gameObject.layer == 13)
         {
             TakeDamage(1);
         }
     }
-    */
 
     bool InvincibleFlicker()
     {
