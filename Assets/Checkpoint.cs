@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
         if (thingInsideMe.CompareTag("Player"))
         {
             // spawnPosition is set to our transform.position
-            // PlayerManager.instance.spawnPosition = transform.position;
+            PlayerManager.instance.spawnPosition.transform.position = transform.position;
         }
     }
 }

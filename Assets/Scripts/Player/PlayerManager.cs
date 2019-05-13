@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public PlayerActions playerActions;
 
     public GameObject player;
+    public GameObject spawnPosition;
 
     public Material material;
     [HideInInspector] public MaterialClass materialScript;
@@ -31,6 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        transform.position = spawnPosition.transform.position;
         ChangeMaterial(Material.None);
     }
 
