@@ -99,12 +99,22 @@ public class FireMaterial : MaterialClass
     {
         Debug.Log("Fire Special");
         
-        StartCoroutine(DashWait(player));
+       // StartCoroutine(DashWait(player));
         var clip = Resources.Load<AudioClip>("Sounds/FireSpecial");
         AudioManager.instance.PlaySound(clip, 0.8f);
+        
+        Vector2 direction = new Vector2(PlayerManager.instance.playerMovement.inputVector.x, -PlayerManager.instance.playerMovement.inputVector.y);
+        //flip player sprite to reflect direction
+        //Positive direction = facing right; negative direction = facing left
+        if (direction.x < 0)
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = false;
+        else
+            PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
+        
+        StartCoroutine(FireSpecial(player, direction));
     }
 
-    IEnumerator DashWait(GameObject player)
+    /*IEnumerator DashWait(GameObject player)
     {
        
         //Freeze movement until dash
@@ -123,6 +133,7 @@ public class FireMaterial : MaterialClass
             PlayerManager.instance.playerMovement.spriteRenderer.flipX = true;
         StartCoroutine(FireSpecial(player, direction));
     }
+    */
     IEnumerator FireSpecial(GameObject player, Vector3 direction)
     {
       

@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position + new Vector3(0.1f, -1.04f, 0),
                 ground))
             {
+                Debug.Log("NEWSPAWN");
                 teleLastPos = this.transform.position;
             }   
         }

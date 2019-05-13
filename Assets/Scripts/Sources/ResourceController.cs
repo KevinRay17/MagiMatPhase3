@@ -199,12 +199,7 @@ public class ResourceController : MonoBehaviour
 */
     public bool isAvailable(int indexToCheck)
     {
-        if (PlayerManager.instance.material != Material.None)
-        return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck] && hasMana();
-        else
-        {
-            return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck];
-        }
+        return cooldowns[0, indexToCheck] >= cooldowns[1, indexToCheck];
     }
 
     public void resetCooldown(int indexToReset)
