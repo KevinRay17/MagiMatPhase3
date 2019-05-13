@@ -15,6 +15,7 @@ TagManager:
   - camTrigger
   - camResetScale
   - MaterialUnlock
+  - spawn
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,13 @@ using UnityEngine;
 // later sections of the level do-able
 public class Checkpoint : MonoBehaviour
 {
+    private DontDestroy cp;
+    public ParticleSystem ding;
+    private void Start()
+    {
+        cp= GameObject.FindGameObjectWithTag("spawn").GetComponent<DontDestroy>();
+    }
+
     void Awake()
     {
         // TODO: Add this code in the main Player script Awake function.
@@ -23,7 +30,9 @@ public class Checkpoint : MonoBehaviour
         if (thingInsideMe.CompareTag("Player"))
         {
             // spawnPosition is set to our transform.position
-            PlayerManager.instance.spawnPosition.transform.position = transform.position;
+            cp.gameObject.transform.position = new Vector3(transform.position.x,transform.position.y +.1f,transform.position.z);
+            PlayerManager.instance.playerHealth.health= 5f;
+            ding.Play();
         }
     }
 }
