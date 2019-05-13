@@ -24581,6 +24581,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &932101860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1921021088, guid: e253c50ff4fa139479617563fae789f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1510971956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc50230d6018bc14bb4693f50e3ebc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &933285168
 GameObject:
   m_ObjectHideFlags: 0
@@ -27380,6 +27392,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1980100949}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1084550227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9040459358755557335, guid: e253c50ff4fa139479617563fae789f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1510971956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc50230d6018bc14bb4693f50e3ebc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1086729864
 GameObject:
   m_ObjectHideFlags: 0
@@ -37160,12 +37184,12 @@ PrefabInstance:
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 182.6
+      value: 187.4
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -54
+      value: -55.3
       objectReference: {fileID: 0}
     - target: {fileID: 9040459358843517330, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
@@ -37253,6 +37277,16 @@ PrefabInstance:
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 1716063757}
+    - target: {fileID: 9040459358843517332, guid: e253c50ff4fa139479617563fae789f2,
+        type: 3}
+      propertyPath: cape
+      value: 
+      objectReference: {fileID: 1084550227}
+    - target: {fileID: 9040459358843517332, guid: e253c50ff4fa139479617563fae789f2,
+        type: 3}
+      propertyPath: collar
+      value: 
+      objectReference: {fileID: 932101860}
     - target: {fileID: 9040459358843517322, guid: e253c50ff4fa139479617563fae789f2,
         type: 3}
       propertyPath: youDiedText
@@ -43020,6 +43054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BouncePad (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793601668342416017, guid: d3463bb7ec435b046b67cd2a113e9e43,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 838491676032698336, guid: d3463bb7ec435b046b67cd2a113e9e43,
         type: 3}

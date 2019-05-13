@@ -33,6 +33,10 @@ public class PlayerActions : MonoBehaviour
 
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
+    public bool groundPounding
+    {
+        get { return _groundPounding; }
+    }
 
     [HideInInspector] public ResourceController RC;
 
@@ -50,7 +54,6 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
-        
             
         aimDirection = InputManager.GetAimDirection();
         
@@ -247,14 +250,18 @@ public class PlayerActions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        /*
+         * moved to hitbox script
         //On Ground Pound, break Breakable ground pieces
         if (_groundPounding && other.gameObject.CompareTag("Breakable"))
         {
             Destroy(other.gameObject);
-            _groundPounding = false;
-            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
+            //_groundPounding = false;
+            //PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
         }
-        else if (_groundPounding)
+        else 
+        */
+        if (_groundPounding)
         {
             PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
             _groundPounding = false;

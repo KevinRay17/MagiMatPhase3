@@ -31,6 +31,15 @@ public class Trampoline : MonoBehaviour
             
             // Apply bounceForce
             playerRigidbody.AddForce(transform.up * bounceForce);
+
+
+            PlayerManager.instance.playerMovement.anim.SetBool("Special", false);
+            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
+            PlayerManager.instance.playerMovement.anim.SetBool("Landing", false);
+            PlayerManager.instance.playerMovement.anim.SetTrigger("jump");
+
+            PlayerManager.instance.cape.AnimJump();
+            PlayerManager.instance.collar.AnimJump();
         }
     }
 }
