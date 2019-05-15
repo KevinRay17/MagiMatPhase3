@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position + new Vector3(0.1f, -1.04f, 0),
                 ground))
             {
+                Debug.Log("NEWSPAWN");
                 teleLastPos = this.transform.position;
             }   
         }
@@ -152,8 +153,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         //player can jump if grounded or climbing and has not jumped recently
-        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && !hasJumped && canMove)
+        if (InputManager.GetJumpButtonDown() && (isGrounded || isClimbing) && canMove)
         {
+            _anim.SetBool("Climb", false);
+
             if (isClimbing)
             {
                 StoppedClimbing();
@@ -351,20 +354,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Climb()
     {
-        /*
-        anim.SetBool("Moving", false);
-        anim.SetBool("Climbing", true);
-        */
-
         Vector3 verticalinput = new Vector2(0, _inputVector.y);
 
         //set face direction if verticalInput != 0;
         if (verticalinput.y > 0)
         {
+            _anim.SetBool("Climb", true);
             faceDirection = 3;
         }
         else if (verticalinput.y < 0)
         {
+            _anim.SetBool("Climb", true);
             faceDirection = 1;
         }
 
@@ -378,7 +378,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (anim.GetBool("Landing"))
             anim.SetBool("Landing", false);
-
 
 
         Vector2 velocity = _rigidbody2D.velocity;

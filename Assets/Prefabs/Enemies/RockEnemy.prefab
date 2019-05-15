@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8967510443758643424}
   - component: {fileID: 8967510443758643430}
   - component: {fileID: 8967510443758643429}
-  - component: {fileID: 8967510443758643428}
+  - component: {fileID: 925309283}
+  - component: {fileID: 3126892853406443452}
   m_Layer: 13
   m_Name: RockEnemy
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8967510443758643425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 204.53, y: -6.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 8967510443849963838}
   m_Father: {fileID: 0}
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f762b5b4b3dbef04bbbfcb35328453c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c86afa6d4408baf4481a0a453b1e695c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +99,8 @@ MonoBehaviour:
   material: 3
   health: 3
   flickerMask: {fileID: 8967510443849963837}
+  distanceToGround: 1
+  groundCheckAheadDistance: 0.5
   stationary: 0
   patrolSpeed: 1
   patrolRange: 3
@@ -107,10 +110,12 @@ MonoBehaviour:
   detectionRequiresLOS: 0
   detectionRange: 8
   dropAggroRange: 15
+  deathAnim: {fileID: 7386146878349638690, guid: 531d7bd5a83965649b3f632ebcdbe89e,
+    type: 3}
   attackRange: 10
-  attackChargeDuration: 3
+  attackChargeDuration: 1.5
   boulderSpeed: 20
-  boulderSpawnOffset: {x: 0, y: 1}
+  boulderSpawnOffset: {x: 0, y: 2}
   boulderPrefab: {fileID: 153586109630658924, guid: 35489c374c927fe45ad50ec57e2c38f4,
     type: 3}
 --- !u!50 &8967510443758643429
@@ -134,8 +139,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8967510443758643428
-BoxCollider2D:
+--- !u!70 &925309283
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,19 +152,28 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27069092, y: -1.2648311}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 7}
-    newSize: {x: 2.5333333, y: 1.9666667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.769104, y: 2.3484526}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.019398332, y: 0.15914416}
+  m_Size: {x: 0.43649936, y: 1.1651771}
+  m_Direction: 0
+--- !u!95 &3126892853406443452
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967510443758643425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7684d20dbe67b694495b38601d02ee08, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8967510443849963839
 GameObject:
   m_ObjectHideFlags: 0

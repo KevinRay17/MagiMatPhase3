@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 public class EventTriggers : MonoBehaviour
 {
@@ -39,11 +40,17 @@ public class EventTriggers : MonoBehaviour
         }
 
         //When moving through water and you are fire, put yourself out
+        if (other.gameObject.CompareTag("Water"))
+        {
+            GameObject splash = GameObject.FindGameObjectWithTag("splash");
+            splash.transform.position = new Vector3(transform.position.x,transform.position.y - 1f, transform.position.z);
+            splash.GetComponent<ParticleSystem>().Play();
+        }
         if (other.gameObject.CompareTag("Water") && PlayerManager.instance.material == Material.Fire)
         {
             ResourceController.currentMana = 0;
             PlayerManager.instance.material = Material.None;
-            PlayerManager.instance.materialScript = new NoneMaterial();
+            PlayerManager.instance.ChangeMaterial(Material.None);
             
         }
 

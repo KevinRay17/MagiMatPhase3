@@ -133,7 +133,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            return new Vector2(Input.GetAxisRaw("RightJSHorizontal"), Input.GetAxisRaw("RightJSVertical") * -1);
+            return new Vector2(Input.GetAxisRaw("LeftJSHorizontal"), Input.GetAxisRaw("LeftJSVertical") * -1);
         } 
     }
     

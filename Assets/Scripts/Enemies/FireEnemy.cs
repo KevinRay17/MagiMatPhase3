@@ -43,6 +43,8 @@ public class FireEnemy : Enemy
         //face the direction of the end location
         _spriteRenderer.flipX = facingRight;
         
+        _animator.Play("dash");
+        
         //move towards the end location based on the dashTime
         float timer = 0;
         while (timer < dashTime)
@@ -51,6 +53,9 @@ public class FireEnemy : Enemy
             timer += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        
+        var EnemyFire = Resources.Load<AudioClip>("Sounds/EnemyFire");
+        AudioManager.instance.PlaySound(EnemyFire);
 
         //after the dash is finished, start coroutine for fireball attack
         StartCoroutine(ChargeAttack());
@@ -61,6 +66,8 @@ public class FireEnemy : Enemy
     //not affected by gravity
     IEnumerator ChargeAttack()
     {
+        _animator.Play("idle");
+        
         //face the enemy towards the player
         Vector3 target = PlayerManager.instance.player.transform.position;
         facingRight = transform.position.x < target.x;

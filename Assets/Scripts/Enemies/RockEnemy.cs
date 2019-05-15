@@ -26,16 +26,27 @@ public class RockEnemy : Enemy
             }
             else
             {
-                //if the player is outside the attackRange, but is still aggroed, move towards the player
-                facingRight = transform.position.x < target.x;
-                _spriteRenderer.flipX = facingRight;
-                if (facingRight)
+                if (CanMoveForward())
                 {
-                    _rigidbody2D.MovePosition(transform.position + (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    _animator.Play("run");
+                    
+                    //if the player is outside the attackRange, but is still aggroed, move towards the player
+                    facingRight = transform.position.x < target.x;
+                    _spriteRenderer.flipX = facingRight;
+                    if (facingRight)
+                    {
+                        _rigidbody2D.MovePosition(transform.position +
+                                                  (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    }
+                    else
+                    {
+                        _rigidbody2D.MovePosition(transform.position -
+                                                  (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    }
                 }
                 else
                 {
-                    _rigidbody2D.MovePosition(transform.position - (new Vector3(chaseSpeed, 0, 0) * Time.deltaTime));
+                    _animator.Play("idle");
                 }
             }
         }
@@ -59,6 +70,8 @@ public class RockEnemy : Enemy
         //make boulder kinematic, so it isn't affected by gravity until it is thrown
         boulderRigidbody.isKinematic = true;
 
+        _animator.Play("chargeAttack");
+        
         //create timer for the attackChargeDuration
         float chargeTimer = 0;
         while (chargeTimer < attackChargeDuration)

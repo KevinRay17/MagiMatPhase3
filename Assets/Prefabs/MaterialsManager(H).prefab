@@ -87,6 +87,11 @@ MonoBehaviour:
   attackSize: {x: 2, y: 1}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
+  sideatkFx: {fileID: 8515735796400121115, guid: f3ef0fd57af49344fa04eeb2d4e17d49,
+    type: 3}
+  upatkFx: {fileID: 1234715306114614985, guid: 4996c6cf0b2c91c4d934210a4761fd4b, type: 3}
+  downatkFx: {fileID: 2442330153577274770, guid: 5cd3a9694ae78e6498b2c95a289982f9,
+    type: 3}
   canGrapple: 1
   onGrapple: 0
   onWall: 0
@@ -112,14 +117,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: 2
-  attackUseFaceDirection: 0
+  attackUseFaceDirection: 1
   attackDamage: 1
   attackOffset: 1
   attackHitMultipleTargets: 0
-  attackSize: {x: 2, y: 2.5}
+  attackSize: {x: 2.3, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 7e860a2073a4f164790632dedb31aefe,
     type: 3}
-  specialDashDistance: 5
+  atkFxAnimation: {fileID: 8145381704102900168, guid: 9b4d4cbd73d6a3343a0bd74ae6e543c1,
+    type: 3}
+  specialDashDistance: 7
   specialDashTime: 0.1
 --- !u!114 &1865942283175699862
 MonoBehaviour:
@@ -140,6 +147,8 @@ MonoBehaviour:
   attackHitMultipleTargets: 1
   attackSize: {x: 1, y: 2}
   hurtBoxPrefab: {fileID: 2672472757980954087, guid: 111831dfd22261f4c9ef41a3173efdd7,
+    type: 3}
+  atkFxAnimation: {fileID: 4030919797234208154, guid: 1ff9921b4d78deb44bbb551288d5a8b5,
     type: 3}
   specialRadius: 1
   numberOfProjectiles: 8

@@ -33,12 +33,12 @@ public class PlayerActions : MonoBehaviour
 
     private float _downwardStompSpeed = -1000f;
     private bool _groundPounding = false;
+    public bool groundPounding
+    {
+        get { return _groundPounding; }
+    }
 
     [HideInInspector] public ResourceController RC;
-    
-    [Header("Animation prefabs")]
-    public GameObject fireAniPrefab;
-    public GameObject rockslamAniPrefab;
 
     //private AudioClip someAudio;
 
@@ -54,7 +54,6 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
-        
             
         aimDirection = InputManager.GetAimDirection();
         
@@ -77,19 +76,27 @@ public class PlayerActions : MonoBehaviour
             }
             else
             {
-//<<<<<<< HEAD
-  //              ThrowMaterialAbsorber(mouseDirection);
+                //<<<<<<< HEAD
+                //              ThrowMaterialAbsorber(mouseDirection);
+
+                PlayerManager.instance.playerMovement.anim.SetBool("Throw", true);
+
                 //Sound for Knife Landing
                 var knifeThrow = Resources.Load<AudioClip>("Sounds/KnifeThrow");
                 AudioManager.instance.PlaySound(knifeThrow);
-//=======
-                ThrowMaterialAbsorber(aimDirection);
-//>>>>>>> origin/master
+
+                if (aimDirection == Vector2.zero)
+                {
+                    ThrowMaterialAbsorber(GlobalFunctions.FaceDirectionToVector2(PlayerManager.instance.playerMovement.faceDirection));
+                }
+                else
+                {
+                    ThrowMaterialAbsorber(aimDirection);
+                }
             }
         }
         
         if (InputManager.GetAttackButtonDown() && RC.isAvailable(RC.attackIndex)) {
-            
             Attack();
             RC.resetCooldown(RC.attackIndex);
         }
@@ -243,14 +250,18 @@ public class PlayerActions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        /*
+         * moved to hitbox script
         //On Ground Pound, break Breakable ground pieces
         if (_groundPounding && other.gameObject.CompareTag("Breakable"))
         {
             Destroy(other.gameObject);
-            _groundPounding = false;
-            PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
+            //_groundPounding = false;
+            //PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
         }
-        else if (_groundPounding)
+        else 
+        */
+        if (_groundPounding)
         {
             PlayerManager.instance.playerMovement.anim.SetBool("Atk", false);
             _groundPounding = false;

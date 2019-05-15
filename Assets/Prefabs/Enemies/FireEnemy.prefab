@@ -154,7 +154,8 @@ GameObject:
   - component: {fileID: 5527409341061542208}
   - component: {fileID: 5527409341061542209}
   - component: {fileID: 5527409341061542210}
-  - component: {fileID: 5527409341061542211}
+  - component: {fileID: 1565614900117421901}
+  - component: {fileID: 5029971448540471290}
   m_Layer: 13
   m_Name: FireEnemy
   m_TagString: Enemy
@@ -171,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 5527409341061542212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 200.4, y: -10.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5527409341051917436}
   m_Father: {fileID: 0}
@@ -214,7 +215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb2019bfaa3b3b94a836bdf8f7928cac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5f53812a5500c3408b15a21cb272de3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   health: 1
   flickerMask: {fileID: 5527409341051917439}
   distanceToGround: 1
-  groundCheckAheadDistance: 1
+  groundCheckAheadDistance: 0.5
   stationary: 0
   patrolSpeed: 3
   patrolRange: 7
@@ -251,7 +252,8 @@ MonoBehaviour:
   detectionRequiresLOS: 0
   detectionRange: 10
   dropAggroRange: 15
-  attackChargeDuration: 0
+  deathAnim: {fileID: 0}
+  attackChargeDuration: 0.25
   attackCooldown: 2
   fireballSpeed: 10
   fireballPrefab: {fileID: 545003357893963026, guid: 38402886a5802f14bbae802b51b61184,
@@ -279,8 +281,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5527409341061542211
-BoxCollider2D:
+--- !u!95 &1565614900117421901
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527409341061542212}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dc7835c4e48b7148bb30f5e04a6d07b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &5029971448540471290
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -292,16 +313,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.111092746, y: -0.24362135}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5333333, y: 1.9666667}
-    newSize: {x: 2.5333333, y: 1.9666667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1056954, y: 0.88958454}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.015179783, y: 0.12145805}
+  m_Size: {x: 0.41048652, y: 1.0890656}
+  m_Direction: 0

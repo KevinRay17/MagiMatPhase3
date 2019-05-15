@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody2D;
     protected SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
 
     public Material material;
     public int health;
@@ -28,12 +29,15 @@ public abstract class Enemy : MonoBehaviour
     public bool detectionRequiresLOS; //does the enemy need to see the player to get aggro
     public float detectionRange; //range of enemy vision
     public float dropAggroRange; //how far away the player must be to drop aggro
+ 
+   
     
 
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -58,7 +62,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Patrol();
         }
-        Debug.Log(CanMoveForward());
     }
     
     //handles enemy aggro
@@ -110,6 +113,7 @@ public abstract class Enemy : MonoBehaviour
         //check if the enemy is currently waiting at the end of its patrol bounds
         //if it is, reduce the timer til it reaches 0
         //at 0, flip the sprite's direction
+        //.Debug.Log(patrolWaitTimer);
         if (patrolWaitTimer > 0)
         {
             patrolWaitTimer -= Time.deltaTime;
@@ -118,6 +122,8 @@ public abstract class Enemy : MonoBehaviour
                 facingRight = !facingRight;
                 _spriteRenderer.flipX = !_spriteRenderer.flipX;
             }
+            
+            _animator.Play("idle");
             return;
         }
         
@@ -142,9 +148,11 @@ public abstract class Enemy : MonoBehaviour
                     patrolWaitTimer = patrolWaitDuration;
                 }
             }
+            _animator.Play("run");
         }
         else
         {
+            Debug.Log("cant move forward");
             patrolWaitTimer = patrolWaitDuration;
         }
     }
@@ -161,7 +169,7 @@ public abstract class Enemy : MonoBehaviour
             aheadDistance = Vector2.left * groundCheckAheadDistance;
         }
         Debug.DrawLine(transform.position, (Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance);
-        return Physics2D.OverlapPoint((Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance, LayerMask.NameToLayer("Ground"));
+        return Physics2D.OverlapPoint((Vector2) transform.position + (Vector2.down * distanceToGround) + aheadDistance);
     }
     
     //called in update when aggroed
@@ -174,12 +182,14 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        flickerMask.Flicker();
         if (flickerMask != null)
         {
             flickerMask.Flicker();
         }
         if (health <= 0)
         {
+            
             Death();
         }
     }
@@ -194,7 +204,12 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HurtBox"))
         {
+            GameObject blood = GameObject.FindGameObjectWithTag("bloodSpurt");
+            blood.transform.position = transform.position;
+            blood.GetComponent<ParticleSystem>().Play();
+            
             TakeDamage(1);
+            
         }
     }
 }
