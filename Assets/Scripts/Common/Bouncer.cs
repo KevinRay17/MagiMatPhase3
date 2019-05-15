@@ -21,6 +21,6 @@ public class Bouncer : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        transform.position = startPosition + Vector3.up * Mathf.Sin(Time.time * speedModifier) * modifier;
+        transform.position = startPosition + Vector3.right * Mathf.Sin(Time.time * speedModifier) * modifier;
     }
 }

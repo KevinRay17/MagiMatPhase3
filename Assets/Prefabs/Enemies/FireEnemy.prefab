@@ -172,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 5527409341061542212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 200.4, y: -10.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5527409341051917436}
   m_Father: {fileID: 0}
@@ -253,7 +253,7 @@ MonoBehaviour:
   detectionRange: 10
   dropAggroRange: 15
   deathAnim: {fileID: 0}
-  attackChargeDuration: 0
+  attackChargeDuration: 0.25
   attackCooldown: 2
   fireballSpeed: 10
   fireballPrefab: {fileID: 545003357893963026, guid: 38402886a5802f14bbae802b51b61184,

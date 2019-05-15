@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -69,12 +70,12 @@ public class MainMenuScript : MonoBehaviour
     IEnumerator LogoFadeIn(float startAlpha,float endAlpha, float numSecondsFade)
     {
         var t = 0f;
-        Color myColor = ForlornLogo.GetComponent<SpriteRenderer>().color;
+        Color myColor = ForlornLogo.GetComponent<Text>().color;
         while (t < 1)
         {
             myColor.a =
                 Mathf.Lerp(startAlpha,endAlpha, Time.deltaTime * t);
-            ForlornLogo.GetComponent<SpriteRenderer>().color = myColor;
+            ForlornLogo.GetComponent<Text>().color = myColor;
             t += Time.deltaTime * (1 / numSecondsFade);
             yield return null;
         }

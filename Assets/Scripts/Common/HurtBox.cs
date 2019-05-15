@@ -28,8 +28,8 @@ public class HurtBox : MonoBehaviour
     {
         if (other.gameObject.layer == 13 || other.gameObject.layer == 14)
         {
-            bloodParticleSystem.transform.position = other.gameObject.transform.position;
-            bloodParticleSystem.Emit(20);
+          //  bloodParticleSystem.transform.position = other.gameObject.transform.position;
+            //bloodParticleSystem.Emit(20);
         }
         
         if (PlayerManager.instance.material == Material.Fire && other.gameObject.CompareTag("Torch"))

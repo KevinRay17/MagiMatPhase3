@@ -16,6 +16,8 @@ TagManager:
   - camResetScale
   - MaterialUnlock
   - spawn
+  - bloodSpurt
+  - splash
   layers:
   - Default
   - TransparentFX
