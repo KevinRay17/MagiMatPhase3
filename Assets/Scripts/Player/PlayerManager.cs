@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject player;
     public DontDestroy cp;
+    public AnimationEvents cape;
+    public AnimationEvents collar;
 
     public Material material;
     [HideInInspector] public MaterialClass materialScript;

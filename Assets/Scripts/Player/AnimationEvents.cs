@@ -299,4 +299,9 @@ public class AnimationEvents : MonoBehaviour
     {
         _anim.SetBool("Special", false);
     }
+    
+    public void AnimJump()
+    {
+        _anim.SetTrigger("jump");
+    }
 }
