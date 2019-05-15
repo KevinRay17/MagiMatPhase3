@@ -16,6 +16,8 @@ TagManager:
   - camResetScale
   - MaterialUnlock
   - spawn
+  - bloodSpurt
+  - splash
   layers:
   - Default
   - TransparentFX
@@ -35,7 +37,7 @@ TagManager:
   - Absorber
   - Water
   - Projectile
-  - 
+  - Bounce
   - 
   - 
   - 

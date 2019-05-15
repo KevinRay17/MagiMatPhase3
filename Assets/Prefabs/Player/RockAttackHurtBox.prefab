@@ -49,7 +49,7 @@ MonoBehaviour:
   _boxCollider: {fileID: 0}
   damage: 1
   hitMultipleTargets: 0
-  lifetime: 0.3
+  lifetime: 10
   bloodParticleSystem: {fileID: 5447898100468378559, guid: a4796aa485a31ce4eb5a70db5a76bd51,
     type: 3}
   speed: 15

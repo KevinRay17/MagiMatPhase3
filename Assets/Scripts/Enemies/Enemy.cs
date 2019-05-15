@@ -30,8 +30,7 @@ public abstract class Enemy : MonoBehaviour
     public float detectionRange; //range of enemy vision
     public float dropAggroRange; //how far away the player must be to drop aggro
  
-    
-    public ParticleSystem deathAnim;
+   
     
 
     protected virtual void Awake()
@@ -183,16 +182,14 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        flickerMask.Flicker();
         if (flickerMask != null)
         {
             flickerMask.Flicker();
         }
         if (health <= 0)
         {
-            if (material == Material.Rock)
-            {
-                Instantiate(deathAnim, transform.position, Quaternion.identity);
-            }
+            
             Death();
         }
     }
@@ -207,7 +204,12 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HurtBox"))
         {
+            GameObject blood = GameObject.FindGameObjectWithTag("bloodSpurt");
+            blood.transform.position = transform.position;
+            blood.GetComponent<ParticleSystem>().Play();
+            
             TakeDamage(1);
+            
         }
     }
 }
